@@ -1,0 +1,43 @@
+{
+  "cambios": {
+    "actualizados": 0,
+    "nuevos": 477,
+    "podados": 1,
+    "sin_cambios": 0
+  },
+  "fuentes": {
+    "gdacs": {
+      "error": null,
+      "eventos": 269,
+      "ok": true
+    },
+    "usgs": {
+      "error": null,
+      "eventos": 208,
+      "ok": true
+    }
+  },
+  "historico": {
+    "por_fuente": {
+      "gdacs": 268,
+      "usgs": 208
+    },
+    "por_nivel_alerta": {
+      "naranja": 6,
+      "roja": 1,
+      "verde": 265
+    },
+    "por_tipo": {
+      "ciclon": 3,
+      "incendio": 236,
+      "inundacion": 12,
+      "otro": 6,
+      "sequia": 11,
+      "sismo": 207,
+      "volcan": 1
+    },
+    "total": 476
+  },
+  "retencion_dias": 400,
+  "ultima_ejecucion": "2026-08-06T06:06:09Z"
+}
