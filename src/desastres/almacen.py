@@ -11,7 +11,7 @@ from dataclasses import replace
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from .modelo import CAMPOS_CSV, Evento, a_iso
+from .modelo import CAMPOS_CSV, Evento, a_iso, codigos_de_pais
 
 log = logging.getLogger(__name__)
 
@@ -37,7 +37,7 @@ def cargar(directorio: Path) -> dict[str, Evento]:
 
     eventos = {}
     for crudo in documento.get("eventos", []):
-        evento = Evento.desde_dict(_backfill_id_agrupado(crudo))
+        evento = Evento.desde_dict(_migrar(crudo))
         eventos[evento.id] = evento
     return eventos
 
@@ -46,25 +46,36 @@ def cargar(directorio: Path) -> dict[str, Evento]:
 _ID_GDACS_CON_EPISODIO = re.compile(r"^(gdacs:[A-Z]+:\d+):\d+$")
 
 
-def _backfill_id_agrupado(crudo: dict) -> dict:
-    """Completa `id_agrupado` en registros escritos antes de que existiera.
+def _migrar(crudo: dict) -> dict:
+    """Completa los campos que un registro viejo no tiene.
 
-    Sin esto, los eventos históricos de GDACS quedarían agrupados por episodio
-    en vez de por fenómeno, y los comentarios que la app cuelgue de ellos se
-    fragmentarían para siempre. Los que siguen en el feed se corregirían solos
-    en la próxima corrida; los que ya salieron, no.
+    Los eventos que siguen apareciendo en los feeds se corrigen solos en la
+    próxima corrida, porque se vuelven a parsear enteros. Los que ya salieron,
+    no: sin esto quedarían incompletos para siempre, y son justo los históricos
+    que la app va a mostrar.
 
     Se puede borrar cuando no quede en el histórico ningún registro anterior a
-    la introducción del campo.
+    la introducción de estos campos.
     """
-    if crudo.get("id_agrupado"):
-        return crudo
+    migrado = crudo
 
-    coincidencia = _ID_GDACS_CON_EPISODIO.match(str(crudo.get("id", "")))
-    if coincidencia is None:
-        return crudo
+    # `id_agrupado`: sin él, los eventos de GDACS quedan agrupados por episodio
+    # en vez de por fenómeno, y los comentarios que la app les cuelgue se
+    # fragmentan para siempre.
+    if not migrado.get("id_agrupado"):
+        coincidencia = _ID_GDACS_CON_EPISODIO.match(str(migrado.get("id", "")))
+        if coincidencia is not None:
+            migrado = {**migrado, "id_agrupado": coincidencia.group(1)}
 
-    return {**crudo, "id_agrupado": coincidencia.group(1)}
+    # `paises`: es el campo por el que filtra la app. Se deriva del texto que
+    # ya está guardado, así que no hace falta esperar a que el evento vuelva a
+    # aparecer en el feed.
+    if not migrado.get("paises") and migrado.get("pais"):
+        codigos = codigos_de_pais(migrado["pais"])
+        if codigos:
+            migrado = {**migrado, "paises": codigos}
+
+    return migrado
 
 
 def fusionar(

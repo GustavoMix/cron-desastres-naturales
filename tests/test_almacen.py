@@ -271,3 +271,27 @@ def test_estadisticas_cuenta_por_tipo_fuente_y_alerta():
     assert stats["por_tipo"] == {"ciclon": 2, "sismo": 1}
     assert stats["por_fuente"] == {"gdacs": 2, "usgs": 1}
     assert stats["por_nivel_alerta"] == {"roja": 1, "verde": 1}
+
+
+def test_cargar_completa_los_paises_en_registros_viejos(tmp_path):
+    # `paises` es el campo por el que filtra la app. Se deriva del texto ya
+    # guardado, así que los históricos no tienen que esperar a reaparecer en
+    # el feed — y los que ya salieron nunca reaparecerían.
+    antiguo = {
+        "version": 1,
+        "eventos": [
+            {"id": "usgs:a", "fuente": "usgs", "tipo": "sismo", "titulo": "x",
+             "fecha_evento": "2026-08-01T00:00:00Z", "url": "", "pais": "Alaska"},
+            {"id": "gdacs:DR:1", "fuente": "gdacs", "tipo": "sequia", "titulo": "y",
+             "fecha_evento": "2026-08-01T00:00:00Z", "url": "", "pais": "Chile, Peru"},
+            {"id": "usgs:b", "fuente": "usgs", "tipo": "sismo", "titulo": "z",
+             "fecha_evento": "2026-08-01T00:00:00Z", "url": "", "pais": ""},
+        ],
+    }
+    (tmp_path / almacen.NOMBRE_JSON).write_text(json.dumps(antiguo), encoding="utf-8")
+
+    cargados = almacen.cargar(tmp_path)
+
+    assert cargados["usgs:a"].paises == ["US"]
+    assert cargados["gdacs:DR:1"].paises == ["CL", "PE"]
+    assert cargados["usgs:b"].paises == []
