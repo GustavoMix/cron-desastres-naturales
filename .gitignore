@@ -8,3 +8,11 @@ dist/
 .venv/
 venv/
 resumen.txt
+
+# Proyecto Android (app-android/)
+.gradle/
+build/
+local.properties
+.kotlin/
+*.apk
+*.aab
