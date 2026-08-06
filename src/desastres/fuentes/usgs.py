@@ -1,4 +1,4 @@
-"""USGS Earthquake Hazards Program: sismos de las últimas 24 h.
+"""USGS Earthquake Hazards Program: sismos de los últimos 7 días.
 
 Feed GeoJSON público, sin API key:
 https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
@@ -16,6 +16,7 @@ from ..modelo import (
     TIPO_VOLCAN,
     Evento,
     a_float,
+    codigos_de_pais,
     desde_epoch_ms,
     normalizar_alerta,
 )
@@ -78,6 +79,7 @@ class FuenteUSGS:
         profundidad = a_float(coordenadas[2]) if len(coordenadas) > 2 else None
 
         lugar = str(propiedades.get("place") or "")
+        region = _region_desde_lugar(lugar)
         titulo = str(propiedades.get("title") or lugar or f"Sismo {identificador}")
 
         return Evento(
@@ -89,7 +91,8 @@ class FuenteUSGS:
             fecha_actualizacion=desde_epoch_ms(propiedades.get("updated")),
             url=str(propiedades.get("url") or ""),
             lugar=lugar,
-            pais=_pais_desde_lugar(lugar),
+            pais=region,
+            paises=codigos_de_pais(region),
             magnitud=a_float(propiedades.get("mag")),
             unidad_magnitud=str(propiedades.get("magType") or ""),
             nivel_alerta=normalizar_alerta(propiedades.get("alert")),
@@ -105,11 +108,13 @@ class FuenteUSGS:
         )
 
 
-def _pais_desde_lugar(lugar: str) -> str:
+def _region_desde_lugar(lugar: str) -> str:
     """Extrae la región del campo `place` ("10 km SW of Ciudad, Chile").
 
     El feed no trae país estructurado; lo que sigue a la última coma es la mejor
-    aproximación disponible. Para sismos en EE. UU. suele ser un estado.
+    aproximación disponible, y para sismos en EE. UU. es un estado ("Alaska",
+    "CA"). Por eso el resultado se traduce después a códigos ISO: filtrar por
+    este texto pondría cada estado como si fuera un país aparte.
     """
     if "," not in lugar:
         return ""

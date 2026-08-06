@@ -2,9 +2,15 @@
 
 from __future__ import annotations
 
+import logging
 import math
+import re
 from dataclasses import asdict, dataclass, field, fields
 from datetime import datetime, timezone
+
+from .paises import CODIGOS_POR_NOMBRE, CODIGOS_VALIDOS
+
+log = logging.getLogger(__name__)
 
 # Tipos de amenaza normalizados. Cada fuente traduce su vocabulario a estos.
 TIPO_SISMO = "sismo"
@@ -50,7 +56,12 @@ class Evento:
     url: str
     id_agrupado: str = ""
     lugar: str = ""
+    # Texto tal como lo informa la fuente. Sirve para mostrar, no para filtrar:
+    # USGS pone estados de EE. UU. ("Alaska", "CA") donde debería ir el país.
     pais: str = ""
+    # Códigos ISO-3166 alfa-2. **Este es el campo para filtrar**; es lista
+    # porque un ciclón o una sequía pueden abarcar varios países.
+    paises: list[str] = field(default_factory=list)
     magnitud: float | None = None
     unidad_magnitud: str = ""
     nivel_alerta: str = ""
@@ -125,6 +136,64 @@ def a_float(valor: object) -> float | None:
     if math.isnan(resultado) or math.isinf(resultado):
         return None
     return resultado
+
+
+def codigos_de_pais(texto: object) -> list[str]:
+    """Traduce el país que informa una fuente a códigos ISO-3166 alfa-2.
+
+    Devuelve una lista porque GDACS publica eventos multipaís en un solo campo
+    ("Australia, Indonesia, Cambodia, Laos"), y un ciclón o una sequía
+    efectivamente abarcan varios países.
+
+    Intenta primero con la cadena entera —así "The Democratic Republic of
+    Congo" no se parte en pedazos— y recién después separa por comas.
+    """
+    if not texto:
+        return []
+
+    crudo = str(texto).strip()
+    directo = _resolver(crudo)
+    if directo:
+        return [directo]
+
+    codigos: list[str] = []
+    for parte in crudo.split(","):
+        if not parte.strip():
+            continue
+        codigo = _resolver(parte)
+        if codigo is None:
+            log.debug("país no reconocido: %r (de %r)", parte.strip(), crudo)
+            continue
+        if codigo not in codigos:
+            codigos.append(codigo)
+
+    return codigos
+
+
+def _resolver(nombre: str) -> str | None:
+    """Resuelve un nombre suelto a alfa-2, con dos reglas de rescate."""
+    limpio = nombre.strip()
+    if not limpio:
+        return None
+
+    codigo = CODIGOS_POR_NOMBRE.get(limpio.lower())
+    if codigo:
+        return codigo
+
+    # USGS etiqueta zonas sísmicas como "New Zealand region" o "Chile region".
+    sin_sufijo = re.sub(r"\s+region$", "", limpio, flags=re.IGNORECASE)
+    if sin_sufijo != limpio:
+        codigo = CODIGOS_POR_NOMBRE.get(sin_sufijo.lower())
+        if codigo:
+            return codigo
+
+    # Algunas fuentes ya publican el alfa-2 ("Baja California, MX"). Se prueba
+    # último para que los estados de EE. UU. ganen: "CA" es California, no
+    # Canadá, porque USGS a Canadá lo escribe con el nombre completo.
+    if len(limpio) == 2 and limpio.upper() in CODIGOS_VALIDOS:
+        return limpio.upper()
+
+    return None
 
 
 def normalizar_alerta(valor: object) -> str:

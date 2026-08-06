@@ -11,7 +11,9 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0", "ruff>=0.6"]
+# pycountry solo hace falta para regenerar src/desastres/paises.py con
+# herramientas/generar_paises.py; el scraper en sí no tiene dependencias.
+dev = ["pytest>=8.0", "ruff>=0.6", "pycountry>=24.0"]
 
 [project.scripts]
 desastres = "desastres.cli:main"

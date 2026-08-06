@@ -72,3 +72,7 @@ def test_id_agrupado_descarta_el_episodio(eventos):
 def test_id_agrupado_sin_episodio_coincide_con_el_id(eventos):
     inundacion = eventos[2]
     assert inundacion.id_agrupado == inundacion.id == "gdacs:FL:1102344"
+
+
+def test_traduce_el_pais_a_codigo_iso(eventos):
+    assert [e.paises for e in eventos] == [["CL"], ["PH"], ["PK"]]

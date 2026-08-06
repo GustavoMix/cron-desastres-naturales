@@ -38,6 +38,7 @@ Cada evento tiene esta forma:
   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000abcd",
   "lugar": "24 km SW of Coquimbo, Chile",
   "pais": "Chile",
+  "paises": ["CL"],
   "magnitud": 5.4,
   "unidad_magnitud": "mww",
   "nivel_alerta": "verde",
@@ -62,6 +63,27 @@ Vocabulario normalizado, igual para todas las fuentes:
 - `tipo`: `sismo`, `ciclon`, `inundacion`, `volcan`, `incendio`, `sequia`, `otro`
 - `nivel_alerta`: `verde`, `amarilla`, `naranja`, `roja` (vacío si la fuente no lo informa)
 - fechas: ISO 8601 en UTC, siempre con sufijo `Z`
+
+### Filtrar por país
+
+Usá **`paises`**, no `pais`.
+
+`pais` es el texto crudo de la fuente y no sirve para filtrar: USGS pone estados
+de EE. UU. donde debería ir el país (en una muestra real, 110 eventos bajo `CA`
+y 63 bajo `Alaska`), y GDACS mete varios países en un solo campo
+(`"Australia, Indonesia, Cambodia"`).
+
+`paises` es una lista de códigos **ISO-3166 alfa-2** ya normalizados: los estados
+de EE. UU. resuelven a `US`, los territorios con código propio lo conservan
+(`VI`), y los eventos multipaís se expanden en un código por país. Sobre datos
+reales resuelve el **99%** de los eventos; lo que queda son regiones oceánicas
+sin país ("South Of Kermadec Islands"), que devuelven lista vacía.
+
+La tabla de nombres está vendorizada en `src/desastres/paises.py`, generada por
+`herramientas/generar_paises.py` a partir de `pycountry` — así el scraper sigue
+sin dependencias de runtime. Si aparece un nombre que no reconoce, el scraper lo
+avisa en el log (`país no reconocido`): agregalo a `ALIAS` en ese script y
+regeneralo.
 
 **`id`** es único por registro. **`id_agrupado`** identifica el fenómeno del
 mundo real: para USGS coinciden, pero GDACS republica un mismo evento por
@@ -247,7 +269,7 @@ items sin identificador, fechas ausentes.
 
 ## Limitaciones conocidas
 
-- **`pais` en eventos de USGS es aproximado.** El feed no trae país estructurado; se toma lo que sigue a la última coma de `place`, que para sismos en EE. UU. da un estado (`CA`) y no un país.
+- **`pais` es texto crudo de la fuente, no sirve para filtrar.** USGS pone estados de EE. UU. donde debería ir el país (`CA`, `Alaska`) y GDACS mete varios países en un solo campo. Para eso está `paises`.
 - **GDACS republica un mismo evento por episodios.** El `episodeid` forma parte del `id`, así que un ciclón de larga vida deja un registro por episodio en lugar de uno solo actualizándose. Es intencional: preserva la evolución del evento. Para agrupar, usá `id_agrupado`.
 - **Ventana de USGS: 24 h.** Si el cron estuvo caído más de un día, esos sismos se pierden. Para recuperarlos habría que usar el feed de 7 días o la API de consulta por rango.
 - **GDACS publica muchísimos incendios.** En una muestra real, 90 de 166 eventos del feed reciente eran incendios forestales, la mayoría con alerta verde. Si desbalancean la app, subí el piso de alerta o sacá `WF` del mapeo en `fuentes/gdacs.py`.

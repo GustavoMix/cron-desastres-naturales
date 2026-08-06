@@ -59,3 +59,11 @@ def test_evento_no_tectonico_cae_en_otro(eventos):
 
 def test_feed_vacio_no_rompe():
     assert FuenteUSGS().parsear(b'{"type": "FeatureCollection", "features": []}') == []
+
+
+def test_traduce_la_region_a_codigo_de_pais(eventos):
+    assert eventos[0].pais == "Chile"
+    assert eventos[0].paises == ["CL"]
+    # "CA" es un estado; sin la traducción quedaría como país propio.
+    assert eventos[2].pais == "CA"
+    assert eventos[2].paises == ["US"]

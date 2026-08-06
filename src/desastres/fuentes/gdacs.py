@@ -22,6 +22,7 @@ from ..modelo import (
     Evento,
     a_float,
     a_iso,
+    codigos_de_pais,
     normalizar_alerta,
 )
 
@@ -83,6 +84,7 @@ class FuenteGDACS:
             log.warning("item GDACS %s sin fecha utilizable; se omite", id_evento)
             return None
 
+        pais = (_texto(item, "gdacs:country") or "").strip()
         severidad = item.find("gdacs:severity", NS)
         latitud, longitud = _coordenadas(item)
 
@@ -96,7 +98,8 @@ class FuenteGDACS:
             fecha_actualizacion=_fecha(_texto(item, "pubDate")),
             url=(_texto(item, "link") or "").strip(),
             lugar=(_texto(item, "gdacs:country") or "").strip(),
-            pais=(_texto(item, "gdacs:country") or "").strip(),
+            pais=pais,
+            paises=codigos_de_pais(pais),
             magnitud=a_float(severidad.get("value")) if severidad is not None else None,
             unidad_magnitud=(severidad.get("unit") or "") if severidad is not None else "",
             nivel_alerta=normalizar_alerta(_texto(item, "gdacs:alertlevel")),

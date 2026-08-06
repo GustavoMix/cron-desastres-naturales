@@ -240,12 +240,23 @@ def _guardar_csv(ruta: Path, eventos: list[Evento]) -> None:
         escritor = csv.DictWriter(manejador, fieldnames=list(CAMPOS_CSV), extrasaction="ignore")
         escritor.writeheader()
         for evento in eventos:
-            escritor.writerow(_sin_extra(evento))
+            escritor.writerow(_para_csv(evento))
 
 
 def _sin_extra(evento: Evento) -> dict:
     datos = evento.como_dict()
     datos.pop("extra", None)
+    return datos
+
+
+def _para_csv(evento: Evento) -> dict:
+    """Aplana lo que el CSV no sabe representar.
+
+    `paises` es una lista; sin esto el writer la volcaría como `['BO', 'PE']`,
+    que ninguna planilla sabe leer.
+    """
+    datos = _sin_extra(evento)
+    datos["paises"] = ";".join(evento.paises)
     return datos
 
 
