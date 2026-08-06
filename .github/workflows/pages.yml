@@ -4,7 +4,10 @@ on:
   # Se dispara también con los commits horarios del scraper, así el sitio
   # siempre sirve los datos frescos.
   push:
-    branches: [main]
+    # La rama por defecto del repo hoy es claude/scraper-cron-j5z2ny (fue la
+    # primera que se empujó a un repo vacío). Se listan las dos para que esto
+    # siga funcionando cuando se renombre a main.
+    branches: [main, claude/scraper-cron-j5z2ny]
     paths:
       - "web/**"
       - "datos/**"

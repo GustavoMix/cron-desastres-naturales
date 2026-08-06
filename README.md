@@ -171,6 +171,19 @@ los datos frescos.
 **Para activarlo:** en *Settings → Pages*, elegí **Source: GitHub Actions**. Sin
 ese paso el workflow falla.
 
+⚠️ **El repo es privado, y eso bloquea todo el plan de distribución.** Con un
+repo privado:
+
+- **GitHub Pages no está disponible** en el plan Free (requiere Pro/Team).
+- **jsDelivr y `raw.githubusercontent` no sirven contenido privado**, así que una
+  app externa no puede bajar el JSON sin autenticarse — y meter un token dentro
+  de un APK no es una opción.
+- Los minutos de Actions se consumen del cupo (2.000/mes en Free); el cron
+  horario solo ya usa ~730.
+
+Si la idea es que una app Kotlin consuma el JSON, **el repo tiene que ser
+público**. Es un cambio de un clic en *Settings → General → Change visibility*.
+
 Para probarlo local hace falta un servidor (el `fetch` no anda con `file://`):
 
 ```bash
