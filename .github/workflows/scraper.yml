@@ -2,9 +2,15 @@ name: Scraper de desastres
 
 on:
   schedule:
-    # Cada hora, en el minuto 17: los minutos redondos están congestionados en
-    # GitHub Actions y las corridas programadas se demoran más.
-    - cron: "17 * * * *"
+    # Semanal, lunes 06:17 UTC. Minuto y hora no redondos a propósito: los
+    # horarios en punto están congestionados en GitHub Actions y las corridas
+    # programadas se demoran o se saltean.
+    #
+    # OJO al cambiar esto: la ventana de los feeds tiene que cubrir el intervalo
+    # entre corridas. USGS usa el feed de 7 días justamente por esta cadencia
+    # (ver fuentes/usgs.py); si se espacia más, hay que pasar a la API de
+    # consulta por rango o se pierden eventos.
+    - cron: "17 6 * * 1"
   workflow_dispatch:
     inputs:
       fuentes:

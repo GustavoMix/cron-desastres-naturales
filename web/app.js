@@ -8,11 +8,18 @@
 
 const RUTA_DATOS = "datos/recientes.json";
 
-// Umbrales de frescura. Si el cron corre cada hora, tres horas sin datos ya es
-// señal de que algo se rompió, y hay que decírselo al usuario en vez de
-// mostrarle información vieja como si fuera actual.
-const HORAS_VIEJO = 3;
-const HORAS_CRITICO = 12;
+/* Umbrales de frescura, atados a la cadencia del cron (semanal, lunes 06:17
+ * UTC). Si se cambia el schedule en .github/workflows/scraper.yml, hay que
+ * mover estos números o la página va a mentir: con umbrales de horas sobre un
+ * cron semanal, el aviso estaría encendido siempre y la gente aprendería a
+ * ignorarlo — que es peor que no tenerlo. Se deja un margen de un día sobre el
+ * intervalo para no gritar por una corrida apenas demorada. */
+const HORAS_VIEJO = 8 * 24;
+const HORAS_CRITICO = 15 * 24;
+
+// Ventana del tile de actividad reciente. También sigue a la cadencia: contar
+// "últimas 24 h" sobre datos semanales daría 0 casi siempre.
+const HORAS_VENTANA_ACTIVIDAD = 7 * 24;
 
 const TIPOS = [
   { clave: "sismo", etiqueta: "Sismo", icono: "〰️" },
@@ -264,7 +271,9 @@ function pintarTiles(lista) {
   $("#tile-graves").textContent = lista.filter((e) =>
     ["roja", "naranja"].includes(e.nivel_alerta)
   ).length;
-  $("#tile-24h").textContent = lista.filter((e) => horasDesde(e.fecha_evento) <= 24).length;
+  $("#tile-24h").textContent = lista.filter(
+    (e) => horasDesde(e.fecha_evento) <= HORAS_VENTANA_ACTIVIDAD
+  ).length;
   $("#tile-actualizado").textContent = estado.generado ? hace(horasDesde(estado.generado)) : "–";
 }
 

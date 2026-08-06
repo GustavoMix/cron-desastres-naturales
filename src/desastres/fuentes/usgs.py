@@ -22,7 +22,11 @@ from ..modelo import (
 
 log = logging.getLogger(__name__)
 
-URL_POR_DEFECTO = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
+# Feed de 7 días, no el de 24 h. La ventana del feed tiene que cubrir el
+# intervalo entre corridas o se pierden eventos: con el cron semanal, el feed
+# diario dejaría afuera 6 de cada 7 días de sismos. El de 7 días además da
+# margen para que una corrida fallida no cause un agujero permanente.
+URL_POR_DEFECTO = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 
 # `properties.type` del feed. Todo lo que no sea tectónico cae en "otro"
 # (quarry blast, explosion, ice quake, mine collapse, sonic boom...).

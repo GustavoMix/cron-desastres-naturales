@@ -1,14 +1,14 @@
 # cron-desastres-naturales
 
-Scraper programado de alertas de desastres naturales. Corre cada hora en GitHub
-Actions, consulta fuentes públicas, normaliza todo a un modelo común y versiona
+Scraper programado de alertas de desastres naturales. Corre una vez por semana
+en GitHub Actions, consulta fuentes públicas, normaliza todo a un modelo común y versiona
 el resultado como JSON y CSV dentro del propio repo.
 
 ## Fuentes
 
 | Fuente | Qué trae | Formato | API key |
 |---|---|---|---|
-| [USGS Earthquake Hazards Program](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) | Sismos de las últimas 24 h, mundial | GeoJSON | No |
+| [USGS Earthquake Hazards Program](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) | Sismos de los últimos 7 días, mundial | GeoJSON | No |
 | [GDACS](https://www.gdacs.org/xml/rss.xml) | Sismos, ciclones, inundaciones, volcanes, sequías e incendios | RSS | No |
 
 Las dos son complementarias y **no se deduplican entre sí**: un mismo sismo puede
@@ -20,7 +20,7 @@ ambos a propósito; para correlacionarlos, cruzá por `fecha_evento` y coordenad
 
 Todo se escribe en `datos/`:
 
-- **`recientes.json`** — **el que consume el front.** Últimos 7 días, sin el campo `extra` y sin micro-sismos. Es el único que conviene bajar desde una app móvil.
+- **`recientes.json`** — **el que consume el front.** Últimos 14 días, sin el campo `extra` y sin micro-sismos. Es el único que conviene bajar desde una app móvil.
 - **`eventos.json`** — histórico completo, más recientes primero. Pesado; para análisis, no para la app.
 - **`eventos.csv`** — el mismo histórico plano, listo para abrir en una planilla.
 - **`resumen.json`** — metadatos de la última corrida: qué fuente respondió, cuántos eventos nuevos/actualizados, conteos por tipo y por nivel de alerta.
@@ -77,14 +77,27 @@ git (ver más abajo).
 
 ## El cron
 
-`.github/workflows/scraper.yml` corre `17 * * * *` (cada hora, minuto 17 — los
-minutos redondos están congestionados en Actions y las corridas programadas se
-demoran). También se puede disparar a mano desde la pestaña *Actions*, con
-opción de elegir fuentes o hacer un `--dry-run`.
+`.github/workflows/scraper.yml` corre `17 6 * * 1` (lunes 06:17 UTC — horarios no
+redondos a propósito: los que están en punto se congestionan en Actions y las
+corridas programadas se demoran o se saltean). También se puede disparar a mano
+desde la pestaña *Actions*, con opción de elegir fuentes o hacer un `--dry-run`.
+
+⚠️ **Si cambiás la cadencia, hay tres cosas más que mover con ella:**
+
+| Qué | Dónde | Por qué |
+|---|---|---|
+| El feed de USGS | `fuentes/usgs.py` | La ventana del feed tiene que cubrir el intervalo entre corridas. Hoy usa el de **7 días** por el cron semanal; con el de 24 h se perderían 6 de cada 7 días de sismos |
+| Los umbrales de frescura | `web/app.js` | Están en días porque el cron es semanal. Con umbrales de horas el aviso estaría encendido siempre, y la gente aprendería a ignorarlo |
+| `--dias-recientes` | `cli.py` | La ventana del feed del front debe ser mayor que el intervalo, o el front se queda sin nada nuevo entre corridas |
+
+**GDACS no tiene feed histórico**: su RSS muestra lo que está activo ahora. Un
+evento corto que aparezca y desaparezca entre dos corridas semanales se pierde y
+no hay forma de recuperarlo. Es el costo de la cadencia semanal, y no aplica a
+USGS, que sí tiene ventana de 7 días.
 
 El workflow commitea `datos/` con el usuario `github-actions[bot]`. Como
-`resumen.json` lleva la marca de tiempo de la corrida, **hay un commit por hora
-aunque no haya novedades** — es el precio de que la app pueda detectar un
+`resumen.json` lleva la marca de tiempo de la corrida, **hay un commit por
+corrida aunque no haya novedades** — es el precio de que la app pueda detectar un
 scraper caído en vez de mostrar datos viejos como si fueran actuales.
 
 Lo que sí está garantizado es que los archivos pesados **no cambian si no hay
@@ -95,8 +108,8 @@ propiedades que hay que cuidar al tocar el código:
 - La salida es determinística: orden fijo y claves ordenadas.
 - Un evento revisitado sin cambios se deja exactamente como estaba, sin tocarle
   ninguna marca de tiempo. Si `cambiado_por_ultima_vez` se actualizara en cada
-  corrida, las decenas de miles de filas del histórico cambiarían cada hora y
-  cada commit pesaría el archivo entero.
+  corrida, las decenas de miles de filas del histórico cambiarían de una corrida
+  a la otra y cada commit pesaría el archivo entero.
 
 Ambas están cubiertas por tests (`test_guardar_es_deterministico` y
 `test_una_corrida_sin_novedades_deja_eventos_json_byte_a_byte_igual`).
@@ -132,7 +145,7 @@ Opciones principales:
 |---|---|---|
 | `--fuentes` | `usgs,gdacs` | Fuentes a consultar |
 | `--retencion-dias` | `180` | Descarta del histórico lo más viejo que N días (`0` no poda) — **nunca** lo que sigue publicado en los feeds |
-| `--dias-recientes` | `7` | Ventana de `recientes.json` |
+| `--dias-recientes` | `14` | Ventana de `recientes.json` |
 | `--recientes-magnitud-minima` | `2.5` | Excluye de `recientes.json` los sismos por debajo de esta magnitud |
 | `--dry-run` | — | Consulta y reporta sin escribir |
 
@@ -156,10 +169,15 @@ Dos cosas que conviene hacer del lado del cliente:
 
 - **Cachear con ETag.** Si el archivo no cambió, el servidor responde `304` y no
   bajás nada. En Android con OkHttp es configurar un `Cache` y listo.
-- **Chequear `generado` antes de mostrar nada.** Si esa marca tiene muchas horas,
-  el scraper está caído y los datos están viejos. En una app de desastres,
+- **Chequear `generado` antes de mostrar nada.** Con el cron semanal, más de 8
+  días sin actualizar significa que algo se rompió. En una app de desastres,
   mostrar información vieja como si fuera actual es peor que no mostrar nada:
   avisale al usuario.
+
+⚠️ **Con cadencia semanal, los datos pueden tener hasta 7 días.** No es una app
+de tiempo real, y la interfaz tiene que decirlo — si alguien la abre esperando
+saber si el sismo que acaba de sentir ya está reportado, la respuesta va a ser
+que no.
 
 ## El front web
 

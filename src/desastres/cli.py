@@ -31,7 +31,9 @@ DIAS_RETENCION_POR_DEFECTO = 180
 # Ventana y umbral del feed que consume el front. USGS publica cientos de
 # micro-sismos diarios que a una app de público general solo le inflan la
 # descarga; 2.5 es el umbral habitual de "sismo que la gente llega a sentir".
-DIAS_RECIENTES_POR_DEFECTO = 7
+# Con el cron semanal, una ventana de 7 días dejaría al front sin nada nuevo que
+# mostrar durante casi toda la semana. 14 le da contexto entre corridas.
+DIAS_RECIENTES_POR_DEFECTO = 14
 MAGNITUD_MINIMA_RECIENTES = 2.5
 
 
