@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import json
 import logging
+import re
 from collections import Counter
 from dataclasses import replace
 from datetime import datetime, timedelta, timezone
@@ -36,9 +37,34 @@ def cargar(directorio: Path) -> dict[str, Evento]:
 
     eventos = {}
     for crudo in documento.get("eventos", []):
-        evento = Evento.desde_dict(crudo)
+        evento = Evento.desde_dict(_backfill_id_agrupado(crudo))
         eventos[evento.id] = evento
     return eventos
+
+
+# Ids de GDACS de la forma gdacs:<TIPO>:<evento>:<episodio>.
+_ID_GDACS_CON_EPISODIO = re.compile(r"^(gdacs:[A-Z]+:\d+):\d+$")
+
+
+def _backfill_id_agrupado(crudo: dict) -> dict:
+    """Completa `id_agrupado` en registros escritos antes de que existiera.
+
+    Sin esto, los eventos históricos de GDACS quedarían agrupados por episodio
+    en vez de por fenómeno, y los comentarios que la app cuelgue de ellos se
+    fragmentarían para siempre. Los que siguen en el feed se corregirían solos
+    en la próxima corrida; los que ya salieron, no.
+
+    Se puede borrar cuando no quede en el histórico ningún registro anterior a
+    la introducción del campo.
+    """
+    if crudo.get("id_agrupado"):
+        return crudo
+
+    coincidencia = _ID_GDACS_CON_EPISODIO.match(str(crudo.get("id", "")))
+    if coincidencia is None:
+        return crudo
+
+    return {**crudo, "id_agrupado": coincidencia.group(1)}
 
 
 def fusionar(
@@ -87,18 +113,32 @@ def fusionar(
     return fusionados, resumen
 
 
-def podar(eventos: dict[str, Evento], dias_retencion: int, ahora: datetime) -> dict[str, Evento]:
-    """Descarta eventos más viejos que la ventana de retención.
+def podar(
+    eventos: dict[str, Evento],
+    dias_retencion: int,
+    ahora: datetime,
+    activos: set[str] | None = None,
+) -> dict[str, Evento]:
+    """Descarta eventos viejos que ya no aparecen en los feeds.
 
-    Sin poda el archivo crece sin techo y cada commit del cron se vuelve más
-    caro. Un evento sin fecha parseable se conserva: es preferible a perderlo.
+    `activos` son los ids que la corrida actual encontró publicados. Nunca se
+    podan, por viejos que sean: GDACS mantiene eventos de larguísima duración
+    —una sequía puede llevar un año en curso y seguir republicándose— y podarlos
+    por su fecha de inicio los borraría en cada corrida para reinsertarlos en la
+    siguiente, dejándolos invisibles pese a estar activos.
+
+    Un evento sin fecha parseable se conserva: es preferible a perderlo.
     """
     if dias_retencion <= 0:
         return dict(eventos)
 
+    protegidos = activos or set()
     corte = ahora - timedelta(days=dias_retencion)
     conservados = {}
     for clave, evento in eventos.items():
+        if clave in protegidos:
+            conservados[clave] = evento
+            continue
         fecha = _parsear_iso(evento.fecha_evento)
         if fecha is None or fecha >= corte:
             conservados[clave] = evento

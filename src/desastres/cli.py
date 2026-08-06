@@ -141,7 +141,12 @@ def ejecutar(argumentos: argparse.Namespace) -> int:
     existentes = almacen.cargar(argumentos.salida)
     fusionados, cambios = almacen.fusionar(existentes, entrantes, inicio)
     antes_de_podar = len(fusionados)
-    fusionados = almacen.podar(fusionados, argumentos.retencion_dias, inicio)
+    fusionados = almacen.podar(
+        fusionados,
+        argumentos.retencion_dias,
+        inicio,
+        activos={evento.id for evento in entrantes},
+    )
 
     recientes = almacen.filtrar_recientes(
         fusionados,

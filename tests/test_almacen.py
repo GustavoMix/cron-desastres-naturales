@@ -72,6 +72,42 @@ def test_el_id_agrupado_cae_por_defecto_en_el_id():
     assert hacer_evento("usgs:x1").id_agrupado == "usgs:x1"
 
 
+def test_cargar_completa_el_id_agrupado_en_registros_viejos(tmp_path):
+    # Registros escritos antes de que el campo existiera: sin backfill, los
+    # eventos históricos de GDACS quedarían agrupados por episodio.
+    antiguo = {
+        "version": 1,
+        "eventos": [
+            {"id": "gdacs:TC:1001298:39", "fuente": "gdacs", "tipo": "ciclon",
+             "titulo": "Ciclón", "fecha_evento": "2026-08-01T00:00:00Z", "url": ""},
+            {"id": "gdacs:FL:1102344", "fuente": "gdacs", "tipo": "inundacion",
+             "titulo": "Inundación", "fecha_evento": "2026-08-01T00:00:00Z", "url": ""},
+            {"id": "usgs:us7000abcd", "fuente": "usgs", "tipo": "sismo",
+             "titulo": "Sismo", "fecha_evento": "2026-08-01T00:00:00Z", "url": ""},
+        ],
+    }
+    (tmp_path / almacen.NOMBRE_JSON).write_text(json.dumps(antiguo), encoding="utf-8")
+
+    cargados = almacen.cargar(tmp_path)
+
+    assert cargados["gdacs:TC:1001298:39"].id_agrupado == "gdacs:TC:1001298"
+    assert cargados["gdacs:FL:1102344"].id_agrupado == "gdacs:FL:1102344"
+    assert cargados["usgs:us7000abcd"].id_agrupado == "usgs:us7000abcd"
+
+
+def test_el_backfill_respeta_un_id_agrupado_ya_presente(tmp_path):
+    documento = {
+        "version": 1,
+        "eventos": [
+            {"id": "gdacs:TC:1:2", "id_agrupado": "explícito", "fuente": "gdacs",
+             "tipo": "ciclon", "titulo": "x", "fecha_evento": "2026-08-01T00:00:00Z", "url": ""}
+        ],
+    }
+    (tmp_path / almacen.NOMBRE_JSON).write_text(json.dumps(documento), encoding="utf-8")
+
+    assert almacen.cargar(tmp_path)["gdacs:TC:1:2"].id_agrupado == "explícito"
+
+
 def test_fusionar_no_muta_el_diccionario_original(ahora):
     existentes = {}
     almacen.fusionar(existentes, [hacer_evento()], ahora)
@@ -95,6 +131,22 @@ def test_podar_con_cero_dias_no_descarta_nada(ahora):
 def test_podar_conserva_eventos_sin_fecha_parseable(ahora):
     roto = hacer_evento("usgs:roto", fecha="fecha inválida")
     assert set(almacen.podar({roto.id: roto}, 30, ahora)) == {"usgs:roto"}
+
+
+def test_podar_no_toca_lo_que_sigue_publicado(ahora):
+    # Caso real: GDACS mantiene sequías que arrancaron hace casi un año y las
+    # sigue republicando. Podarlas por su fecha de inicio las borraría en cada
+    # corrida para reinsertarlas en la siguiente, y nunca se verían.
+    sequia = hacer_evento(
+        "gdacs:DR:9", tipo="sequia", fecha=a_iso(ahora - timedelta(days=350))
+    )
+    abandonado = hacer_evento("usgs:viejo", fecha=a_iso(ahora - timedelta(days=350)))
+
+    conservados = almacen.podar(
+        {sequia.id: sequia, abandonado.id: abandonado}, 180, ahora, activos={"gdacs:DR:9"}
+    )
+
+    assert set(conservados) == {"gdacs:DR:9"}
 
 
 def test_ordena_de_mas_reciente_a_mas_antiguo():

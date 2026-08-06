@@ -51,6 +51,12 @@ Cada evento tiene esta forma:
 }
 ```
 
+⚠️ **`magnitud` no es una escala única.** Mide lo que cada tipo de evento mide, y
+`unidad_magnitud` dice qué: `mww`/`ml`/`md`/`mb` en sismos, **`ha` (hectáreas
+quemadas) en incendios**, `km/h` en ciclones, `km2` en sequías. Nunca compares ni
+ordenes por `magnitud` sin mirar antes el `tipo`. Por eso el umbral del feed
+reciente se aplica solo a sismos.
+
 Vocabulario normalizado, igual para todas las fuentes:
 
 - `tipo`: `sismo`, `ciclon`, `inundacion`, `volcan`, `incendio`, `sequia`, `otro`
@@ -125,7 +131,7 @@ Opciones principales:
 | Opción | Default | Qué hace |
 |---|---|---|
 | `--fuentes` | `usgs,gdacs` | Fuentes a consultar |
-| `--retencion-dias` | `180` | Descarta del histórico lo más viejo que N días (`0` no poda) |
+| `--retencion-dias` | `180` | Descarta del histórico lo más viejo que N días (`0` no poda) — **nunca** lo que sigue publicado en los feeds |
 | `--dias-recientes` | `7` | Ventana de `recientes.json` |
 | `--recientes-magnitud-minima` | `2.5` | Excluye de `recientes.json` los sismos por debajo de esta magnitud |
 | `--dry-run` | — | Consulta y reporta sin escribir |
@@ -213,5 +219,6 @@ items sin identificador, fechas ausentes.
 - **`pais` en eventos de USGS es aproximado.** El feed no trae país estructurado; se toma lo que sigue a la última coma de `place`, que para sismos en EE. UU. da un estado (`CA`) y no un país.
 - **GDACS republica un mismo evento por episodios.** El `episodeid` forma parte del `id`, así que un ciclón de larga vida deja un registro por episodio en lugar de uno solo actualizándose. Es intencional: preserva la evolución del evento. Para agrupar, usá `id_agrupado`.
 - **Ventana de USGS: 24 h.** Si el cron estuvo caído más de un día, esos sismos se pierden. Para recuperarlos habría que usar el feed de 7 días o la API de consulta por rango.
+- **GDACS publica muchísimos incendios.** En una muestra real, 90 de 166 eventos del feed reciente eran incendios forestales, la mayoría con alerta verde. Si desbalancean la app, subí el piso de alerta o sacá `WF` del mapeo en `fuentes/gdacs.py`.
 - **La poda puede dejar comentarios huérfanos.** Cuando se agreguen comentarios de usuarios, un evento podado del histórico dejará comentarios apuntando a un `id_agrupado` que ya no está en los feeds. Hay que decidirlo antes: o la app lo tolera, o no se poda lo que tiene comentarios.
 - **El scraper es un espejo, no una autoridad.** Los datos son de USGS y GDACS, con sus propias latencias y revisiones: una magnitud puede cambiar horas después. No sirve para alertas de evacuación — para eso están los organismos oficiales de cada país.
