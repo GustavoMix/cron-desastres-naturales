@@ -31,6 +31,8 @@ def argumentos(salida, **extras):
         fuentes="usgs",
         salida=salida,
         retencion_dias=400,
+        dias_recientes=7,
+        recientes_magnitud_minima=0.0,
         timeout=5.0,
         reintentos=1,
         dry_run=False,
@@ -109,6 +111,46 @@ def test_segunda_corrida_no_duplica_eventos(tmp_path, monkeypatch, usgs_crudo):
         "podados": 0,
     }
     assert resumen["historico"]["total"] == 3
+
+
+def test_una_corrida_sin_novedades_deja_eventos_json_byte_a_byte_igual(
+    tmp_path, monkeypatch, usgs_crudo
+):
+    # Esta es la propiedad que hace viable guardar el histórico en git: si el
+    # archivo cambiara entero cada hora, cada commit pesaría el archivo entero.
+    from desastres.fuentes.usgs import FuenteUSGS
+
+    fuente = FuenteUSGS()
+    fuente.obtener = lambda **_: usgs_crudo
+    monkeypatch.setattr(cli, "resolver_fuentes", lambda _: [fuente])
+
+    cli.ejecutar(argumentos(tmp_path))
+    primero = (tmp_path / almacen.NOMBRE_JSON).read_bytes()
+    cli.ejecutar(argumentos(tmp_path))
+    segundo = (tmp_path / almacen.NOMBRE_JSON).read_bytes()
+
+    assert primero == segundo
+
+
+def test_escribe_el_feed_reciente_para_el_front(tmp_path, monkeypatch, usgs_crudo):
+    from desastres.fuentes.usgs import FuenteUSGS
+
+    fuente = FuenteUSGS()
+    fuente.obtener = lambda **_: usgs_crudo
+    monkeypatch.setattr(cli, "resolver_fuentes", lambda _: [fuente])
+
+    # Ventana amplia para que los eventos del fixture entren igual con el tiempo.
+    cli.ejecutar(argumentos(tmp_path, dias_recientes=0, recientes_magnitud_minima=2.0))
+
+    documento = json.loads((tmp_path / almacen.NOMBRE_RECIENTES).read_text(encoding="utf-8"))
+    ids = [evento["id"] for evento in documento["eventos"]]
+
+    # El sismo M5.4 entra; el "quarry blast" M1.2 no es sismo y no se filtra por
+    # magnitud; la erupción no tiene magnitud y se conserva.
+    assert "usgs:us7000abcd" in ids
+    assert "usgs:us7000volc" in ids
+    assert "usgs:ci40123456" in ids
+    assert all("extra" not in evento for evento in documento["eventos"])
 
 
 def test_fallo_total_deja_el_historico_intacto(tmp_path, monkeypatch):

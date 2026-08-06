@@ -17,10 +17,10 @@ log = logging.getLogger(__name__)
 NOMBRE_JSON = "eventos.json"
 NOMBRE_CSV = "eventos.csv"
 NOMBRE_RESUMEN = "resumen.json"
+NOMBRE_RECIENTES = "recientes.json"
 
-# Campos de bookkeeping propio: cambian en cada corrida y no deben contar como
-# "el evento cambió" al comparar contra lo ya almacenado.
-_CAMPOS_VOLATILES = ("visto_por_primera_vez", "visto_por_ultima_vez")
+# Bookkeeping propio del scraper: no forma parte de "el evento cambió".
+_CAMPOS_BOOKKEEPING = ("visto_por_primera_vez", "cambiado_por_ultima_vez")
 
 
 def cargar(directorio: Path) -> dict[str, Evento]:
@@ -48,8 +48,13 @@ def fusionar(
 ) -> tuple[dict[str, Evento], Counter]:
     """Mezcla los eventos recién scrapeados sobre el histórico.
 
-    Preserva `visto_por_primera_vez` de los eventos ya conocidos: es el dato que
-    permite saber cuándo apareció un evento, no cuándo se lo volvió a ver.
+    Preserva `visto_por_primera_vez`: es el dato que dice cuándo apareció un
+    evento, no cuándo se lo volvió a ver.
+
+    Un evento revisitado sin cambios se deja **byte a byte como estaba**. Esa es
+    la propiedad que hace viable guardar el histórico en git: si se le tocara la
+    marca de tiempo en cada corrida, las decenas de miles de filas del archivo
+    cambiarían cada hora y cada commit pesaría el archivo entero.
     """
     fusionados = dict(existentes)
     marca = a_iso(ahora)
@@ -61,21 +66,23 @@ def fusionar(
             fusionados[entrante.id] = replace(
                 entrante,
                 visto_por_primera_vez=marca,
-                visto_por_ultima_vez=marca,
+                cambiado_por_ultima_vez=marca,
             )
             resumen["nuevos"] += 1
             continue
 
-        actualizado = replace(
+        candidato = replace(
             entrante,
             visto_por_primera_vez=previo.visto_por_primera_vez or marca,
-            visto_por_ultima_vez=marca,
+            cambiado_por_ultima_vez=previo.cambiado_por_ultima_vez,
         )
-        if _sin_volatiles(actualizado) == _sin_volatiles(previo):
+        if _sin_bookkeeping(candidato) == _sin_bookkeeping(previo):
             resumen["sin_cambios"] += 1
-        else:
-            resumen["actualizados"] += 1
-        fusionados[entrante.id] = actualizado
+            fusionados[entrante.id] = previo
+            continue
+
+        resumen["actualizados"] += 1
+        fusionados[entrante.id] = replace(candidato, cambiado_por_ultima_vez=marca)
 
     return fusionados, resumen
 
@@ -101,6 +108,52 @@ def podar(eventos: dict[str, Evento], dias_retencion: int, ahora: datetime) -> d
 def ordenar(eventos: dict[str, Evento]) -> list[Evento]:
     """Más recientes primero. El id desempata para que la salida sea estable."""
     return sorted(eventos.values(), key=lambda e: (e.fecha_evento, e.id), reverse=True)
+
+
+def filtrar_recientes(
+    eventos: dict[str, Evento],
+    *,
+    dias: int,
+    magnitud_minima_sismo: float,
+    ahora: datetime,
+) -> list[Evento]:
+    """Selecciona lo que consume el front: ventana corta y sin ruido sísmico.
+
+    El feed de USGS incluye cientos de micro-sismos diarios de California que a
+    una app de público general no le aportan nada y le multiplican el tamaño de
+    la descarga. El umbral se aplica **solo a sismos con magnitud conocida**:
+    un ciclón o una inundación no tienen magnitud comparable y nunca se filtran.
+    """
+    corte = ahora - timedelta(days=dias) if dias > 0 else None
+    seleccionados = []
+
+    for evento in ordenar(eventos):
+        fecha = _parsear_iso(evento.fecha_evento)
+        if corte is not None and fecha is not None and fecha < corte:
+            continue
+        if (
+            evento.tipo == "sismo"
+            and evento.magnitud is not None
+            and evento.magnitud < magnitud_minima_sismo
+        ):
+            continue
+        seleccionados.append(evento)
+
+    return seleccionados
+
+
+def guardar_recientes(directorio: Path, eventos: list[Evento], generado: datetime) -> None:
+    """Escribe el feed liviano. Sin `extra`: la app no lo usa y pesa."""
+    documento = {
+        "version": 1,
+        "generado": a_iso(generado),
+        "total": len(eventos),
+        "eventos": [_sin_extra(evento) for evento in eventos],
+    }
+    _escribir_texto(
+        directorio / NOMBRE_RECIENTES,
+        json.dumps(documento, ensure_ascii=False, indent=2) + "\n",
+    )
 
 
 def guardar(directorio: Path, eventos: dict[str, Evento], resumen: dict) -> None:
@@ -147,9 +200,13 @@ def _guardar_csv(ruta: Path, eventos: list[Evento]) -> None:
         escritor = csv.DictWriter(manejador, fieldnames=list(CAMPOS_CSV), extrasaction="ignore")
         escritor.writeheader()
         for evento in eventos:
-            fila = evento.como_dict()
-            fila.pop("extra", None)
-            escritor.writerow(fila)
+            escritor.writerow(_sin_extra(evento))
+
+
+def _sin_extra(evento: Evento) -> dict:
+    datos = evento.como_dict()
+    datos.pop("extra", None)
+    return datos
 
 
 def _escribir_texto(ruta: Path, contenido: str) -> None:
@@ -157,9 +214,9 @@ def _escribir_texto(ruta: Path, contenido: str) -> None:
     ruta.write_text(contenido, encoding="utf-8")
 
 
-def _sin_volatiles(evento: Evento) -> dict:
+def _sin_bookkeeping(evento: Evento) -> dict:
     datos = evento.como_dict()
-    for campo in _CAMPOS_VOLATILES:
+    for campo in _CAMPOS_BOOKKEEPING:
         datos.pop(campo, None)
     return datos
 

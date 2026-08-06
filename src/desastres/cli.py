@@ -27,7 +27,12 @@ FUENTES_DISPONIBLES = {
     FuenteGDACS.nombre: FuenteGDACS,
 }
 
-DIAS_RETENCION_POR_DEFECTO = 400
+DIAS_RETENCION_POR_DEFECTO = 180
+# Ventana y umbral del feed que consume el front. USGS publica cientos de
+# micro-sismos diarios que a una app de público general solo le inflan la
+# descarga; 2.5 es el umbral habitual de "sismo que la gente llega a sentir".
+DIAS_RECIENTES_POR_DEFECTO = 7
+MAGNITUD_MINIMA_RECIENTES = 2.5
 
 
 def construir_parser() -> argparse.ArgumentParser:
@@ -54,6 +59,21 @@ def construir_parser() -> argparse.ArgumentParser:
         type=int,
         default=DIAS_RETENCION_POR_DEFECTO,
         help="Descarta eventos más viejos que N días. 0 desactiva la poda.",
+    )
+    parser.add_argument(
+        "--dias-recientes",
+        type=int,
+        default=DIAS_RECIENTES_POR_DEFECTO,
+        help="Ventana del feed liviano recientes.json que consume el front.",
+    )
+    parser.add_argument(
+        "--recientes-magnitud-minima",
+        type=float,
+        default=MAGNITUD_MINIMA_RECIENTES,
+        help=(
+            "Excluye de recientes.json los sismos por debajo de esta magnitud. "
+            "No afecta al histórico ni a otros tipos de evento. 0 no filtra."
+        ),
     )
     parser.add_argument("--timeout", type=float, default=30.0, help="Timeout HTTP en segundos.")
     parser.add_argument("--reintentos", type=int, default=3, help="Intentos por fuente.")
@@ -123,6 +143,13 @@ def ejecutar(argumentos: argparse.Namespace) -> int:
     antes_de_podar = len(fusionados)
     fusionados = almacen.podar(fusionados, argumentos.retencion_dias, inicio)
 
+    recientes = almacen.filtrar_recientes(
+        fusionados,
+        dias=argumentos.dias_recientes,
+        magnitud_minima_sismo=argumentos.recientes_magnitud_minima,
+        ahora=inicio,
+    )
+
     resumen = {
         "ultima_ejecucion": a_iso(inicio),
         "fuentes": estado_fuentes,
@@ -133,6 +160,11 @@ def ejecutar(argumentos: argparse.Namespace) -> int:
             "podados": antes_de_podar - len(fusionados),
         },
         "retencion_dias": argumentos.retencion_dias,
+        "recientes": {
+            "dias": argumentos.dias_recientes,
+            "magnitud_minima_sismo": argumentos.recientes_magnitud_minima,
+            "total": len(recientes),
+        },
         "historico": almacen.estadisticas(fusionados),
     }
 
@@ -140,7 +172,13 @@ def ejecutar(argumentos: argparse.Namespace) -> int:
         log.info("dry-run: no se escribe nada en %s", argumentos.salida)
     else:
         almacen.guardar(argumentos.salida, fusionados, resumen)
-        log.info("escritos %d eventos en %s", len(fusionados), argumentos.salida)
+        almacen.guardar_recientes(argumentos.salida, recientes, inicio)
+        log.info(
+            "escritos %d eventos (%d en el feed reciente) en %s",
+            len(fusionados),
+            len(recientes),
+            argumentos.salida,
+        )
 
     print(json.dumps(resumen, ensure_ascii=False, indent=2, sort_keys=True))
     return FALLO_PARCIAL if fallidas else EXITO

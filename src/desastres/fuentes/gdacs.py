@@ -70,12 +70,13 @@ class FuenteGDACS:
             log.warning("item GDACS sin eventid; se omite")
             return None
 
-        # Un mismo evento (p. ej. un ciclón) se republica por episodios; el
-        # episodio forma parte de la clave para no pisar el estado anterior.
+        # Un mismo evento (p. ej. un ciclón) se republica por episodios. El
+        # episodio forma parte de `id` para no pisar el estado anterior, pero
+        # `id_agrupado` lo omite: es el fenómeno del mundo real, y es la clave
+        # a la que la app tiene que colgar los comentarios.
         id_episodio = _texto(item, "gdacs:episodeid")
-        clave = f"gdacs:{codigo_tipo or 'NA'}:{id_evento}"
-        if id_episodio:
-            clave = f"{clave}:{id_episodio}"
+        id_agrupado = f"gdacs:{codigo_tipo or 'NA'}:{id_evento}"
+        clave = f"{id_agrupado}:{id_episodio}" if id_episodio else id_agrupado
 
         fecha_evento = _fecha(_texto(item, "gdacs:fromdate")) or _fecha(_texto(item, "pubDate"))
         if not fecha_evento:
@@ -87,6 +88,7 @@ class FuenteGDACS:
 
         return Evento(
             id=clave,
+            id_agrupado=id_agrupado,
             fuente=self.nombre,
             tipo=TIPOS_GDACS.get(codigo_tipo, TIPO_OTRO),
             titulo=(_texto(item, "title") or "").strip(),

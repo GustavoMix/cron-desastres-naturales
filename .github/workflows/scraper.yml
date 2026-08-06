@@ -75,7 +75,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add datos
-          # Sin cambios reales no hay nada que commitear: `git commit` fallaría.
+          # resumen.json cambia en toda corrida (lleva la marca de tiempo), así
+          # que en la práctica siempre hay algo que commitear. El guard queda
+          # igual porque `git commit` sin cambios devuelve error.
           if git diff --staged --quiet; then
             echo "Sin novedades en los feeds."
             exit 0

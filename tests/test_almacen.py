@@ -35,7 +35,7 @@ def test_fusionar_marca_los_nuevos(ahora):
     fusionados, cambios = almacen.fusionar({}, [hacer_evento()], ahora)
     assert cambios["nuevos"] == 1
     assert fusionados["usgs:x1"].visto_por_primera_vez == a_iso(ahora)
-    assert fusionados["usgs:x1"].visto_por_ultima_vez == a_iso(ahora)
+    assert fusionados["usgs:x1"].cambiado_por_ultima_vez == a_iso(ahora)
 
 
 def test_fusionar_conserva_la_primera_vez_que_se_vio(ahora):
@@ -46,7 +46,7 @@ def test_fusionar_conserva_la_primera_vez_que_se_vio(ahora):
 
     assert cambios["actualizados"] == 1
     assert fusionados["usgs:x1"].visto_por_primera_vez == a_iso(ahora)
-    assert fusionados["usgs:x1"].visto_por_ultima_vez == a_iso(despues)
+    assert fusionados["usgs:x1"].cambiado_por_ultima_vez == a_iso(despues)
     assert fusionados["usgs:x1"].magnitud == 5.6
 
 
@@ -55,6 +55,21 @@ def test_revisita_identica_no_cuenta_como_actualizacion(ahora):
     _, cambios = almacen.fusionar(previos, [hacer_evento()], ahora + timedelta(hours=1))
     assert cambios["sin_cambios"] == 1
     assert cambios["actualizados"] == 0
+
+
+def test_revisita_identica_no_toca_la_marca_de_cambio(ahora):
+    # Propiedad crítica: si esta marca se moviera en cada corrida, las decenas
+    # de miles de filas del histórico cambiarían cada hora y git no podría
+    # comprimir nada. El registro tiene que quedar idéntico.
+    previos, _ = almacen.fusionar({}, [hacer_evento()], ahora)
+    fusionados, _ = almacen.fusionar(previos, [hacer_evento()], ahora + timedelta(hours=5))
+
+    assert fusionados["usgs:x1"].cambiado_por_ultima_vez == a_iso(ahora)
+    assert fusionados["usgs:x1"] == previos["usgs:x1"]
+
+
+def test_el_id_agrupado_cae_por_defecto_en_el_id():
+    assert hacer_evento("usgs:x1").id_agrupado == "usgs:x1"
 
 
 def test_fusionar_no_muta_el_diccionario_original(ahora):
@@ -131,6 +146,64 @@ def test_resumen_se_escribe_como_json(tmp_path, ahora):
     almacen.guardar(tmp_path, {}, {"ultima_ejecucion": a_iso(ahora)})
     resumen = json.loads((tmp_path / almacen.NOMBRE_RESUMEN).read_text(encoding="utf-8"))
     assert resumen["ultima_ejecucion"] == a_iso(ahora)
+
+
+def test_recientes_respeta_la_ventana_de_dias(ahora):
+    dentro = hacer_evento("usgs:dentro", fecha=a_iso(ahora - timedelta(days=2)))
+    fuera = hacer_evento("usgs:fuera", fecha=a_iso(ahora - timedelta(days=20)))
+
+    seleccionados = almacen.filtrar_recientes(
+        {dentro.id: dentro, fuera.id: fuera}, dias=7, magnitud_minima_sismo=0, ahora=ahora
+    )
+
+    assert [evento.id for evento in seleccionados] == ["usgs:dentro"]
+
+
+def test_recientes_filtra_microsismos(ahora):
+    grande = hacer_evento("usgs:grande", magnitud=5.0)
+    micro = hacer_evento("usgs:micro", magnitud=1.1)
+
+    seleccionados = almacen.filtrar_recientes(
+        {grande.id: grande, micro.id: micro}, dias=7, magnitud_minima_sismo=2.5, ahora=ahora
+    )
+
+    assert [evento.id for evento in seleccionados] == ["usgs:grande"]
+
+
+def test_el_umbral_de_magnitud_no_toca_otros_tipos(ahora):
+    # Un ciclón mide 185 km/h y una inundación no mide nada: sus magnitudes no
+    # son comparables con la escala sísmica y no deben filtrarse nunca.
+    inundacion = hacer_evento("gdacs:FL:1", tipo="inundacion", magnitud=None)
+    ciclon = hacer_evento("gdacs:TC:1", tipo="ciclon", magnitud=1.0, unidad_magnitud="km/h")
+
+    seleccionados = almacen.filtrar_recientes(
+        {inundacion.id: inundacion, ciclon.id: ciclon},
+        dias=7,
+        magnitud_minima_sismo=2.5,
+        ahora=ahora,
+    )
+
+    assert {evento.id for evento in seleccionados} == {"gdacs:FL:1", "gdacs:TC:1"}
+
+
+def test_recientes_conserva_sismos_sin_magnitud_conocida(ahora):
+    sismo = hacer_evento("usgs:sinmag", magnitud=None)
+    seleccionados = almacen.filtrar_recientes(
+        {sismo.id: sismo}, dias=7, magnitud_minima_sismo=2.5, ahora=ahora
+    )
+    assert [evento.id for evento in seleccionados] == ["usgs:sinmag"]
+
+
+def test_el_feed_reciente_omite_extra(tmp_path, ahora):
+    evento = hacer_evento(extra={"tsunami": 0})
+    almacen.guardar_recientes(tmp_path, [evento], ahora)
+
+    documento = json.loads((tmp_path / almacen.NOMBRE_RECIENTES).read_text(encoding="utf-8"))
+
+    assert documento["generado"] == a_iso(ahora)
+    assert documento["total"] == 1
+    assert "extra" not in documento["eventos"][0]
+    assert documento["eventos"][0]["id"] == "usgs:x1"
 
 
 def test_estadisticas_cuenta_por_tipo_fuente_y_alerta():

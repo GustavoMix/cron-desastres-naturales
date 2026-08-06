@@ -35,6 +35,11 @@ class Evento:
 
     `id` incluye el prefijo de la fuente (`usgs:...`, `gdacs:...`) para que dos
     fuentes nunca colisionen aunque reutilicen el mismo identificador interno.
+
+    `id_agrupado` identifica el fenómeno del mundo real, sin el episodio que
+    GDACS le agrega a cada republicación. Es la clave a la que hay que colgar
+    los comentarios de la app: si no, un ciclón de cinco días desparrama sus
+    comentarios entre veinte "eventos" distintos.
     """
 
     id: str
@@ -43,6 +48,7 @@ class Evento:
     titulo: str
     fecha_evento: str
     url: str
+    id_agrupado: str = ""
     lugar: str = ""
     pais: str = ""
     magnitud: float | None = None
@@ -53,9 +59,17 @@ class Evento:
     profundidad_km: float | None = None
     fecha_actualizacion: str = ""
     visto_por_primera_vez: str = ""
-    visto_por_ultima_vez: str = ""
+    # Momento en que este registro cambió por última vez, NO la última vez que
+    # se lo vio en el feed: si se lo revisita idéntico, el valor no se toca.
+    # Tocarlo en cada corrida haría que las decenas de miles de filas del
+    # histórico cambiaran cada hora, y git no podría comprimir nada.
+    cambiado_por_ultima_vez: str = ""
     # Campos crudos que no encajan en el modelo pero conviene no perder.
     extra: dict = field(default_factory=dict)
+
+    def __post_init__(self) -> None:
+        if not self.id_agrupado:
+            self.id_agrupado = self.id
 
     def como_dict(self) -> dict:
         return asdict(self)

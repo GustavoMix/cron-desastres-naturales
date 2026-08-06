@@ -59,3 +59,16 @@ def test_el_episodio_forma_parte_de_la_clave(eventos):
     # Dos episodios del mismo ciclón son registros distintos, no un pisado.
     assert eventos[1].id.endswith(":14")
     assert eventos[1].extra["episodio"] == "14"
+
+
+def test_id_agrupado_descarta_el_episodio(eventos):
+    # Es la clave a la que la app cuelga los comentarios: si llevara el
+    # episodio, un ciclón de cinco días fragmentaría sus comentarios.
+    ciclon = eventos[1]
+    assert ciclon.id == "gdacs:TC:1000988:14"
+    assert ciclon.id_agrupado == "gdacs:TC:1000988"
+
+
+def test_id_agrupado_sin_episodio_coincide_con_el_id(eventos):
+    inundacion = eventos[2]
+    assert inundacion.id_agrupado == inundacion.id == "gdacs:FL:1102344"

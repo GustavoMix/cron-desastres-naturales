@@ -20,8 +20,9 @@ ambos a propósito; para correlacionarlos, cruzá por `fecha_evento` y coordenad
 
 Todo se escribe en `datos/`:
 
-- **`eventos.json`** — histórico completo, más recientes primero.
-- **`eventos.csv`** — el mismo histórico plano, sin el campo `extra`, listo para abrir en una planilla.
+- **`recientes.json`** — **el que consume el front.** Últimos 7 días, sin el campo `extra` y sin micro-sismos. Es el único que conviene bajar desde una app móvil.
+- **`eventos.json`** — histórico completo, más recientes primero. Pesado; para análisis, no para la app.
+- **`eventos.csv`** — el mismo histórico plano, listo para abrir en una planilla.
 - **`resumen.json`** — metadatos de la última corrida: qué fuente respondió, cuántos eventos nuevos/actualizados, conteos por tipo y por nivel de alerta.
 
 Cada evento tiene esta forma:
@@ -29,6 +30,7 @@ Cada evento tiene esta forma:
 ```json
 {
   "id": "usgs:us7000abcd",
+  "id_agrupado": "usgs:us7000abcd",
   "fuente": "usgs",
   "tipo": "sismo",
   "titulo": "M 5.4 - 24 km SW of Coquimbo, Chile",
@@ -44,7 +46,7 @@ Cada evento tiene esta forma:
   "profundidad_km": 42.6,
   "fecha_actualizacion": "2026-08-06T02:23:20Z",
   "visto_por_primera_vez": "2026-08-06T02:42:08Z",
-  "visto_por_ultima_vez": "2026-08-06T03:17:04Z",
+  "cambiado_por_ultima_vez": "2026-08-06T02:42:08Z",
   "extra": { "tsunami": 0, "significancia": 449 }
 }
 ```
@@ -55,10 +57,17 @@ Vocabulario normalizado, igual para todas las fuentes:
 - `nivel_alerta`: `verde`, `amarilla`, `naranja`, `roja` (vacío si la fuente no lo informa)
 - fechas: ISO 8601 en UTC, siempre con sufijo `Z`
 
-`visto_por_primera_vez` y `visto_por_ultima_vez` son bookkeeping del scraper, no
-de la fuente: sirven para saber cuándo apareció un evento en el feed y cuándo se
-lo vio por última vez. Un evento que ya se conocía nunca pierde su
-`visto_por_primera_vez` original.
+**`id`** es único por registro. **`id_agrupado`** identifica el fenómeno del
+mundo real: para USGS coinciden, pero GDACS republica un mismo evento por
+episodios y `id` los distingue mientras `id_agrupado` los junta. Para colgar
+comentarios de usuarios, **usá `id_agrupado`** — si no, un ciclón de cinco días
+desparrama sus comentarios entre veinte "eventos" distintos.
+
+`visto_por_primera_vez` y `cambiado_por_ultima_vez` son bookkeeping del scraper,
+no de la fuente. La segunda es **la última vez que el registro cambió**, no la
+última vez que se lo vio: si el feed lo republica idéntico, el valor no se toca.
+Esa distinción no es cosmética — es lo que hace viable guardar el histórico en
+git (ver más abajo).
 
 ## El cron
 
@@ -67,10 +76,24 @@ minutos redondos están congestionados en Actions y las corridas programadas se
 demoran). También se puede disparar a mano desde la pestaña *Actions*, con
 opción de elegir fuentes o hacer un `--dry-run`.
 
-Si hay cambios, el workflow commitea `datos/` con el usuario `github-actions[bot]`.
-Si los feeds no traen nada nuevo, no genera commit: la salida es determinística
-(orden fijo, claves ordenadas), así que dos corridas idénticas producen bytes
-idénticos.
+El workflow commitea `datos/` con el usuario `github-actions[bot]`. Como
+`resumen.json` lleva la marca de tiempo de la corrida, **hay un commit por hora
+aunque no haya novedades** — es el precio de que la app pueda detectar un
+scraper caído en vez de mostrar datos viejos como si fueran actuales.
+
+Lo que sí está garantizado es que los archivos pesados **no cambian si no hay
+noticias**: `eventos.json` queda byte a byte idéntico entre dos corridas sin
+novedades. Eso es lo que importa para el tamaño del repo, y depende de dos
+propiedades que hay que cuidar al tocar el código:
+
+- La salida es determinística: orden fijo y claves ordenadas.
+- Un evento revisitado sin cambios se deja exactamente como estaba, sin tocarle
+  ninguna marca de tiempo. Si `cambiado_por_ultima_vez` se actualizara en cada
+  corrida, las decenas de miles de filas del histórico cambiarían cada hora y
+  cada commit pesaría el archivo entero.
+
+Ambas están cubiertas por tests (`test_guardar_es_deterministico` y
+`test_una_corrida_sin_novedades_deja_eventos_json_byte_a_byte_igual`).
 
 Códigos de salida, que el workflow distingue:
 
@@ -97,11 +120,40 @@ PYTHONPATH=src python -m desastres --salida datos
 PYTHONPATH=src python -m desastres --fuentes usgs --dry-run
 ```
 
-Opciones: `--fuentes`, `--salida`, `--retencion-dias` (por defecto 400; `0`
-desactiva la poda), `--timeout`, `--reintentos`, `--dry-run`, `-v`.
+Opciones principales:
 
-La poda existe para que el histórico no crezca sin techo: cada corrida reescribe
-el archivo entero, así que un JSON de decenas de MB encarece cada commit.
+| Opción | Default | Qué hace |
+|---|---|---|
+| `--fuentes` | `usgs,gdacs` | Fuentes a consultar |
+| `--retencion-dias` | `180` | Descarta del histórico lo más viejo que N días (`0` no poda) |
+| `--dias-recientes` | `7` | Ventana de `recientes.json` |
+| `--recientes-magnitud-minima` | `2.5` | Excluye de `recientes.json` los sismos por debajo de esta magnitud |
+| `--dry-run` | — | Consulta y reporta sin escribir |
+
+El umbral de magnitud **solo afecta a `recientes.json`, y solo a sismos con
+magnitud conocida**: el histórico guarda todo, y un ciclón o una inundación
+nunca se filtran (sus magnitudes no son comparables con la escala sísmica).
+Existe porque USGS publica cientos de micro-sismos diarios de California que a
+una app de público general no le aportan nada y le multiplican la descarga.
+Poné `0` para no filtrar nada.
+
+## Consumir los datos desde una app
+
+**No pegues contra `raw.githubusercontent.com`**: no es un CDN, tiene rate
+limits y te va a tirar `429`. Usá jsDelivr, que es gratis y sí lo es:
+
+```
+https://cdn.jsdelivr.net/gh/GustavoMix/cron-desastres-naturales@main/datos/recientes.json
+```
+
+Dos cosas que conviene hacer del lado del cliente:
+
+- **Cachear con ETag.** Si el archivo no cambió, el servidor responde `304` y no
+  bajás nada. En Android con OkHttp es configurar un `Cache` y listo.
+- **Chequear `generado` antes de mostrar nada.** Si esa marca tiene muchas horas,
+  el scraper está caído y los datos están viejos. En una app de desastres,
+  mostrar información vieja como si fuera actual es peor que no mostrar nada:
+  avisale al usuario.
 
 ## Desarrollo
 
@@ -126,5 +178,7 @@ items sin identificador, fechas ausentes.
 ## Limitaciones conocidas
 
 - **`pais` en eventos de USGS es aproximado.** El feed no trae país estructurado; se toma lo que sigue a la última coma de `place`, que para sismos en EE. UU. da un estado (`CA`) y no un país.
-- **GDACS republica un mismo evento por episodios.** El `episodeid` forma parte del id, así que un ciclón de larga vida deja un registro por episodio en lugar de uno solo actualizándose. Es intencional: preserva la evolución del evento.
+- **GDACS republica un mismo evento por episodios.** El `episodeid` forma parte del `id`, así que un ciclón de larga vida deja un registro por episodio en lugar de uno solo actualizándose. Es intencional: preserva la evolución del evento. Para agrupar, usá `id_agrupado`.
 - **Ventana de USGS: 24 h.** Si el cron estuvo caído más de un día, esos sismos se pierden. Para recuperarlos habría que usar el feed de 7 días o la API de consulta por rango.
+- **La poda puede dejar comentarios huérfanos.** Cuando se agreguen comentarios de usuarios, un evento podado del histórico dejará comentarios apuntando a un `id_agrupado` que ya no está en los feeds. Hay que decidirlo antes: o la app lo tolera, o no se poda lo que tiene comentarios.
+- **El scraper es un espejo, no una autoridad.** Los datos son de USGS y GDACS, con sus propias latencias y revisiones: una magnitud puede cambiar horas después. No sirve para alertas de evacuación — para eso están los organismos oficiales de cada país.
