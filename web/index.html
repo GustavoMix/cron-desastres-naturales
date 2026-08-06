@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Desastres naturales · monitor</title>
+  <meta name="description" content="Monitor de alertas de desastres naturales a partir de datos abiertos de USGS y GDACS.">
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>%F0%9F%8C%8D</text></svg>">
+
+  <!-- Leaflet es una mejora progresiva: si no carga (CDN caído, red mala,
+       bloqueo corporativo), app.js lo detecta y la página sigue funcionando
+       con la lista y los filtros. Para endurecerlo, vendorizá estos dos
+       archivos dentro del repo y serví todo desde el mismo origen. -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="saltar" href="#lista">Saltar a la lista de eventos</a>
+
+  <header class="cabecera">
+    <div class="cabecera__titulo">
+      <h1>Desastres naturales</h1>
+      <p class="cabecera__sub">Datos abiertos de USGS y GDACS, actualizados cada hora</p>
+    </div>
+    <button id="tema" class="boton-tema" type="button" aria-pressed="false">
+      <span aria-hidden="true">◐</span> Tema
+    </button>
+  </header>
+
+  <!-- role=status: un lector de pantalla anuncia el cambio de frescura sin
+       robar el foco. Es información de seguridad, no decoración. -->
+  <div id="frescura" class="frescura" role="status" hidden></div>
+
+  <section class="tiles" aria-label="Resumen">
+    <div class="tile">
+      <span class="tile__valor" id="tile-total">–</span>
+      <span class="tile__etiqueta">eventos mostrados</span>
+    </div>
+    <div class="tile">
+      <span class="tile__valor" id="tile-graves">–</span>
+      <span class="tile__etiqueta">alerta naranja o roja</span>
+    </div>
+    <div class="tile">
+      <span class="tile__valor" id="tile-24h">–</span>
+      <span class="tile__etiqueta">en las últimas 24 h</span>
+    </div>
+    <div class="tile">
+      <span class="tile__valor" id="tile-actualizado">–</span>
+      <span class="tile__etiqueta">última actualización</span>
+    </div>
+  </section>
+
+  <section class="filtros" aria-label="Filtros">
+    <div class="filtros__fila">
+      <label class="campo">
+        <span class="campo__etiqueta">Buscar</span>
+        <input id="busqueda" type="search" placeholder="lugar, país, título…" autocomplete="off">
+      </label>
+      <label class="campo">
+        <span class="campo__etiqueta">Magnitud mínima <output id="mag-valor">0.0</output></span>
+        <input id="magnitud" type="range" min="0" max="8" step="0.5" value="0">
+      </label>
+    </div>
+    <fieldset class="chips">
+      <legend class="chips__leyenda">Tipo</legend>
+      <div id="chips-tipo" class="chips__grupo"></div>
+    </fieldset>
+    <fieldset class="chips">
+      <legend class="chips__leyenda">Nivel de alerta</legend>
+      <div id="chips-alerta" class="chips__grupo"></div>
+    </fieldset>
+  </section>
+
+  <main class="contenido">
+    <section class="panel-mapa" aria-label="Mapa">
+      <div id="mapa"></div>
+      <p id="mapa-caido" class="mapa-caido" hidden>
+        No se pudo cargar el mapa. La lista de abajo tiene la misma información.
+      </p>
+    </section>
+
+    <section class="panel-lista">
+      <h2 class="panel-lista__titulo">Eventos <span id="lista-conteo" class="conteo"></span></h2>
+      <ol id="lista" class="lista" tabindex="-1"></ol>
+      <p id="vacio" class="vacio" hidden>Ningún evento coincide con los filtros.</p>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>
+      Fuentes:
+      <a href="https://earthquake.usgs.gov/earthquakes/feed/" rel="noopener">USGS</a> ·
+      <a href="https://www.gdacs.org" rel="noopener">GDACS</a>.
+      Este sitio es un espejo de datos públicos, con las latencias y revisiones de
+      cada organismo. <strong>No sirve para alertas de evacuación</strong>: para eso
+      están los organismos oficiales de cada país.
+    </p>
+  </footer>
+</body>
+</html>

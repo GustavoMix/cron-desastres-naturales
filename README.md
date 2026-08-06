@@ -155,6 +155,39 @@ Dos cosas que conviene hacer del lado del cliente:
   mostrar información vieja como si fuera actual es peor que no mostrar nada:
   avisale al usuario.
 
+## El front web
+
+`web/` es un sitio estático sin build ni framework: `index.html`, `estilos.css`
+y `app.js`. Se publica en GitHub Pages con `.github/workflows/pages.yml`, que
+también se dispara con los commits del scraper para que el sitio sirva siempre
+los datos frescos.
+
+**Para activarlo:** en *Settings → Pages*, elegí **Source: GitHub Actions**. Sin
+ese paso el workflow falla.
+
+Para probarlo local hace falta un servidor (el `fetch` no anda con `file://`):
+
+```bash
+mkdir -p /tmp/sitio/datos && cp web/* /tmp/sitio/ && cp datos/*.json /tmp/sitio/datos/
+python -m http.server -d /tmp/sitio 8000
+```
+
+Tres decisiones que conviene no deshacer sin querer:
+
+- **El mapa es una mejora progresiva.** Leaflet se carga desde un CDN; si no
+  llega, `app.js` lo detecta y la página sigue funcionando con la lista y los
+  filtros. Si querés eliminar la dependencia del CDN, vendorizá `leaflet.js` y
+  `leaflet.css` dentro de `web/` y serví todo desde el mismo origen.
+- **El nivel de alerta nunca se comunica solo con color.** Siempre lleva
+  etiqueta de texto, y en el mapa además tamaño de marcador y grosor de anillo.
+  No es formalismo: amarilla y naranja de la paleta de estado son casi
+  indistinguibles a simple vista (ΔE 13.6), y con daltonismo verde y roja se
+  confunden. El color es refuerzo, no el mensaje.
+- **El aviso de datos viejos es funcionalidad, no adorno.** Si `generado` tiene
+  más de 3 h, la página lo dice; con más de 12 h lo marca en rojo. En una app de
+  desastres, mostrar información vieja como si fuera actual es peor que no
+  mostrar nada.
+
 ## Desarrollo
 
 ```bash

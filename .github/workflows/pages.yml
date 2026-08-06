@@ -1,0 +1,58 @@
+name: Publicar el sitio
+
+on:
+  # Se dispara también con los commits horarios del scraper, así el sitio
+  # siempre sirve los datos frescos.
+  push:
+    branches: [main]
+    paths:
+      - "web/**"
+      - "datos/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# No cancelar en curso: si se encolan dos, queremos que la última publique.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Armar el sitio
+        run: |
+          mkdir -p _sitio/datos
+          cp web/index.html web/estilos.css web/app.js _sitio/
+          # Solo los archivos que el front consume. eventos.json pesa decenas de
+          # MB y no lo usa nadie desde el navegador: queda en el repo para
+          # análisis, no en el sitio.
+          # Antes de la primera corrida del scraper todavía no hay datos: se
+          # publica un feed vacío para que la página muestre su aviso de "sin
+          # datos" en vez de un 404 que el usuario no puede interpretar.
+          if [ -f datos/recientes.json ]; then
+            cp datos/recientes.json _sitio/datos/
+          else
+            echo '{"version":1,"generado":"","total":0,"eventos":[]}' > _sitio/datos/recientes.json
+          fi
+          cp datos/resumen.json _sitio/datos/ 2>/dev/null || true
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _sitio
+
+      - id: despliegue
+        uses: actions/deploy-pages@v4

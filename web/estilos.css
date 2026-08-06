@@ -1,0 +1,405 @@
+/* Paleta: superficies e ink neutros + la paleta de ESTADO para el nivel de
+   alerta. El nivel de alerta nunca se comunica solo con color — siempre lleva
+   etiqueta de texto y, en el mapa, tamaño y anillo. Amarilla y naranja son
+   casi indistinguibles a simple vista (ΔE 13.6), así que la redundancia no es
+   opcional. */
+
+:root {
+  color-scheme: light;
+  --plano: #f9f9f7;
+  --superficie: #fcfcfb;
+  --tinta: #0b0b0b;
+  --tinta-2: #52514e;
+  --tinta-mute: #898781;
+  --borde: rgba(11, 11, 11, 0.10);
+  --linea: #e1e0d9;
+  --realce: rgba(11, 11, 11, 0.05);
+
+  --alerta-roja: #d03b3b;
+  --alerta-naranja: #ec835a;
+  --alerta-amarilla: #fab219;
+  --alerta-verde: #0ca30c;
+  --alerta-ninguna: #898781;
+
+  --radio: 10px;
+  --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --plano: #0d0d0d;
+    --superficie: #1a1a19;
+    --tinta: #ffffff;
+    --tinta-2: #c3c2b7;
+    --tinta-mute: #898781;
+    --borde: rgba(255, 255, 255, 0.10);
+    --linea: #2c2c2a;
+    --realce: rgba(255, 255, 255, 0.06);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --plano: #0d0d0d;
+  --superficie: #1a1a19;
+  --tinta: #ffffff;
+  --tinta-2: #c3c2b7;
+  --tinta-mute: #898781;
+  --borde: rgba(255, 255, 255, 0.10);
+  --linea: #2c2c2a;
+  --realce: rgba(255, 255, 255, 0.06);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 clamp(12px, 3vw, 32px) 48px;
+  background: var(--plano);
+  color: var(--tinta);
+  font-family: var(--sans);
+  line-height: 1.5;
+}
+
+a { color: inherit; }
+
+.saltar {
+  position: absolute;
+  left: -9999px;
+}
+.saltar:focus {
+  position: static;
+  display: inline-block;
+  margin: 8px 0;
+  padding: 8px 12px;
+  background: var(--superficie);
+  border-radius: var(--radio);
+}
+
+/* ---------- cabecera ---------- */
+
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 28px 0 16px;
+}
+
+.cabecera h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 3.2vw, 1.9rem);
+  letter-spacing: -0.02em;
+}
+
+.cabecera__sub {
+  margin: 4px 0 0;
+  color: var(--tinta-2);
+  font-size: 0.9rem;
+}
+
+.boton-tema,
+.chip,
+.campo input {
+  font: inherit;
+  color: inherit;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+
+.boton-tema {
+  padding: 8px 14px;
+  cursor: pointer;
+}
+.boton-tema:hover { background: var(--realce); }
+
+/* ---------- aviso de frescura ---------- */
+
+/* Mostrar datos viejos como si fueran actuales es peor que no mostrar nada:
+   este aviso es funcionalidad, no adorno. */
+/* `display` en una clase pisa el `[hidden]` del HTML, así que hay que
+   devolvérselo explícitamente o el aviso deja una caja vacía siempre visible. */
+.frescura[hidden] { display: none; }
+
+.frescura {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--alerta-ninguna);
+  border-radius: var(--radio);
+  background: var(--superficie);
+  font-size: 0.92rem;
+}
+.frescura[data-nivel="viejo"] { border-left-color: var(--alerta-amarilla); }
+.frescura[data-nivel="critico"] { border-left-color: var(--alerta-roja); }
+.frescura strong { font-weight: 600; }
+
+/* ---------- tiles ---------- */
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+
+.tile__valor {
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.tile__etiqueta {
+  color: var(--tinta-2);
+  font-size: 0.82rem;
+}
+
+/* ---------- filtros ---------- */
+
+.filtros {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+
+.filtros__fila {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo__etiqueta {
+  color: var(--tinta-2);
+  font-size: 0.82rem;
+}
+
+.campo input[type="search"] {
+  padding: 9px 12px;
+}
+
+.campo input[type="range"] {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  accent-color: var(--tinta-2);
+}
+
+.chips {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.chips__leyenda {
+  padding: 0 0 6px;
+  color: var(--tinta-2);
+  font-size: 0.82rem;
+}
+
+.chips__grupo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  padding: 7px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.chip:hover { background: var(--realce); }
+
+/* El estado activo no depende del color: el borde engrosa y el fondo invierte. */
+.chip[aria-pressed="true"] {
+  background: var(--tinta);
+  color: var(--plano);
+  border-color: var(--tinta);
+}
+
+.chip__conteo {
+  color: inherit;
+  opacity: 0.65;
+  font-variant-numeric: tabular-nums;
+}
+
+.punto {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+  box-shadow: 0 0 0 1px var(--borde);
+}
+
+/* ---------- contenido ---------- */
+
+.contenido {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .contenido { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+  .panel-mapa { position: sticky; top: 16px; }
+}
+
+.panel-mapa,
+.panel-lista {
+  min-width: 0;
+}
+
+#mapa {
+  height: clamp(300px, 55vh, 560px);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--superficie);
+}
+#mapa:empty { display: none; }
+
+.mapa-caido {
+  margin: 0;
+  padding: 16px;
+  color: var(--tinta-2);
+  background: var(--superficie);
+  border: 1px dashed var(--borde);
+  border-radius: var(--radio);
+  font-size: 0.9rem;
+}
+
+.panel-lista__titulo {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+}
+
+.conteo {
+  color: var(--tinta-2);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: clamp(320px, 60vh, 620px);
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.evento {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px 12px;
+  width: 100%;
+  padding: 12px 14px;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--color-alerta, var(--alerta-ninguna));
+  border-radius: var(--radio);
+  cursor: pointer;
+}
+.evento:hover { background: var(--realce); }
+.evento[aria-current="true"] { outline: 2px solid var(--tinta); outline-offset: 1px; }
+
+.evento__icono {
+  grid-row: span 2;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.evento__titulo {
+  font-weight: 550;
+  overflow-wrap: anywhere;
+}
+
+.evento__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  align-items: center;
+  color: var(--tinta-2);
+  font-size: 0.83rem;
+}
+
+/* El nivel de alerta SIEMPRE lleva texto: el color es refuerzo, no el mensaje. */
+.insignia {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 1px 8px;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  font-size: 0.78rem;
+}
+
+.magnitud {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--tinta);
+}
+
+.vacio,
+.pie {
+  color: var(--tinta-2);
+  font-size: 0.88rem;
+}
+
+.vacio {
+  padding: 24px 0;
+}
+
+.pie {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--linea);
+  max-width: 70ch;
+}
+
+/* Leaflet inyecta su propio fondo blanco en el contenedor y en los popups. */
+.leaflet-container { background: var(--superficie); }
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: var(--superficie);
+  color: var(--tinta);
+}
+.leaflet-popup-content { margin: 12px 14px; font-family: var(--sans); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
