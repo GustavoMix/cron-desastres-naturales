@@ -1,0 +1,98 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "generated": 1785984000000,
+    "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson",
+    "title": "USGS All Earthquakes, Past Day",
+    "status": 200,
+    "api": "1.10.3",
+    "count": 5
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 5.4,
+        "place": "24 km SW of Coquimbo, Chile",
+        "time": 1785980000000,
+        "updated": 1785983000000,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000abcd",
+        "alert": "green",
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 449,
+        "net": "us",
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 5.4 - 24 km SW of Coquimbo, Chile"
+      },
+      "geometry": { "type": "Point", "coordinates": [-71.4123, -30.0512, 42.6] },
+      "id": "us7000abcd"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": null,
+        "place": "Isla Vulcano, Italy",
+        "time": 1785970000000,
+        "updated": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000volc",
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 12,
+        "net": "us",
+        "magType": null,
+        "type": "volcanic eruption",
+        "title": "Volcanic eruption - Isla Vulcano, Italy"
+      },
+      "geometry": { "type": "Point", "coordinates": [14.9617, 38.4042] },
+      "id": "us7000volc"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 1.2,
+        "place": "8 km NE of Mojave, CA",
+        "time": 1785960000000,
+        "updated": 1785961000000,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci40123456",
+        "alert": "",
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 22,
+        "net": "ci",
+        "magType": "ml",
+        "type": "quarry blast",
+        "title": "M 1.2 Quarry Blast - 8 km NE of Mojave, CA"
+      },
+      "geometry": { "type": "Point", "coordinates": [-118.0821, 35.1234, 0.5] },
+      "id": "ci40123456"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.3,
+        "place": "Puerto Rico region",
+        "time": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/pr2026000",
+        "type": "earthquake",
+        "title": "M 3.3 - Puerto Rico region"
+      },
+      "geometry": { "type": "Point", "coordinates": [-66.1, 18.2, 15.0] },
+      "id": "pr2026000"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "sin identificador",
+        "time": 1785950000000,
+        "type": "earthquake",
+        "title": "M 2.1 - sin identificador"
+      },
+      "geometry": { "type": "Point", "coordinates": [0.0, 0.0, 0.0] }
+    }
+  ],
+  "bbox": [-118.0821, -30.0512, 0.5, 14.9617, 38.4042, 42.6]
+}

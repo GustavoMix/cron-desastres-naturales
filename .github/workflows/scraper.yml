@@ -1,0 +1,88 @@
+name: Scraper de desastres
+
+on:
+  schedule:
+    # Cada hora, en el minuto 17: los minutos redondos están congestionados en
+    # GitHub Actions y las corridas programadas se demoran más.
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      fuentes:
+        description: "Fuentes a consultar (separadas por coma)"
+        default: "usgs,gdacs"
+        required: false
+      dry_run:
+        description: "Consultar sin escribir ni commitear"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+# Dos corridas simultáneas commitearían sobre el mismo archivo y una perdería.
+concurrency:
+  group: scraper
+  cancel-in-progress: false
+
+jobs:
+  scrapear:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Ejecutar el scraper
+        id: scraper
+        run: |
+          set +e
+          python -m desastres \
+            --fuentes "${{ inputs.fuentes || 'usgs,gdacs' }}" \
+            --salida datos \
+            ${{ inputs.dry_run && '--dry-run' || '' }} \
+            | tee resumen.txt
+          echo "codigo=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+        env:
+          PYTHONPATH: src
+
+      - name: Publicar el resumen de la corrida
+        if: always()
+        run: |
+          {
+            echo "## Resumen del scraper"
+            echo '```json'
+            cat resumen.txt 2>/dev/null || echo "(sin salida)"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Avisar de fuentes caídas
+        if: steps.scraper.outputs.codigo == '2'
+        run: echo "::warning::Alguna fuente falló; se guardó lo que sí respondió."
+
+      - name: Fallar si no respondió ninguna fuente
+        if: steps.scraper.outputs.codigo == '1'
+        run: |
+          echo "::error::Todas las fuentes fallaron; el histórico quedó intacto."
+          exit 1
+
+      - name: Commitear los datos nuevos
+        if: steps.scraper.outputs.codigo != '1' && !inputs.dry_run
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos
+          # Sin cambios reales no hay nada que commitear: `git commit` fallaría.
+          if git diff --staged --quiet; then
+            echo "Sin novedades en los feeds."
+            exit 0
+          fi
+          git commit -m "datos: actualización automática $(date -u +'%Y-%m-%dT%H:%MZ')"
+          # Si alguien empujó mientras corríamos, rebasamos encima y reintentamos.
+          git push || {
+            git pull --rebase --autostash origin "$GITHUB_REF_NAME"
+            git push
+          }

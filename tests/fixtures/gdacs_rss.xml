@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:gdacs="http://www.gdacs.org"
+     xmlns:glide="http://glidenumber.net">
+  <channel>
+    <title>GDACS RSS information</title>
+    <link>https://www.gdacs.org</link>
+    <description>Global Disaster Alert and Coordination System</description>
+    <pubDate>Thu, 06 Aug 2026 02:00:00 GMT</pubDate>
+
+    <item>
+      <title>Green earthquake alert (Magnitude 5.4M, Depth:42km) in Chile 06/08/2026 00:53 UTC</title>
+      <description>On 8/6/2026 12:53:20 AM, an earthquake occurred in Chile.</description>
+      <link>https://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1477001</link>
+      <pubDate>Thu, 06 Aug 2026 01:10:00 GMT</pubDate>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:eventid>1477001</gdacs:eventid>
+      <gdacs:episodeid>1</gdacs:episodeid>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:alertscore>0.5</gdacs:alertscore>
+      <gdacs:country>Chile</gdacs:country>
+      <gdacs:severity unit="M" value="5.4">Magnitude 5.4M, Depth:42km</gdacs:severity>
+      <gdacs:fromdate>Thu, 06 Aug 2026 00:53:20 GMT</gdacs:fromdate>
+      <gdacs:todate>Thu, 06 Aug 2026 00:53:20 GMT</gdacs:todate>
+      <geo:Point>
+        <geo:lat>-30.0512</geo:lat>
+        <geo:long>-71.4123</geo:long>
+      </geo:Point>
+    </item>
+
+    <item>
+      <title>Orange tropical cyclone alert for VIENNA-26 in Philippines</title>
+      <description>Tropical cyclone VIENNA-26 can have a high humanitarian impact.</description>
+      <link>https://www.gdacs.org/report.aspx?eventtype=TC&amp;eventid=1000988</link>
+      <pubDate>Wed, 05 Aug 2026 18:00:00 GMT</pubDate>
+      <gdacs:eventtype>TC</gdacs:eventtype>
+      <gdacs:eventid>1000988</gdacs:eventid>
+      <gdacs:episodeid>14</gdacs:episodeid>
+      <gdacs:alertlevel>Orange</gdacs:alertlevel>
+      <gdacs:alertscore>1.5</gdacs:alertscore>
+      <gdacs:country>Philippines</gdacs:country>
+      <gdacs:severity unit="km/h" value="185">Maximum wind speed 185 km/h</gdacs:severity>
+      <gdacs:fromdate>Mon, 03 Aug 2026 06:00:00 GMT</gdacs:fromdate>
+      <gdacs:todate>Sat, 08 Aug 2026 06:00:00 GMT</gdacs:todate>
+      <geo:lat>13.4</geo:lat>
+      <geo:long>122.7</geo:long>
+    </item>
+
+    <item>
+      <title>Red flood alert in Pakistan</title>
+      <description>Flood event in Pakistan.</description>
+      <link>https://www.gdacs.org/report.aspx?eventtype=FL&amp;eventid=1102344</link>
+      <pubDate>Tue, 04 Aug 2026 09:30:00 GMT</pubDate>
+      <gdacs:eventtype>FL</gdacs:eventtype>
+      <gdacs:eventid>1102344</gdacs:eventid>
+      <gdacs:alertlevel>Red</gdacs:alertlevel>
+      <gdacs:country>Pakistan</gdacs:country>
+      <gdacs:severity unit="" value="">Severe flooding</gdacs:severity>
+      <geo:Point>
+        <geo:lat>28.9</geo:lat>
+        <geo:long>68.1</geo:long>
+      </geo:Point>
+    </item>
+
+    <item>
+      <title>Wildfire alert in Portugal</title>
+      <description>Item sin eventid: debe descartarse.</description>
+      <link>https://www.gdacs.org/report.aspx?eventtype=WF</link>
+      <pubDate>Tue, 04 Aug 2026 07:00:00 GMT</pubDate>
+      <gdacs:eventtype>WF</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:country>Portugal</gdacs:country>
+    </item>
+
+    <item>
+      <title>Drought alert in Somalia</title>
+      <description>Evento sin fecha utilizable: debe descartarse.</description>
+      <link>https://www.gdacs.org/report.aspx?eventtype=DR&amp;eventid=1055000</link>
+      <gdacs:eventtype>DR</gdacs:eventtype>
+      <gdacs:eventid>1055000</gdacs:eventid>
+      <gdacs:alertlevel>Orange</gdacs:alertlevel>
+      <gdacs:country>Somalia</gdacs:country>
+    </item>
+  </channel>
+</rss>
