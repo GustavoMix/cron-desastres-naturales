@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- El tema real lo pone Compose; este es solo el que Android usa para la
-         ventana antes de que arranque la UI. -->
-    <style name="Theme.Desastres" parent="android:Theme.Material.NoActionBar" />
-</resources>
