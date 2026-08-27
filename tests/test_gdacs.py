@@ -76,3 +76,37 @@ def test_id_agrupado_sin_episodio_coincide_con_el_id(eventos):
 
 def test_traduce_el_pais_a_codigo_iso(eventos):
     assert [e.paises for e in eventos] == [["CL"], ["PH"], ["PK"]]
+
+
+def test_rescata_el_icono_de_alerta_y_el_mapa_adjunto(eventos):
+    media = eventos[0].media
+    assert media["icono"] == "https://www.gdacs.org/images/gdacs_icons/maps/Green/EQ.png"
+    assert media["mapa"] == "https://www.gdacs.org/contentdata/resources/EQ/1477001/mapa_general.png"
+
+
+def test_junta_los_mapas_sueltos_como_recursos(eventos):
+    assert eventos[0].media["recursos"] == [
+        {
+            "url": "https://www.gdacs.org/contentdata/resources/EQ/1477001/intensidad.png",
+            "titulo": "Mapa de intensidad",
+        },
+    ]
+
+
+def test_descarta_los_recursos_que_no_son_imagenes(eventos):
+    """El informe HTML es un link, no una foto: en una galería no va."""
+    urls = [recurso["url"] for recurso in eventos[0].media.get("recursos", [])]
+    assert all(not url.endswith(".aspx") for url in urls)
+    assert "report.aspx" not in eventos[0].media.get("mapa", "")
+
+
+def test_un_evento_sin_imagenes_no_arrastra_un_media_vacio(eventos):
+    """Un dict de claves vacías por evento son kilobytes de nada en el feed."""
+    assert eventos[1].media == {}
+
+
+def test_conserva_la_poblacion_expuesta_y_el_iso3(eventos):
+    sismo = eventos[0]
+    assert sismo.extra["poblacion_afectada"] == 128000.0
+    assert sismo.extra["poblacion_texto"] == "128 thousand people in 100km"
+    assert sismo.extra["iso3"] == "CHL"

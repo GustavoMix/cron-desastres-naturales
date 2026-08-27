@@ -321,7 +321,10 @@ a { color: inherit; }
 
 .evento {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  /* Tercera columna para la miniatura satelital. Si el evento no tiene
+     posición, o el satélite no responde y `onerror` la saca, la columna mide
+     cero y la tarjeta queda exactamente como antes. */
+  grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 4px 12px;
   width: 100%;
   padding: 12px 14px;
@@ -403,3 +406,84 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+/* ---------- fotos satelitales ---------- */
+
+.evento__foto {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--borde);
+  background: var(--realce);
+}
+
+.visor {
+  width: min(680px, 92vw);
+  max-height: 90vh;
+  padding: 20px;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--superficie);
+  color: var(--tinta);
+  overflow-y: auto;
+}
+.visor::backdrop { background: rgba(0, 0, 0, 0.62); }
+
+.visor__cerrar-form { display: flex; justify-content: flex-end; margin: -6px -6px 0 0; }
+.visor__cerrar {
+  width: 34px;
+  height: 34px;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--tinta-2);
+  background: none;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.visor__cerrar:hover { background: var(--realce); }
+
+.visor__titulo { margin: 4px 0 2px; font-size: 1.1rem; overflow-wrap: anywhere; }
+.visor__meta { margin: 0 0 14px; color: var(--tinta-2); font-size: 0.86rem; }
+
+.visor__foto {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radio);
+  border: 1px solid var(--borde);
+  background: var(--realce);
+}
+
+.visor__pie { margin: 6px 0 0; color: var(--tinta-mute); font-size: 0.78rem; }
+
+.visor__timelapse { margin-top: 10px; }
+.visor__timelapse input[type="range"] { width: 100%; }
+
+/* Los mapas que adjunta la fuente: se ven de un vistazo y se abren aparte. */
+.visor__galeria {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  overflow-x: auto;
+}
+.visor__galeria img {
+  height: 92px;
+  border-radius: 8px;
+  border: 1px solid var(--borde);
+}
+
+.visor__acciones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.visor__accion {
+  padding: 8px 14px;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  font-size: 0.86rem;
+}
+.visor__accion:hover { background: var(--realce); }

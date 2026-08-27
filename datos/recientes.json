@@ -1,7 +1,29 @@
 {
-  "version": 1,
+  "version": 2,
   "generado": "2026-08-24T07:31:25Z",
   "total": 1357,
+  "media": {
+    "satelite": {
+      "plantilla": "https://wvs.earthdata.nasa.gov/api/v1/snapshot?REQUEST=GetSnapshot&LAYERS={capa}&CRS=EPSG:4326&TIME={fecha}&BBOX={sur},{oeste},{norte},{este}&FORMAT=image/jpeg&WIDTH={ancho}&HEIGHT={alto}",
+      "capa": "MODIS_Terra_CorrectedReflectance_TrueColor",
+      "credito": "NASA Worldview (MODIS/Terra)",
+      "grados_por_tipo": {
+        "ciclon": 16.0,
+        "incendio": 4.0,
+        "inundacion": 8.0,
+        "otro": 8.0,
+        "sequia": 20.0,
+        "sismo": 6.0,
+        "volcan": 5.0
+      },
+      "grados_por_defecto": 8.0,
+      "dias_timelapse": 7
+    },
+    "videos": {
+      "plantilla_busqueda": "https://www.youtube.com/results?search_query={consulta}",
+      "es_busqueda": true
+    }
+  },
   "eventos": [
     {
       "id": "usgs:us6000tn2d",

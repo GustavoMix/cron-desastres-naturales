@@ -10,6 +10,7 @@ from pathlib import Path
 
 from . import almacen
 from .fuentes.base import Fuente
+from .fuentes.eonet import FuenteEONET
 from .fuentes.gdacs import FuenteGDACS
 from .fuentes.usgs import FuenteUSGS
 from .modelo import Evento, a_iso, ahora_utc
@@ -25,6 +26,7 @@ FALLO_PARCIAL = 2
 FUENTES_DISPONIBLES = {
     FuenteUSGS.nombre: FuenteUSGS,
     FuenteGDACS.nombre: FuenteGDACS,
+    FuenteEONET.nombre: FuenteEONET,
 }
 
 DIAS_RETENCION_POR_DEFECTO = 180

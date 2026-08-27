@@ -11,6 +11,7 @@ from dataclasses import replace
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+from . import medios
 from .modelo import CAMPOS_CSV, Evento, a_iso, codigos_de_pais
 
 log = logging.getLogger(__name__)
@@ -194,11 +195,18 @@ def filtrar_recientes(
 
 
 def guardar_recientes(directorio: Path, eventos: list[Evento], generado: datetime) -> None:
-    """Escribe el feed liviano. Sin `extra`: la app no lo usa y pesa."""
+    """Escribe el feed liviano. Sin `extra`: la app no lo usa y pesa.
+
+    `media` va una sola vez, a nivel documento: son plantillas que el cliente
+    completa por su cuenta. Repetirlas en cada uno de los ~1.400 eventos sumaría
+    cientos de kilobytes de texto idéntico a una descarga que mucha gente hace
+    con datos móviles.
+    """
     documento = {
-        "version": 1,
+        "version": 2,
         "generado": a_iso(generado),
         "total": len(eventos),
+        "media": medios.configuracion(),
         "eventos": [_sin_extra(evento) for evento in eventos],
     }
     _escribir_texto(

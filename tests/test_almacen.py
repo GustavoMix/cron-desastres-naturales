@@ -258,6 +258,26 @@ def test_el_feed_reciente_omite_extra(tmp_path, ahora):
     assert documento["eventos"][0]["id"] == "usgs:x1"
 
 
+def test_el_feed_reciente_publica_las_plantillas_de_media_una_sola_vez(tmp_path, ahora):
+    """A nivel documento, no por evento: repetirlas 1.400 veces son cientos de KB."""
+    almacen.guardar_recientes(tmp_path, [hacer_evento("a"), hacer_evento("b")], ahora)
+
+    documento = json.loads((tmp_path / almacen.NOMBRE_RECIENTES).read_text(encoding="utf-8"))
+
+    assert "{fecha}" in documento["media"]["satelite"]["plantilla"]
+    assert all("media" not in evento or evento["media"] == {} for evento in documento["eventos"])
+
+
+def test_el_feed_reciente_conserva_las_imagenes_propias_del_evento(tmp_path, ahora):
+    """Los mapas de GDACS no se pueden derivar de nada: si no van, se pierden."""
+    evento = hacer_evento(media={"mapa": "https://www.gdacs.org/x.png"})
+    almacen.guardar_recientes(tmp_path, [evento], ahora)
+
+    documento = json.loads((tmp_path / almacen.NOMBRE_RECIENTES).read_text(encoding="utf-8"))
+
+    assert documento["eventos"][0]["media"] == {"mapa": "https://www.gdacs.org/x.png"}
+
+
 def test_estadisticas_cuenta_por_tipo_fuente_y_alerta():
     eventos = {
         "a": hacer_evento("a", nivel_alerta="verde"),

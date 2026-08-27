@@ -1,0 +1,92 @@
+{
+  "title": "EONET Events",
+  "description": "Natural events from EONET.",
+  "link": "https://eonet.gsfc.nasa.gov/api/v3/events",
+  "events": [
+    {
+      "id": "EONET_6201",
+      "title": "Wildfire - Butte County, California",
+      "description": "",
+      "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_6201",
+      "closed": null,
+      "categories": [{ "id": "wildfires", "title": "Wildfires" }],
+      "sources": [
+        { "id": "InciWeb", "url": "https://inciweb.nwcg.gov/incident/9999/" }
+      ],
+      "geometry": [
+        {
+          "magnitudeValue": 1200.0,
+          "magnitudeUnit": "acres",
+          "date": "2026-08-03T00:00:00Z",
+          "type": "Point",
+          "coordinates": [-121.6, 39.75]
+        },
+        {
+          "magnitudeValue": 8400.0,
+          "magnitudeUnit": "acres",
+          "date": "2026-08-05T00:00:00Z",
+          "type": "Point",
+          "coordinates": [-121.58, 39.77]
+        }
+      ]
+    },
+    {
+      "id": "EONET_6202",
+      "title": "Volcano - Sangay, Ecuador",
+      "description": "Erupción en curso.",
+      "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_6202",
+      "closed": "2026-08-04T00:00:00Z",
+      "categories": [{ "id": "volcanoes", "title": "Volcanoes" }],
+      "sources": [],
+      "geometry": [
+        {
+          "date": "2026-08-01T00:00:00Z",
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-78.34, -2.0],
+              [-78.3, -2.0],
+              [-78.3, -1.96],
+              [-78.34, -1.96]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EONET_6203",
+      "title": "Iceberg A-83",
+      "description": "",
+      "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_6203",
+      "categories": [{ "id": "seaLakeIce", "title": "Sea and Lake Ice" }],
+      "geometry": [
+        {
+          "date": "2026-08-02T00:00:00Z",
+          "type": "Point",
+          "coordinates": [-60.1, -75.4]
+        }
+      ]
+    },
+    {
+      "id": "EONET_6204",
+      "title": "Evento sin geometría: debe descartarse",
+      "categories": [{ "id": "severeStorms", "title": "Severe Storms" }],
+      "geometry": []
+    },
+    {
+      "title": "Evento sin id: debe descartarse",
+      "categories": [{ "id": "floods", "title": "Floods" }],
+      "geometry": [
+        { "date": "2026-08-02T00:00:00Z", "type": "Point", "coordinates": [10.0, 20.0] }
+      ]
+    },
+    {
+      "id": "EONET_6205",
+      "title": "Evento con fecha ilegible: debe descartarse",
+      "categories": [{ "id": "drought", "title": "Drought" }],
+      "geometry": [
+        { "date": "ayer a la tarde", "type": "Point", "coordinates": [10.0, 20.0] }
+      ]
+    }
+  ]
+}

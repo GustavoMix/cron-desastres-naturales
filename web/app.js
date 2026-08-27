@@ -46,14 +46,44 @@ const ALERTAS = [
 const TIPO_POR_CLAVE = new Map(TIPOS.map((t) => [t.clave, t]));
 const ALERTA_POR_CLAVE = new Map(ALERTAS.map((a) => [a.clave, a]));
 
+/* Copia local de lo que el feed publica en `media`. Solo se usa si el feed no
+ * lo trae —feeds de antes de la versión 2—, para que la página no se quede sin
+ * fotos esperando la próxima corrida del cron. Cuando el feed lo trae, manda el
+ * feed: así se puede cambiar de capa o de proveedor sin tocar esta página. */
+const MEDIA_POR_DEFECTO = {
+  satelite: {
+    plantilla:
+      "https://wvs.earthdata.nasa.gov/api/v1/snapshot?REQUEST=GetSnapshot&LAYERS={capa}" +
+      "&CRS=EPSG:4326&TIME={fecha}&BBOX={sur},{oeste},{norte},{este}" +
+      "&FORMAT=image/jpeg&WIDTH={ancho}&HEIGHT={alto}",
+    capa: "MODIS_Terra_CorrectedReflectance_TrueColor",
+    credito: "NASA Worldview (MODIS/Terra)",
+    grados_por_tipo: {
+      sismo: 6,
+      volcan: 5,
+      incendio: 4,
+      inundacion: 8,
+      ciclon: 16,
+      sequia: 20,
+      otro: 8,
+    },
+    grados_por_defecto: 8,
+    dias_timelapse: 7,
+  },
+  videos: { plantilla_busqueda: "https://www.youtube.com/results?search_query={consulta}" },
+};
+
 const estado = {
   eventos: [],
   generado: null,
+  media: MEDIA_POR_DEFECTO,
   tiposOcultos: new Set(),
   alertasOcultas: new Set(),
   texto: "",
   magnitudMinima: 0,
   seleccionado: null,
+  detalle: null,
+  fotograma: 0,
 };
 
 let mapa = null;
@@ -200,6 +230,96 @@ function contarPor(obtenerClave) {
   return conteos;
 }
 
+/* ------------------------------------------------------------------- fotos */
+
+/* La foto de cada evento es el mosaico satelital de ese día recortado a su
+ * área, servido por NASA Worldview. La URL se arma acá y no viene en el feed
+ * porque es pura aritmética sobre datos que el evento ya tiene: mandarla mil
+ * veces sería mandar mil veces la misma plantilla. */
+
+function gradosDe(tipo) {
+  const satelite = estado.media?.satelite ?? MEDIA_POR_DEFECTO.satelite;
+  return satelite.grados_por_tipo?.[tipo] ?? satelite.grados_por_defecto ?? 8;
+}
+
+/* Cerca del polo o del antimeridiano el recuadro no entra centrado. Se lo corre
+ * hacia adentro en vez de recortarlo: recortado saldría una imagen deformada, y
+ * si el ancho diera cero, un error. */
+function ventana(centro, mitad, minimo, maximo) {
+  const ancho = Math.min(mitad * 2, maximo - minimo);
+  let inicio = centro - ancho / 2;
+  if (inicio < minimo) inicio = minimo;
+  else if (inicio + ancho > maximo) inicio = maximo - ancho;
+  return [inicio, inicio + ancho];
+}
+
+function recuadroDe(evento) {
+  const grados = Math.max(gradosDe(evento.tipo), 0.01);
+  const [sur, norte] = ventana(evento.latitud, grados / 2, -90, 90);
+  const [oeste, este] = ventana(evento.longitud, grados / 2, -180, 180);
+  return [sur, oeste, norte, este].map((valor) => Number(valor.toFixed(4)));
+}
+
+function tieneFoto(evento) {
+  return (
+    typeof evento.latitud === "number" &&
+    typeof evento.longitud === "number" &&
+    typeof evento.fecha_evento === "string" &&
+    evento.fecha_evento.length >= 10
+  );
+}
+
+function urlSatelite(evento, { fecha = null, ancho = 512, alto = 512 } = {}) {
+  if (!tieneFoto(evento)) return null;
+  const satelite = estado.media?.satelite ?? MEDIA_POR_DEFECTO.satelite;
+  const [sur, oeste, norte, este] = recuadroDe(evento);
+  return satelite.plantilla
+    .replace("{capa}", satelite.capa)
+    .replace("{fecha}", fecha ?? evento.fecha_evento.slice(0, 10))
+    .replace("{sur}", sur)
+    .replace("{oeste}", oeste)
+    .replace("{norte}", norte)
+    .replace("{este}", este)
+    .replace("{ancho}", ancho)
+    .replace("{alto}", alto);
+}
+
+/* Los días del timelapse: el del evento y los siguientes, que es cuando se ve
+ * crecer el incendio o avanzar el ciclón. Nunca días futuros — el mosaico de
+ * mañana no existe todavía y devolvería un rectángulo negro. */
+function diasTimelapse(evento) {
+  const satelite = estado.media?.satelite ?? MEDIA_POR_DEFECTO.satelite;
+  const cuantos = satelite.dias_timelapse ?? 7;
+  const inicio = new Date(`${evento.fecha_evento.slice(0, 10)}T00:00:00Z`);
+  const hoy = new Date();
+  const dias = [];
+  for (let i = 0; i < cuantos; i += 1) {
+    const dia = new Date(inicio.getTime() + i * 86400000);
+    if (dia > hoy) break;
+    dias.push(dia.toISOString().slice(0, 10));
+  }
+  return dias;
+}
+
+function urlVideos(evento) {
+  const plantilla =
+    estado.media?.videos?.plantilla_busqueda ?? MEDIA_POR_DEFECTO.videos.plantilla_busqueda;
+  const consulta = [evento.titulo, evento.pais].filter(Boolean).join(" ").trim();
+  if (!consulta) return null;
+  return plantilla.replace("{consulta}", encodeURIComponent(consulta));
+}
+
+/* Las imágenes propias del evento (los mapas que adjunta GDACS) sí vienen en el
+ * feed, porque no hay forma de derivarlas. */
+function imagenesPropias(evento) {
+  const media = evento.media ?? {};
+  const recursos = Array.isArray(media.recursos) ? media.recursos : [];
+  return [
+    media.mapa ? { url: media.mapa, titulo: "Mapa de la fuente" } : null,
+    ...recursos.map((r) => ({ url: r.url, titulo: r.titulo || "Mapa de la fuente" })),
+  ].filter(Boolean);
+}
+
 function tarjeta(evento) {
   const tipo = tipoDe(evento);
   const alerta = alertaDe(evento);
@@ -251,9 +371,113 @@ function tarjeta(evento) {
   meta.append(insignia);
 
   boton.append(icono, titulo, meta);
-  boton.addEventListener("click", () => seleccionar(evento));
+
+  // La miniatura entra al final del DOM pero se ubica a la derecha por CSS: si
+  // el satélite no responde, `onerror` la saca y la tarjeta queda como estaba.
+  const miniatura = urlSatelite(evento, { ancho: 160, alto: 160 });
+  if (miniatura) {
+    const foto = document.createElement("img");
+    foto.className = "evento__foto";
+    foto.src = miniatura;
+    foto.alt = "";
+    foto.loading = "lazy";
+    foto.decoding = "async";
+    foto.addEventListener("error", () => foto.remove());
+    boton.append(foto);
+  }
+
+  boton.addEventListener("click", () => {
+    seleccionar(evento);
+    abrirVisor(evento);
+  });
   item.append(boton);
   return item;
+}
+
+/* ------------------------------------------------------------------- visor */
+
+function abrirVisor(evento) {
+  const visor = $("#visor");
+  if (!visor) return;
+
+  estado.detalle = evento;
+  estado.fotograma = 0;
+
+  const tipo = tipoDe(evento);
+  const alerta = alertaDe(evento);
+  $("#visor-titulo").textContent = `${tipo.icono} ${evento.titulo || tipo.etiqueta}`;
+  $("#visor-meta").textContent = [
+    alerta.etiqueta,
+    fechaLegible(evento.fecha_evento),
+    evento.pais,
+    typeof evento.magnitud === "number"
+      ? `${evento.magnitud} ${evento.unidad_magnitud || ""}`.trim()
+      : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+
+  pintarFotograma();
+  pintarGaleria(evento);
+
+  const dias = tieneFoto(evento) ? diasTimelapse(evento) : [];
+  $("#visor-timelapse").hidden = dias.length < 2;
+  $("#visor-dias").max = String(Math.max(dias.length - 1, 0));
+  $("#visor-dias").value = "0";
+
+  const videos = urlVideos(evento);
+  $("#visor-videos").hidden = !videos;
+  if (videos) $("#visor-videos").href = videos;
+
+  $("#visor-fuente").hidden = !evento.url;
+  if (evento.url) $("#visor-fuente").href = evento.url;
+
+  visor.showModal();
+}
+
+function pintarFotograma() {
+  const evento = estado.detalle;
+  const foto = $("#visor-foto");
+  const pie = $("#visor-pie");
+  if (!evento || !foto) return;
+
+  if (!tieneFoto(evento)) {
+    foto.hidden = true;
+    pie.textContent = "Este evento no informa posición, así que no hay foto satelital.";
+    return;
+  }
+
+  const dias = diasTimelapse(evento);
+  const dia = dias[Math.min(estado.fotograma, dias.length - 1)] ?? null;
+  const satelite = estado.media?.satelite ?? MEDIA_POR_DEFECTO.satelite;
+
+  foto.hidden = false;
+  foto.src = urlSatelite(evento, { fecha: dia, ancho: 768, alto: 768 });
+  foto.alt = `Vista satelital del área del evento el ${dia}`;
+  pie.textContent = `${dia} · ${satelite.credito}`;
+}
+
+function pintarGaleria(evento) {
+  const galeria = $("#visor-galeria");
+  if (!galeria) return;
+
+  const imagenes = imagenesPropias(evento);
+  galeria.hidden = imagenes.length === 0;
+  galeria.replaceChildren(
+    ...imagenes.map(({ url, titulo }) => {
+      const enlace = document.createElement("a");
+      enlace.href = url;
+      enlace.target = "_blank";
+      enlace.rel = "noopener";
+      const imagen = document.createElement("img");
+      imagen.src = url;
+      imagen.alt = titulo;
+      imagen.loading = "lazy";
+      imagen.addEventListener("error", () => enlace.remove());
+      enlace.append(imagen);
+      return enlace;
+    })
+  );
 }
 
 function seleccionar(evento) {
@@ -374,6 +598,9 @@ async function cargar() {
   const documento = await respuesta.json();
   estado.eventos = Array.isArray(documento.eventos) ? documento.eventos : [];
   estado.generado = documento.generado ?? null;
+  // El feed manda sobre las plantillas de media: así se cambia de capa o de
+  // proveedor de imágenes desde el cron, sin tocar esta página.
+  estado.media = documento.media ?? MEDIA_POR_DEFECTO;
 }
 
 function conectarControles() {
@@ -386,6 +613,19 @@ function conectarControles() {
     estado.magnitudMinima = Number(evento.target.value);
     $("#mag-valor").textContent = estado.magnitudMinima.toFixed(1);
     renderizar();
+  });
+
+  $("#visor-dias").addEventListener("input", (evento) => {
+    estado.fotograma = Number(evento.target.value);
+    pintarFotograma();
+  });
+
+  $("#visor-cerrar").addEventListener("click", () => $("#visor").close());
+
+  // Clic en el fondo del diálogo: el <dialog> recibe el evento solo cuando se
+  // tocó fuera del contenido, porque el contenido lo tapa entero.
+  $("#visor").addEventListener("click", (evento) => {
+    if (evento.target.id === "visor") $("#visor").close();
   });
 
   const boton = $("#tema");

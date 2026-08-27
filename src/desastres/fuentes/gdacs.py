@@ -11,6 +11,7 @@ from email.utils import parsedate_to_datetime
 from xml.etree import ElementTree
 
 from ..http import descargar
+from ..medios import es_imagen, limpiar
 from ..modelo import (
     TIPO_CICLON,
     TIPO_INCENDIO,
@@ -87,6 +88,7 @@ class FuenteGDACS:
         pais = (_texto(item, "gdacs:country") or "").strip()
         severidad = item.find("gdacs:severity", NS)
         latitud, longitud = _coordenadas(item)
+        poblacion = item.find("gdacs:population", NS)
 
         return Evento(
             id=clave,
@@ -105,14 +107,71 @@ class FuenteGDACS:
             nivel_alerta=normalizar_alerta(_texto(item, "gdacs:alertlevel")),
             latitud=latitud,
             longitud=longitud,
+            media=_medios(item),
             extra={
                 "codigo_tipo": codigo_tipo,
                 "episodio": id_episodio,
                 "puntaje_alerta": a_float(_texto(item, "gdacs:alertscore")),
                 "severidad_texto": (severidad.text or "").strip() if severidad is not None else "",
                 "hasta": _fecha(_texto(item, "gdacs:todate")),
+                "iso3": (_texto(item, "gdacs:iso3") or "").strip(),
+                "poblacion_afectada": (
+                    a_float(poblacion.get("value")) if poblacion is not None else None
+                ),
+                "poblacion_texto": (poblacion.text or "").strip() if poblacion is not None else "",
+                "descripcion": (_texto(item, "description") or "").strip(),
             },
         )
+
+
+# Cuántas imágenes sueltas se conservan por evento. GDACS puede adjuntar una
+# docena de mapas casi iguales; más de cuatro no le aportan nada a nadie y sí le
+# suman peso al feed.
+MAXIMO_RECURSOS = 4
+
+
+def _medios(item: ElementTree.Element) -> dict:
+    """Rescata las imágenes que GDACS adjunta: ícono de alerta y mapas.
+
+    El RSS de GDACS cambió de forma varias veces —los mapas estuvieron en
+    `enclosure`, en `gdacs:resources` y en elementos sueltos— así que en vez de
+    apostar a un camino fijo se recorre el item entero juntando cualquier URL
+    que termine en extensión de imagen. Si un día GDACS mueve las imágenes de
+    lugar otra vez, esto las sigue encontrando; si las saca, el evento se queda
+    sin `media` y el cliente cae en la foto satelital, que no depende de GDACS.
+    """
+    icono = ""
+    candidatos: list[tuple[str, str]] = []
+
+    for elemento in item.iter():
+        etiqueta = elemento.tag.rsplit("}", 1)[-1].lower()
+        url = (elemento.get("url") or "").strip()
+        if not url and etiqueta.endswith("icon"):
+            url = (elemento.text or "").strip()
+        if not es_imagen(url):
+            continue
+
+        if etiqueta.endswith("icon"):
+            icono = icono or url
+            continue
+
+        titulo = (elemento.get("title") or elemento.get("description") or "").strip()
+        candidatos.append((url, titulo))
+
+    vistos = {icono}
+    mapa = ""
+    recursos = []
+    for url, titulo in candidatos:
+        if url in vistos:
+            continue
+        vistos.add(url)
+        if not mapa:
+            mapa = url
+            continue
+        if len(recursos) < MAXIMO_RECURSOS:
+            recursos.append({"url": url, "titulo": titulo} if titulo else {"url": url})
+
+    return limpiar({"icono": icono, "mapa": mapa, "recursos": recursos})
 
 
 def _texto(elemento: ElementTree.Element, ruta: str) -> str:

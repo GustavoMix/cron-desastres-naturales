@@ -21,6 +21,11 @@ def gdacs_crudo() -> bytes:
 
 
 @pytest.fixture
+def eonet_crudo() -> bytes:
+    return (FIXTURES / "eonet_events.json").read_bytes()
+
+
+@pytest.fixture
 def ahora() -> datetime:
     """Instante fijo, coherente con las fechas de los fixtures."""
     return datetime(2026, 8, 6, 2, 0, 0, tzinfo=timezone.utc)

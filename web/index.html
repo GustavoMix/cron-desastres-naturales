@@ -90,6 +90,41 @@
     </section>
   </main>
 
+  <!-- Visor de un evento: la foto satelital del día, el timelapse de los días
+       siguientes y los mapas que adjunte la fuente. Es un <dialog> nativo, así
+       que el foco y la tecla Escape los maneja el navegador. -->
+  <dialog id="visor" class="visor" aria-labelledby="visor-titulo">
+    <form method="dialog" class="visor__cerrar-form">
+      <button id="visor-cerrar" class="visor__cerrar" type="button" aria-label="Cerrar">×</button>
+    </form>
+
+    <h2 id="visor-titulo" class="visor__titulo"></h2>
+    <p id="visor-meta" class="visor__meta"></p>
+
+    <img id="visor-foto" class="visor__foto" alt="">
+    <p id="visor-pie" class="visor__pie"></p>
+
+    <div id="visor-timelapse" class="visor__timelapse" hidden>
+      <label class="campo">
+        <span class="campo__etiqueta">Día a día, desde que empezó</span>
+        <input id="visor-dias" type="range" min="0" max="6" step="1" value="0">
+      </label>
+    </div>
+
+    <div id="visor-galeria" class="visor__galeria" hidden></div>
+
+    <div class="visor__acciones">
+      <a id="visor-fuente" class="visor__accion" rel="noopener" target="_blank" hidden>
+        Ver el reporte original
+      </a>
+      <!-- Búsqueda, no video incrustado: no hay ninguna fuente pública que
+           publique video por evento, y decir lo contrario sería mentir. -->
+      <a id="visor-videos" class="visor__accion" rel="noopener" target="_blank" hidden>
+        Buscar videos del evento
+      </a>
+    </div>
+  </dialog>
+
   <footer class="pie">
     <p>
       Fuentes:

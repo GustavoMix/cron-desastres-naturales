@@ -22,8 +22,19 @@
       <gdacs:alertscore>0.5</gdacs:alertscore>
       <gdacs:country>Chile</gdacs:country>
       <gdacs:severity unit="M" value="5.4">Magnitude 5.4M, Depth:42km</gdacs:severity>
+      <gdacs:iso3>CHL</gdacs:iso3>
+      <gdacs:population value="128000">128 thousand people in 100km</gdacs:population>
       <gdacs:fromdate>Thu, 06 Aug 2026 00:53:20 GMT</gdacs:fromdate>
       <gdacs:todate>Thu, 06 Aug 2026 00:53:20 GMT</gdacs:todate>
+      <enclosure url="https://www.gdacs.org/contentdata/resources/EQ/1477001/mapa_general.png"
+                 type="image/png" length="184320" />
+      <gdacs:icon>https://www.gdacs.org/images/gdacs_icons/maps/Green/EQ.png</gdacs:icon>
+      <gdacs:resources>
+        <gdacs:resource url="https://www.gdacs.org/contentdata/resources/EQ/1477001/intensidad.png"
+                        title="Mapa de intensidad" />
+        <gdacs:resource url="https://www.gdacs.org/report.aspx?eventid=1477001"
+                        title="Informe completo" />
+      </gdacs:resources>
       <geo:Point>
         <geo:lat>-30.0512</geo:lat>
         <geo:long>-71.4123</geo:long>

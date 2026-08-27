@@ -10,11 +10,17 @@ el resultado como JSON y CSV dentro del propio repo.
 |---|---|---|---|
 | [USGS Earthquake Hazards Program](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) | Sismos de los últimos 7 días, mundial | GeoJSON | No |
 | [GDACS](https://www.gdacs.org/xml/rss.xml) | Sismos, ciclones, inundaciones, volcanes, sequías e incendios | RSS | No |
+| [NASA EONET v3](https://eonet.gsfc.nasa.gov/api/v3/events) | Incendios forestales, volcanes, tormentas severas, hielo marino | JSON | No |
 
-Las dos son complementarias y **no se deduplican entre sí**: un mismo sismo puede
+Las tres son complementarias y **no se deduplican entre sí**: un mismo sismo puede
 aparecer como registro de USGS y como registro de GDACS, con magnitudes que no
 coinciden exactamente porque cada organismo la calcula distinto. Se conservan
 ambos a propósito; para correlacionarlos, cruzá por `fecha_evento` y coordenadas.
+
+EONET cubre justo el hueco de las otras dos: USGS son solo sismos y GDACS publica
+lo que cruza su umbral humanitario, que deja afuera casi todos los incendios y
+erupciones. A cambio, EONET **no informa país ni nivel de alerta**, así que sus
+eventos llegan con `paises` vacío y no matchean los filtros por país.
 
 ## Salida
 
@@ -60,9 +66,51 @@ reciente se aplica solo a sismos.
 
 Vocabulario normalizado, igual para todas las fuentes:
 
-- `tipo`: `sismo`, `ciclon`, `inundacion`, `volcan`, `incendio`, `sequia`, `otro`
+- `tipo`: `sismo`, `ciclon`, `inundacion`, `volcan`, `incendio`, `sequia`, `derrumbe`, `otro`
 - `nivel_alerta`: `verde`, `amarilla`, `naranja`, `roja` (vacío si la fuente no lo informa)
 - fechas: ISO 8601 en UTC, siempre con sufijo `Z`
+
+### Fotos y video
+
+`recientes.json` (versión 2 en adelante) trae un bloque `media` **a nivel
+documento**, no por evento:
+
+```json
+"media": {
+  "satelite": {
+    "plantilla": "https://wvs.earthdata.nasa.gov/api/v1/snapshot?REQUEST=GetSnapshot&LAYERS={capa}&CRS=EPSG:4326&TIME={fecha}&BBOX={sur},{oeste},{norte},{este}&FORMAT=image/jpeg&WIDTH={ancho}&HEIGHT={alto}",
+    "capa": "MODIS_Terra_CorrectedReflectance_TrueColor",
+    "credito": "NASA Worldview (MODIS/Terra)",
+    "grados_por_tipo": { "sismo": 6.0, "ciclon": 16.0, "...": 0 },
+    "grados_por_defecto": 8.0,
+    "dias_timelapse": 7
+  },
+  "videos": { "plantilla_busqueda": "https://www.youtube.com/results?search_query={consulta}" }
+}
+```
+
+La foto de cada evento es el mosaico satelital diario de NASA Worldview recortado
+a su área: endpoint público, sin API key, y la URL sale de la fecha y las
+coordenadas que el evento ya trae. **El cliente la arma**; el feed solo publica la
+plantilla. Repetir la misma URL de 200 caracteres en cada uno de los ~1.400
+eventos serían cientos de kilobytes de texto idéntico en una descarga que mucha
+gente hace con datos móviles. De paso, cambiar de capa o de proveedor no obliga a
+publicar una app nueva.
+
+Para armarla: `{fecha}` es el día del evento (`fecha_evento[:10]`, la capa es
+diaria) y el recuadro va **en orden `sur,oeste,norte,este`**, que es lo que espera
+EPSG:4326 — invertirlo devuelve mar vacío. El lado en grados sale de
+`grados_por_tipo` según el `tipo`. Pidiendo la misma URL con días consecutivos se
+arma un timelapse; `dias_timelapse` dice cuántos tiene sentido pedir.
+
+`plantilla_busqueda` es una **búsqueda** de video, no un video incrustado: no
+existe ninguna fuente pública que publique video por evento, y presentarlo como si
+lo fuera sería mentir. Mostralo etiquetado como búsqueda.
+
+Aparte, un evento puede traer su propio campo `media` con las imágenes que
+adjunta la fuente (`icono`, `mapa`, `recursos`) — hoy solo GDACS. Eso sí va por
+evento porque no se puede derivar de nada. Si el evento no tiene ninguna, el
+campo no aparece.
 
 ### Filtrar por país
 

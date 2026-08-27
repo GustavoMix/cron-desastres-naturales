@@ -19,6 +19,7 @@ TIPO_INUNDACION = "inundacion"
 TIPO_VOLCAN = "volcan"
 TIPO_INCENDIO = "incendio"
 TIPO_SEQUIA = "sequia"
+TIPO_DERRUMBE = "derrumbe"
 TIPO_OTRO = "otro"
 
 TIPOS = (
@@ -28,6 +29,7 @@ TIPOS = (
     TIPO_VOLCAN,
     TIPO_INCENDIO,
     TIPO_SEQUIA,
+    TIPO_DERRUMBE,
     TIPO_OTRO,
 )
 
@@ -75,6 +77,10 @@ class Evento:
     # Tocarlo en cada corrida haría que las decenas de miles de filas del
     # histórico cambiaran cada hora, y git no podría comprimir nada.
     cambiado_por_ultima_vez: str = ""
+    # Imágenes propias del evento que publica la fuente (mapas y logos de
+    # GDACS). Solo lo que no se puede derivar: la foto satelital la arma el
+    # cliente con la plantilla del feed, así no se repite mil veces.
+    media: dict = field(default_factory=dict)
     # Campos crudos que no encajan en el modelo pero conviene no perder.
     extra: dict = field(default_factory=dict)
 
@@ -91,8 +97,10 @@ class Evento:
         return cls(**{k: v for k, v in datos.items() if k in conocidos})
 
 
-# Orden fijo de columnas del CSV. `extra` se omite: es anidado y varía por fuente.
-CAMPOS_CSV = tuple(f.name for f in fields(Evento) if f.name != "extra")
+# Orden fijo de columnas del CSV. `extra` y `media` se omiten: son anidados y
+# varían por fuente, y una planilla no sabe qué hacer con un dict.
+CAMPOS_ANIDADOS = ("extra", "media")
+CAMPOS_CSV = tuple(f.name for f in fields(Evento) if f.name not in CAMPOS_ANIDADOS)
 
 
 def ahora_utc() -> datetime:
