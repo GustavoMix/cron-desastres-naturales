@@ -51,14 +51,16 @@ jobs:
           fi
           cp datos/resumen.json _sitio/datos/ 2>/dev/null || true
 
-      # `enablement` hace que la action prenda Pages por la API si el repo
-      # todavía no lo tiene configurado. Sin esto el paso falla con "Get Pages
-      # site failed / Not Found" y hay que ir a tocar Settings a mano — que es
-      # lo que venía pasando: las tres corridas de este workflow fallaron acá.
-      # El job ya declara `pages: write`, así que el token alcanza.
+      # ⚠️ Este paso falla con "Get Pages site failed / Not Found" mientras
+      # Pages no esté habilitado en el repo. Hay que prenderlo **a mano**, una
+      # sola vez: Settings → Pages → Source: "GitHub Actions".
+      #
+      # No se puede automatizar desde acá. Se probó con `enablement: true`, que
+      # le pide a la action crear el sitio por la API, y la API contesta
+      # "Resource not accessible by integration": crear un sitio de Pages exige
+      # permiso de administración del repo, que el GITHUB_TOKEN no tiene y que
+      # el bloque `permissions` del workflow no puede otorgarse.
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
