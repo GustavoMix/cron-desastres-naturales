@@ -33,6 +33,10 @@ def argumentos(salida, **extras):
         retencion_dias=400,
         dias_recientes=7,
         recientes_magnitud_minima=0.0,
+        # Apagadas por defecto en los tests: buscar noticias sale a la red, y
+        # estos tests existen justamente para no tocarla.
+        noticias_maximo=0,
+        noticias_paises="",
         timeout=5.0,
         reintentos=1,
         dry_run=False,

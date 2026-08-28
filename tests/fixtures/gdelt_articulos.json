@@ -1,0 +1,46 @@
+{
+  "articles": [
+    {
+      "url": "https://www.eldeber.com.bo/nota/sismo-en-la-paz",
+      "url_mobile": "",
+      "title": "Un sismo de magnitud 5.4 se sintió en La Paz",
+      "seendate": "20260806T011500Z",
+      "socialimage": "https://www.eldeber.com.bo/img/sismo.jpg",
+      "domain": "eldeber.com.bo",
+      "language": "Spanish",
+      "sourcecountry": "Bolivia"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=abc123",
+      "title": "VIDEO: así se vivió el sismo desde el centro",
+      "seendate": "20260806T020000Z",
+      "socialimage": "",
+      "domain": "youtube.com",
+      "language": "Spanish",
+      "sourcecountry": "Bolivia"
+    },
+    {
+      "url": "https://www.reuters.com/world/quake-hits",
+      "title": "Magnitude 5.4 quake strikes near La Paz",
+      "seendate": "20260806T013000Z",
+      "socialimage": "https://reuters.com/img/quake.jpg",
+      "domain": "reuters.com",
+      "language": "English",
+      "sourcecountry": "United Kingdom"
+    },
+    {
+      "url": "",
+      "title": "Nota sin URL: debe descartarse",
+      "seendate": "20260806T013000Z",
+      "domain": "roto.com",
+      "language": "Spanish"
+    },
+    {
+      "url": "https://otro.com/sin-titulo",
+      "title": "",
+      "seendate": "fecha ilegible",
+      "domain": "otro.com",
+      "language": "Spanish"
+    }
+  ]
+}

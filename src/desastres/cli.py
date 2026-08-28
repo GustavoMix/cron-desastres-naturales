@@ -9,6 +9,7 @@ import sys
 from pathlib import Path
 
 from . import almacen
+from . import noticias as modulo_noticias
 from .fuentes.base import Fuente
 from .fuentes.eonet import FuenteEONET
 from .fuentes.gdacs import FuenteGDACS
@@ -37,6 +38,15 @@ DIAS_RETENCION_POR_DEFECTO = 180
 # mostrar durante casi toda la semana. 14 le da contexto entre corridas.
 DIAS_RECIENTES_POR_DEFECTO = 14
 MAGNITUD_MINIMA_RECIENTES = 2.5
+
+# Cuántos eventos se enriquecen con noticias por corrida. El feed lleva ~1.400 y
+# consultar por cada uno serían 1.400 pedidos contra servicios gratuitos ajenos,
+# la enorme mayoría para microsismos de los que ningún medio escribió nunca.
+EVENTOS_CON_NOTICIAS_POR_DEFECTO = 40
+
+# País que se atiende primero al repartir ese cupo: un sismo moderado acá le
+# importa más a quien usa la app que uno enorme en el otro hemisferio.
+PAISES_PRIORITARIOS_POR_DEFECTO = "BO"
 
 
 def construir_parser() -> argparse.ArgumentParser:
@@ -77,6 +87,23 @@ def construir_parser() -> argparse.ArgumentParser:
         help=(
             "Excluye de recientes.json los sismos por debajo de esta magnitud. "
             "No afecta al histórico ni a otros tipos de evento. 0 no filtra."
+        ),
+    )
+    parser.add_argument(
+        "--noticias-maximo",
+        type=int,
+        default=EVENTOS_CON_NOTICIAS_POR_DEFECTO,
+        help=(
+            "Para cuántos eventos se buscan noticias en los medios. "
+            "0 desactiva la búsqueda y no escribe noticias.json."
+        ),
+    )
+    parser.add_argument(
+        "--noticias-paises",
+        default=PAISES_PRIORITARIOS_POR_DEFECTO,
+        help=(
+            "Códigos ISO alfa-2 separados por coma que se atienden primero "
+            "al repartir el cupo de noticias. Vacío para no priorizar ninguno."
         ),
     )
     parser.add_argument("--timeout", type=float, default=30.0, help="Timeout HTTP en segundos.")
@@ -129,6 +156,46 @@ def recolectar(
     return eventos, estado
 
 
+def buscar_noticias(
+    recientes: list[Evento], argumentos: argparse.Namespace, inicio
+) -> modulo_noticias.ResultadoNoticias:
+    """Qué dijeron los medios sobre los eventos que valen la pena.
+
+    Nunca hace fallar la corrida: los eventos son el producto y las noticias son
+    el agregado. Perder el scrapeo entero porque un buscador de noticias devolvió
+    basura sería cambiar lo importante por lo accesorio.
+    """
+    if argumentos.noticias_maximo <= 0:
+        log.info("búsqueda de noticias desactivada")
+        return modulo_noticias.ResultadoNoticias()
+
+    paises = tuple(
+        codigo.strip().upper()
+        for codigo in (argumentos.noticias_paises or "").split(",")
+        if codigo.strip()
+    )
+
+    try:
+        resultado = modulo_noticias.recolectar(
+            recientes,
+            ahora=inicio,
+            timeout=argumentos.timeout,
+            reintentos=argumentos.reintentos,
+            maximo_eventos=argumentos.noticias_maximo,
+            paises_prioritarios=paises,
+        )
+    except Exception as error:  # noqa: BLE001 - ver docstring
+        log.error("la búsqueda de noticias falló entera: %s", error)
+        return modulo_noticias.ResultadoNoticias()
+
+    log.info(
+        "noticias: %d eventos consultados, %d con resultados",
+        resultado.consultados,
+        resultado.con_noticias,
+    )
+    return resultado
+
+
 def ejecutar(argumentos: argparse.Namespace) -> int:
     fuentes = resolver_fuentes(argumentos.fuentes)
     inicio = ahora_utc()
@@ -159,6 +226,11 @@ def ejecutar(argumentos: argparse.Namespace) -> int:
         ahora=inicio,
     )
 
+    # Las noticias van después de `filtrar_recientes` porque se buscan solo para
+    # lo que el front va a mostrar: enriquecer un evento que quedó fuera del feed
+    # es trabajo que nadie ve.
+    resultado_noticias = buscar_noticias(recientes, argumentos, inicio)
+
     resumen = {
         "ultima_ejecucion": a_iso(inicio),
         "fuentes": estado_fuentes,
@@ -174,6 +246,11 @@ def ejecutar(argumentos: argparse.Namespace) -> int:
             "magnitud_minima_sismo": argumentos.recientes_magnitud_minima,
             "total": len(recientes),
         },
+        "noticias": {
+            "consultados": resultado_noticias.consultados,
+            "con_noticias": resultado_noticias.con_noticias,
+            "total": sum(len(n) for n in resultado_noticias.por_evento.values()),
+        },
         "historico": almacen.estadisticas(fusionados),
     }
 
@@ -182,6 +259,8 @@ def ejecutar(argumentos: argparse.Namespace) -> int:
     else:
         almacen.guardar(argumentos.salida, fusionados, resumen)
         almacen.guardar_recientes(argumentos.salida, recientes, inicio)
+        if argumentos.noticias_maximo > 0:
+            almacen.guardar_noticias(argumentos.salida, resultado_noticias, inicio)
         log.info(
             "escritos %d eventos (%d en el feed reciente) en %s",
             len(fusionados),

@@ -11,7 +11,7 @@ from dataclasses import replace
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from . import medios
+from . import medios, noticias
 from .modelo import CAMPOS_CSV, Evento, a_iso, codigos_de_pais
 
 log = logging.getLogger(__name__)
@@ -212,6 +212,20 @@ def guardar_recientes(directorio: Path, eventos: list[Evento], generado: datetim
     _escribir_texto(
         directorio / NOMBRE_RECIENTES,
         json.dumps(documento, ensure_ascii=False, indent=2) + "\n",
+    )
+
+
+def guardar_noticias(directorio: Path, resultado, generado: datetime) -> None:
+    """Escribe las noticias en su **propio archivo**, aparte de `recientes.json`.
+
+    Meterlas dentro del feed obligaría a bajar los artículos de los 40 eventos
+    enriquecidos a todo el que abra la app, aunque solo vaya a mirar uno. Así, el
+    feed sigue costando lo mismo que antes y las noticias se piden cuando alguien
+    de verdad las quiere ver.
+    """
+    _escribir_texto(
+        directorio / noticias.NOMBRE_ARCHIVO,
+        json.dumps(noticias.documento(resultado, generado), ensure_ascii=False, indent=2) + "\n",
     )
 
 

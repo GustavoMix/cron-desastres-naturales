@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>"terremoto La Paz" - Google Noticias</title>
+    <link>https://news.google.com/search?q=terremoto+La+Paz</link>
+    <language>es-419</language>
+
+    <item>
+      <title>Sismo de 5.4 sacudió La Paz esta madrugada - Página Siete</title>
+      <link>https://news.google.com/rss/articles/CBMiaGh0dHBz</link>
+      <guid isPermaLink="false">CBMiaGh0dHBz</guid>
+      <pubDate>Thu, 06 Aug 2026 01:15:00 GMT</pubDate>
+      <description>&lt;a href="https://news.google.com/rss/articles/CBMiaGh0dHBz"&gt;Sismo de 5.4&lt;/a&gt;</description>
+      <source url="https://www.paginasiete.bo">Página Siete</source>
+    </item>
+
+    <item>
+      <title>Evacuaciones preventivas tras el temblor - El Deber</title>
+      <link>https://news.google.com/rss/articles/OTRAURL</link>
+      <pubDate>Thu, 06 Aug 2026 03:40:00 GMT</pubDate>
+      <source url="https://www.eldeber.com.bo">El Deber</source>
+    </item>
+
+    <item>
+      <title>Item sin link: debe descartarse - Diario X</title>
+      <pubDate>Thu, 06 Aug 2026 04:00:00 GMT</pubDate>
+      <source url="https://x.com">Diario X</source>
+    </item>
+
+    <item>
+      <title>Nota con fecha ilegible - Diario Y</title>
+      <link>https://news.google.com/rss/articles/FECHAMALA</link>
+      <pubDate>el jueves pasado</pubDate>
+      <source url="https://y.com">Diario Y</source>
+    </item>
+  </channel>
+</rss>

@@ -29,6 +29,7 @@ Todo se escribe en `datos/`:
 - **`recientes.json`** — **el que consume el front.** Últimos 14 días, sin el campo `extra` y sin micro-sismos. Es el único que conviene bajar desde una app móvil.
 - **`eventos.json`** — histórico completo, más recientes primero. Pesado; para análisis, no para la app.
 - **`eventos.csv`** — el mismo histórico plano, listo para abrir en una planilla.
+- **`noticias.json`** — qué dijeron los medios sobre los eventos que importan. Archivo aparte a propósito (ver más abajo).
 - **`resumen.json`** — metadatos de la última corrida: qué fuente respondió, cuántos eventos nuevos/actualizados, conteos por tipo y por nivel de alerta.
 
 Cada evento tiene esta forma:
@@ -111,6 +112,72 @@ Aparte, un evento puede traer su propio campo `media` con las imágenes que
 adjunta la fuente (`icono`, `mapa`, `recursos`) — hoy solo GDACS. Eso sí va por
 evento porque no se puede derivar de nada. Si el evento no tiene ninguna, el
 campo no aparece.
+
+### Noticias de los medios
+
+Las tres fuentes de eventos informan el fenómeno físico: dónde tembló, con qué
+magnitud, a qué hora. Ninguna cuenta **qué pasó** —si hubo heridos, si se cayó un
+puente, cómo se vio desde la calle—, que es lo que una persona quiere leer y ver
+después de un terremoto. Para eso están los medios.
+
+`noticias.json` agrupa los artículos por **`id_agrupado`**, no por `id`: GDACS
+republica un ciclón por episodios, y colgarlas del episodio las fragmentaría
+entre veinte registros del mismo fenómeno.
+
+```json
+{
+  "version": 1,
+  "generado": "2026-08-27T22:00:00Z",
+  "eventos_con_noticias": 27,
+  "noticias": {
+    "usgs:us7000abcd": [
+      {
+        "titulo": "Un sismo de magnitud 5.4 se sintió en La Paz",
+        "url": "https://www.eldeber.com.bo/nota/sismo-en-la-paz",
+        "medio": "eldeber.com.bo",
+        "fecha": "2026-08-06T01:15:00Z",
+        "imagen": "https://www.eldeber.com.bo/img/sismo.jpg",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "gdelt"
+      }
+    ]
+  }
+}
+```
+
+Se consultan dos buscadores, en orden, y ninguno pide API key:
+
+1. **[GDELT](https://api.gdeltproject.org/api/v2/doc/doc)** monitorea la prensa
+   mundial y devuelve JSON con `socialimage`, la foto de portada del artículo.
+   Es el único de los dos que da imagen.
+2. **Google Noticias (RSS)** entra solo si GDELT no encontró nada. Con
+   `hl=es-419&gl=BO` prioriza prensa en español y de la región.
+
+Tres decisiones que conviene no deshacer sin pensarlas:
+
+- **Va en su propio archivo, no dentro de `recientes.json`.** Meterlas en el feed
+  obligaría a bajar los artículos de los 40 eventos enriquecidos a todo el que
+  abra la app, aunque solo vaya a mirar uno.
+- **No se busca para todos los eventos.** El feed lleva ~1.400; una consulta por
+  cada uno serían 1.400 pedidos por corrida contra servicios gratuitos ajenos,
+  la enorme mayoría para microsismos de los que ningún medio escribió nunca. El
+  cupo (`--noticias-maximo`, 40 por defecto) se reparte priorizando el país de
+  `--noticias-paises`, después gravedad, después lo más reciente.
+- **La búsqueda se acota a la ventana del evento** (1 día antes, 7 después). Sin
+  eso, "terremoto Chile" devuelve notas de todos los sismos chilenos de la
+  década y la app mostraría como noticia de hoy algo de 2015.
+
+La consulta se arma con palabras de diario, no con el título de la fuente:
+"M 4.5 - 104 km WNW of Houma, Tonga" no matchea nada porque ningún medio escribe
+así; se busca `terremoto Houma, Tonga`.
+
+**No hay audio.** Ninguna fuente pública publica audio por evento. Lo que sí
+aparece son notas que embeben video, y esas van marcadas con `es_video` para que
+el cliente las pueda mostrar aparte.
+
+Si la búsqueda de noticias falla entera, la corrida **no** falla: los eventos son
+el producto y las noticias son el agregado.
 
 ### Filtrar por país
 
