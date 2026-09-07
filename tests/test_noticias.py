@@ -329,6 +329,39 @@ def test_recolectar_espera_entre_consultas_pero_no_antes_de_la_primera(monkeypat
     assert esperas == [1.5, 1.5]
 
 
+def test_recolectar_corta_al_agotar_el_presupuesto(monkeypatch):
+    """Un buscador caído no debe poder comerse el timeout del job entero."""
+    eventos = [hacer_evento(id=f"e{i}") for i in range(5)]
+    monkeypatch.setattr(noticias, "buscar_para", lambda ev, **kw: [])
+    # reloj(): una lectura al arrancar y una por evento evaluado. Se agota
+    # justo antes del tercer evento.
+    lecturas = iter([0, 0, 50, 110])
+
+    resultado = noticias.recolectar(
+        eventos,
+        ahora=AHORA,
+        timeout=1,
+        reintentos=1,
+        maximo_eventos=5,
+        espera=0,
+        presupuesto=100,
+        reloj=lambda: next(lecturas),
+    )
+
+    assert resultado.consultados == 2
+
+
+def test_recolectar_sin_presupuesto_no_corta(monkeypatch):
+    eventos = [hacer_evento(id=f"e{i}") for i in range(3)]
+    monkeypatch.setattr(noticias, "buscar_para", lambda ev, **kw: [])
+
+    resultado = noticias.recolectar(
+        eventos, ahora=AHORA, timeout=1, reintentos=1, maximo_eventos=5, espera=0, presupuesto=None
+    )
+
+    assert resultado.consultados == 3
+
+
 def test_un_evento_sin_noticias_no_ocupa_lugar_en_el_archivo(monkeypatch):
     monkeypatch.setattr(noticias, "buscar_para", lambda ev, **kw: [])
 

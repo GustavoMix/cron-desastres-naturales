@@ -48,6 +48,12 @@ EVENTOS_CON_NOTICIAS_POR_DEFECTO = 40
 # importa más a quien usa la app que uno enorme en el otro hemisferio.
 PAISES_PRIORITARIOS_POR_DEFECTO = "BO"
 
+# Las noticias son un enriquecimiento, no la fuente de datos: si GDELT o Google
+# están lentos no vale la pena insistir con el mismo timeout/reintentos que se
+# le da a USGS o GDACS. Van desacoplados de --timeout/--reintentos a propósito.
+NOTICIAS_TIMEOUT_POR_DEFECTO = 10.0
+NOTICIAS_REINTENTOS_POR_DEFECTO = 2
+
 
 def construir_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
@@ -104,6 +110,29 @@ def construir_parser() -> argparse.ArgumentParser:
         help=(
             "Códigos ISO alfa-2 separados por coma que se atienden primero "
             "al repartir el cupo de noticias. Vacío para no priorizar ninguno."
+        ),
+    )
+    parser.add_argument(
+        "--noticias-timeout",
+        type=float,
+        default=NOTICIAS_TIMEOUT_POR_DEFECTO,
+        help="Timeout HTTP en segundos para GDELT/Google Noticias (más corto que --timeout).",
+    )
+    parser.add_argument(
+        "--noticias-reintentos",
+        type=int,
+        default=NOTICIAS_REINTENTOS_POR_DEFECTO,
+        help="Intentos por buscador de noticias.",
+    )
+    parser.add_argument(
+        "--noticias-presupuesto",
+        type=float,
+        default=modulo_noticias.PRESUPUESTO_POR_DEFECTO,
+        help=(
+            "Tiempo máximo en segundos para toda la búsqueda de noticias. Al "
+            "agotarse se corta y se guarda lo encontrado hasta ese punto, en vez "
+            "de dejar que un buscador caído se coma el timeout del job. "
+            "0 desactiva el tope."
         ),
     )
     parser.add_argument("--timeout", type=float, default=30.0, help="Timeout HTTP en segundos.")
@@ -179,10 +208,13 @@ def buscar_noticias(
         resultado = modulo_noticias.recolectar(
             recientes,
             ahora=inicio,
-            timeout=argumentos.timeout,
-            reintentos=argumentos.reintentos,
+            timeout=argumentos.noticias_timeout,
+            reintentos=argumentos.noticias_reintentos,
             maximo_eventos=argumentos.noticias_maximo,
             paises_prioritarios=paises,
+            presupuesto=(
+                argumentos.noticias_presupuesto if argumentos.noticias_presupuesto > 0 else None
+            ),
         )
     except Exception as error:  # noqa: BLE001 - ver docstring
         log.error("la búsqueda de noticias falló entera: %s", error)

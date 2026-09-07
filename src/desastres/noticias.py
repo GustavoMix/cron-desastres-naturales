@@ -72,6 +72,12 @@ MAXIMO_POR_EVENTO = 6
 # decenas de pedidos seguidos es la forma de que empiecen a devolver 429.
 ESPERA_ENTRE_CONSULTAS = 1.0
 
+# Tope de tiempo para toda la búsqueda, no por evento. El 2026-08-31 GDELT
+# empezó a devolver timeouts y 429 en cadena; sin este tope, cada evento fallido
+# reintentaba contra los dos buscadores hasta agotar el timeout del job entero
+# (10 min) antes de llegar a comitear los datos ya scrapeados esa corrida.
+PRESUPUESTO_POR_DEFECTO = 120.0
+
 # Dominios cuyas "noticias" son en realidad video.
 DOMINIOS_VIDEO = ("youtube.com", "youtu.be", "vimeo.com", "dailymotion.com", "rumble.com")
 
@@ -399,7 +405,9 @@ def recolectar(
     paises_prioritarios: tuple[str, ...] = (),
     maximo_por_evento: int = MAXIMO_POR_EVENTO,
     espera: float = ESPERA_ENTRE_CONSULTAS,
+    presupuesto: float | None = PRESUPUESTO_POR_DEFECTO,
     dormir=time.sleep,
+    reloj=time.monotonic,
     buscadores=BUSCADORES,
 ) -> ResultadoNoticias:
     """Busca noticias para los eventos elegidos y las agrupa por `id_agrupado`.
@@ -407,13 +415,29 @@ def recolectar(
     La clave es `id_agrupado` y no `id` a propósito: GDACS republica un ciclón
     por episodios, y colgar las noticias del episodio las fragmentaría entre
     veinte registros del mismo fenómeno.
+
+    `presupuesto` acota el tiempo total, no el de cada evento: un buscador
+    caído puede hacer que cada consulta agote sus reintentos, y sin un tope
+    global esos fallos se suman hasta comerse el timeout del job entero, que
+    es tiempo que le hace falta al resto de la corrida para comitear lo que sí
+    scrapeó. Al agotarse, se corta y se guarda lo encontrado hasta ese punto;
+    `None` desactiva el tope.
     """
     elegidos = elegir_para_noticias(
         eventos, maximo=maximo_eventos, paises_prioritarios=paises_prioritarios
     )
     resultado = ResultadoNoticias()
+    inicio = reloj()
 
     for indice, evento in enumerate(elegidos):
+        if presupuesto is not None and reloj() - inicio >= presupuesto:
+            log.warning(
+                "presupuesto de noticias (%.0fs) agotado; se dejan %d de %d eventos sin consultar",
+                presupuesto,
+                len(elegidos) - indice,
+                len(elegidos),
+            )
+            break
         if indice > 0 and espera > 0:
             dormir(espera)
         resultado.consultados += 1

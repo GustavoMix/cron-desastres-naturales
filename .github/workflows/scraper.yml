@@ -33,7 +33,10 @@ concurrency:
 jobs:
   scrapear:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    # Con el presupuesto propio de la búsqueda de noticias (~2 min, ver
+    # noticias.PRESUPUESTO_POR_DEFECTO) esto no debería hacer falta, pero
+    # queda como red de seguridad ante lo que no se previó.
+    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@v4

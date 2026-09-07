@@ -37,6 +37,9 @@ def argumentos(salida, **extras):
         # estos tests existen justamente para no tocarla.
         noticias_maximo=0,
         noticias_paises="",
+        noticias_timeout=5.0,
+        noticias_reintentos=1,
+        noticias_presupuesto=30.0,
         timeout=5.0,
         reintentos=1,
         dry_run=False,
