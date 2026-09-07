@@ -1,0 +1,317 @@
+{
+  "version": 1,
+  "generado": "2026-09-07T21:37:54Z",
+  "eventos_con_noticias": 5,
+  "noticias": {
+    "gdacs:VO:1000148": [
+      {
+        "titulo": "Indonesia mantiene cerrados varios aeropuertos mientras remite la erupción volcánica",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOMTRYOUtTN0xVb29KSm1PcEFsTUpPdERGUThZakZpdU9BRTJCR0hRVDdpQW54X2toOUd4bkpFSVlnYmM5T1RwOUxzZUl4aHhGYTlFNjJaZHBoZE5oZzl0WVpnMXh6V3pTMXlJNjZzVjZwMFRKcG85d19qOVk2eXNBdU95WlFCbjZieWVIa3FBVGVJVUZrRXg1Wk1WdXIxU193V3FsZ095U3Jtdw?oc=5",
+        "medio": "San Antonio Express-News",
+        "fecha": "2026-09-07T06:59:24Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Siete aeropuertos indonesios siguen cerrados por las cenizas volcánicas del Anak Krakatau",
+        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQUWUxdmlmeTdmdHJ0bDRFOFJjVWprblBkR2lRXzYyUUN3MGU0NU9CSHlDeUVMV0FtVzNIQTl2QndDTElpbkN2R0xVVm1nLXhWZk0zZWI5LUpkSkpGWWF5em5zX2tOY29tT2MwWlh5cXl2LV91XzNhU3Zzb2xHdHVKblA0ck5iRjJuYUdZTTloVXZTWGJsZWpxbDJR?oc=5",
+        "medio": "es-us.noticias.yahoo.com",
+        "fecha": "2026-09-07T06:05:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Mapa destacado de erupciones volcánicas: Anak Krakatau, Indonesia",
+        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPdWRwWkVRNnJRb2JHOEViRXNTNnFidC0tLWd6dE5FczRtRWQwR1FKMGxDRXptWXc0RHFKRXNteHlFWFE0dzIxMkY5Q1R1ZVU4NGNXY0JpZmszZktJQ0RBUUt0QVp1eDZ1SHB0NE9RMEFCdlRkcnNSQ3RXNnV5UG1iSWVZUFg5Mm4xVkt4Ql84SHFuZGM?oc=5",
+        "medio": "IQAir",
+        "fecha": "2026-09-06T19:42:31Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Indonesia cancela vuelos en aeropuerto de Yakarta y otros por erupción de volcán Anak Krakatau",
+        "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOT29Sc0prUTlQOVRiTjVpUWRZNUlPcmhqcHFYSWpQTUN4Zi1aQ3BUZkpUdEQ1N1h4N1UzZjF4c3BsdG1ZYTRoRUM1MHQ3UmNXZlRiN1VWd0lkLV9LZExfekZaS2lfM2FmaVZBaHEwTnRkY1RoZTlWM0tUTHV3RWR2YmNZdXBhMzRJd3BIOUxjZmlqZ3RDVzh2TFFFTnJzV09NQzVIMUxhdms3NWlCeFRiR3d5UW4tZVlqMXpJUFZQc0RXUHhNbk5J?oc=5",
+        "medio": "Hartford Courant",
+        "fecha": "2026-09-06T09:35:09Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Erupción de un volcán en Indonesia obliga a suspender vuelos, clases y actividades pesqueras",
+        "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQODFwd1d6c0xvSHVRTV9jYzVwRUNDRUgwYktKWjZZTGxEWXRrY1lfVWgyclNQVmRrbkdqMm9BR3poMW56V0Q5UDNYbFNVcmVlVDZGOUx2QXRoUkZXV0cyeGF5Y2E4cllJZUVpdnVYdDZubGJ6ZTk0N2NnNmc2U3lfUVpuLTVla2lH?oc=5",
+        "medio": "CNN en Español",
+        "fecha": "2026-09-06T05:35:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Indonesia cancela vuelos en el aeropuerto de Yakarta debido a erupción del volcán Anak Krakatau",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPRVJzYnB5RTNaSUZ3WnhrZlBNdC1GRTU2b1BBMjZhNFd4dTdYWjhPOHREdkVCNXVKOVNKb19QbE9QLURaOEloNDJsOElESWRtU1A0enpXUGZUTk9VUkZILWhmUzhtT2xoWnpoNEFMN0ZKdkZvTmktUVRFMzdtZWlELTFBRGVjdmQyWTZPaDJhUVNxaHNYQkh3dnd0Vk5HcEFHX0NXc09DSFBXQQ?oc=5",
+        "medio": "Greenwich Time",
+        "fecha": "2026-09-06T04:58:09Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      }
+    ],
+    "gdacs:WF:1031526": [
+      {
+        "titulo": "Con El Niño como agravante, incendios forestales se extienden en Colombia, mientras Perú y Bolivia enfrentan nuevos focos",
+        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNTWo1N0dtdWYxRVhPVFpBc1J3bXY2LVN4Q0dUMUZtMW8xNHFRcFd4anhwOGVCVnZnMzBPd1FDeFM3OEJ0bndWd2xQbUUwbHBoTFZGTERCU0xHbGFNVFlCek1zUXU3Nk9DRDJLMURmajNrTlM2TFhQNEFTdUdMWGJGNXpUNE5TMUZtcEttemZWRmY2ODF0dG9lM2JOYkZZLTJDSXB6NHY5VXhGbDNkdlZZSTZCa01HX1U?oc=5",
+        "medio": "Mongabay Latam",
+        "fecha": "2026-08-27T07:00:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Sequías, inundaciones e incendios: así pone en alerta al continente americano el fenómeno El Niño",
+        "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5oZDhVa3ZDS2lub3hPeHdkcXZ1a3ktVU1GRWdfMXBGeXpJRTk3QTNmU2x2MG9DNEZqNmFldXVsSnYwVDhNcUZ5WEtVUThQSkZINkRkQ2RrX2I3OFE?oc=5",
+        "medio": "TRT Español",
+        "fecha": "2026-08-26T20:08:01Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Incendio forestal en Texas se expande en cuestión de horas; arrasa con ranchos",
+        "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPQ005WktZYVJOckpRYm1scGE2YXFBUUZvM3g3VzJPeG5hd1Nmd3VPVENJSDdta1RyQ21aMWl6ZFIzN0JWMm9LbURLRXBsM3lzLUwxS25JNDZ4azJIS280U3pRZFZNcXZ4c2hiR2h6cWtWX29FN242THN4blpTM0Jiel83TjhCcUVEVUx6Rmln?oc=5",
+        "medio": "es-us.noticias.yahoo.com",
+        "fecha": "2026-08-25T07:00:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Nevada ordena evacuar a 90 mil personas mientras crece incendio forestal",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNTDRsMHNoMUhsMjNVb1k4YmFGZDF1MXB1TWM1OVJHSVAtUjhsUmgtTzI2WGdCTGw3WHgtbHBiemdlMF8tSmdCMWhIYjJ6bzRCM2Z3SGpRWm5Jdk5SYjhpZ3I1NHJ4ZGUtNzlFMXVYdmsyUnhOMDVQZjhWZ2d0dXFMdTQtTVRWTmFRVm1uOE95RjdUMDNrRms1ZnBRTdIBoAFBVV95cUxQdW9ZNThESjNzcFhkeURUajIxMkgtby10MUhJYnB3bFZoN2M1NlVuaHdLbFZiaExxNFdWalFSb2lVUHVxWHZCMnlBeWNWQ1NsM1BDbTYtS3FaMkdmcW5fcUNDVktGYkNPZlZYc2NNZnJpTjFKbi1tc09IaGxxUDAyekR3Uk4zbXNkYUJXckNVSm55ZXF5WnpqUTI4ckZ4VW13?oc=5",
+        "medio": "Pulso Diario San Luis",
+        "fecha": "2026-08-24T23:11:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "California enfrenta dilema sobre quién debe pagar por daños tras incendios",
+        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOUTN5aHJYSGJjLWFwOERCSTE4UnpSTnNSbGVRd2NadS13YXhkN0xpR19IaU9wUHY0N0hPUkdfc0FzRXdUYTNKbHVURXJqUmhFOWxSME1kSWx5Zy03YndLNEhiQVN5NllrY1BDZC1STTd5SkN6LUdYRThKYzdDM01TaUlfYnhfbS1RVWRsZWtGOS1RQS1BeEE?oc=5",
+        "medio": "es-us.noticias.yahoo.com",
+        "fecha": "2026-08-24T07:00:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Incendio forestal en Nevada obliga al traslado de personas",
+        "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNU19vX3Nia2RVOFptMHVDSWJocWZBR3RTR3pUUXBUVkNkZmVtdU4wZUNBc0U0aDF0SDl0anBINzUwT3RsTVV3YVRTazRJb0Y1bk5Fcy1jNWRIOVpvWjBKYXB1a2ppb3VKZkZXaERDLXhTUkk4eC1XMzJVT2lMei1UeDZvRDNQWFoxeTJ6cEw5VGxiRlg3Z085ZGtsdkZjZVFldHdNQw?oc=5",
+        "medio": "El Diario - Bolivia",
+        "fecha": "2026-08-24T07:00:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      }
+    ],
+    "gdacs:WF:1031551": [
+      {
+        "titulo": "Crisis de incendios forestales en Bolivia 2026",
+        "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQdGhpTE94VlU1SnV0eDZnc3Z2Y0tfbVhFdFJkQmlQNWU4bFpGYjhPdFZUaXlyYkdCSFAtdm9HU1JyV1hPLXZUeXhzQXlGYlpvMlRHTDZzMHh1STk2cFNKYmNxcldsemM3aFF0Y09jSmRRTWVfZEwzRzJaWVdsWXJLTndUMnhpcTNOUnc?oc=5",
+        "medio": "La Patria Bolivia",
+        "fecha": "2026-09-06T22:33:50Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Una doble explosión en un cuartel militar de Bolivia deja al menos 3 muertos y 81 heridos",
+        "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE05bjhUVGNYUURzeU00VjVURlYzMFVMMFFHLTA2U1A2b0tEVWxFanNyamVvX0xOeGJrVnkwQThZT1RBeHpuQzdKNmM4aEZCTXNqOWU0TVVRQUZjYTDSAWBBVV95cUxNTkpzZVRRZm1Mak9TbjJpVUxoakV0UEJkWXNYTVVnT0tpU29yTFhPZ09tTXA3bDZOeTFKYUNDUmE1aTJmU0hDck9sSVNEVUZONnBUZ0p3QUF4X3VQWDcxaGU?oc=5",
+        "medio": "BBC",
+        "fecha": "2026-09-06T08:54:31Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Doble emergencia en Colombia: incendios arden en 8 departamentos en medio de tragedia por terremoto",
+        "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBiR2hOckpLUTBOZ2hVZ25YRVJiUG5hOUxzaDViZURNQVlnRjNoWEVLVmpmbzF6M1dBSjFyMUxuX3NWVjQ1WFRWZXRHUUd3clE1QVJsMXFpZUxfTjg?oc=5",
+        "medio": "TRT Español",
+        "fecha": "2026-09-05T11:43:22Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Bolivia: 2 muertos y 81 heridos tras explosiones en cuartel",
+        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNLWJ5akxidFJfbjRHWkJpNmpQUm9iSnpYZjdDampKVTExQml2TENZVWRiWTZKeDN1dU42NnB6TUZYVmdwNlNWbVVpeTVPMnhELVBySDlMZ18wTVRrQW1fYldCb1lRT1h4QVlIZ1NndzExMG9jVDQ0V3c4SlUzbzMyNHhwblI5NFQ4ckdBR29TOU5nUnlNMHfSAZYBQVVfeXFMTkFyaHJYRFlySlhzTlhReHZZeXlUamVjaGxQYnZaZVlBXzQzYUF1OUdLNl9VUS1JUjJrSEV5aV9HTFVqLU9naDdBcjU0Mm9CcGhmSEcyaUlwMmV0ZHAzcVpjVzZPcFZtOEtqOVZDSjBxUjlNRDNMUTdiVW90VU5NVjRHNHZQbFF4VmU5Ym1KNmxKTTRyamJ3?oc=5",
+        "medio": "DW.com",
+        "fecha": "2026-09-05T04:56:41Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Incendio forestal azota la zona de Arocagua y Bellavista en Sacaba y amenaza el Parque Nacional Tunari",
+        "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOM3dFZ2pxUGZqN2Vtd1pfbExtaEt4ZFptX1VVQURvVllYY3lxXzBWQ1h4a1FXVVZVY3p1eVVqVlh4ZGx0ZVo4emR6QklEdFNuajAySy1lYzdvYy1UZVhCTWx0a1JGU3N6RjRWYm1ralZUcUFWWFJrczlGQ1RUNkFWbEtzdEFmNzRrcTRDQlZ0TjBBVFhnLWFwM0V1MUxsSmJld0dzZkduZmZCZ2JMcGx4RzB0ZUZFbWR4RnRqcDVxcWlBdG1UZ1VLZG96Z2VzaXpGekdyX1Y1NVdFOGZjTlZyaElZb1pwdw?oc=5",
+        "medio": "reduno.com.bo",
+        "fecha": "2026-09-01T01:14:27Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Lo más leído | Alarmante contaminación por mercurio, incendios se extienden en Latinoamérica, tráfico ilegal de especies y crimen organizado en Galápagos",
+        "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPVk9heFUzbk03QWFWeWVtMU9nY1UwZUpITVhWR1dyNnk3RmNDczlya2JIN2c5dzFoZlpGRFlYSDU4U3pfZDhpa0hKUU15eVVDdDgydEV0Wlh2V0NKUUN2UzR2R1ZGbDdYaFNyNzBsaEFybVRVdDFiU0xqUXloUnpZVXZiNFpMZldBM2hHYW1kTWQ3LTZlVEktdDBQZTdlaEVNc1lZNGlnREJManh5Vi1LUkZLR1VkQXdCTm9hTUQyZEhxOWhZcmFieXlqcGg1SkxLUm1sb3dIc1Q?oc=5",
+        "medio": "Mongabay Latam",
+        "fecha": "2026-08-30T15:10:38Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      }
+    ],
+    "gdacs:WF:1031583": [
+      {
+        "titulo": "Bolivia: 2 muertos y 81 heridos tras explosiones en cuartel",
+        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOQXJoclhEWXJKWHNOWFF4dll5eVRqZWNobFBidlplWUFfNDNhQXU5R0s2X1VRLUlSMmtIRXlpX0dMVWotT2doN0FyNTQyb0JwaGZIRzJpSXAyZXRkcDNxWmNXNk9wVm04S2o5VkNKMHFSOU1EM0xRN2JVb3RVTk1WNEc0dlBsUXhWZTlibUo2bEpNNHJqYnfSAZYBQVVfeXFMTkFyaHJYRFlySlhzTlhReHZZeXlUamVjaGxQYnZaZVlBXzQzYUF1OUdLNl9VUS1JUjJrSEV5aV9HTFVqLU9naDdBcjU0Mm9CcGhmSEcyaUlwMmV0ZHAzcVpjVzZPcFZtOEtqOVZDSjBxUjlNRDNMUTdiVW90VU5NVjRHNHZQbFF4VmU5Ym1KNmxKTTRyamJ3?oc=5",
+        "medio": "DW.com",
+        "fecha": "2026-09-05T05:01:58Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Detonación accidental de material pirotécnico deja más de 50 heridos en un cuartel de Bolivia",
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQellQWFloRVFJeGJIX2J3Q3ltTE5DTjZQSV9jYzJRaFRXQWlZZWR2Uk1IenA3RGY1ODdKbVlteVF5aGtSNi1MQS02eFVlTmV6eU1FWHZWcHZkZjAyMFJOdHlTVldETVlFNlU0QXlCQ0RLZTM2T0w5WDZyLTlvZU1ocVhYUlhxMWZRdUdKLU9YUGRGWTlTMFd2ZEpvTHNQeDlJM1Bodzlmdk0?oc=5",
+        "medio": "es-us.noticias.yahoo.com",
+        "fecha": "2026-09-05T00:50:16Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Incendio forestal en Challapata arrasa 200 hectáreas de serranía",
+        "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNRk9FYk5JaHVHTEF6aU5lakE3dGJlY1V0V2xsT2FvOHkzOGNQVFJzZGVoNHJLcHFrck5lZFNlY1J1ekpwTWFsdTR1d1VjQ1poSjJNYlhYbWxRVEI5QjFBSURselVZYmdIaVg3N0p4Y3gwYkNlZzBJWHMtR09pWThvaVhMS2xjUmhUQ0d0OE4zNEpjWDBoeVE0OUFKNnlGQzMtdTE4?oc=5",
+        "medio": "La Patria Bolivia",
+        "fecha": "2026-09-03T07:00:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Fuegos artificiales provocan un terrible incendio en un departamento de París",
+        "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQdFFGbFh4eVJ2RF9WLUNmSEdTcFAzNkFQT1BvWDJSYlBjUkgwSTE1MElmQWFnZi1OcUlpbzA5amRqMTF4X0dfTWR5bjdQWnhBMV9KaXVYTGRXWnRaX3l3TXZJMGFiWXlHX1I5QktCTTVTMjZqUGFvNmJPZ3c3Q1kya2dhUDlUZ1AxZnZFZjliR2UzRHZUU1FOQkY3ZFdMU3BjTmNoeERRZjRKMjBCb2J2R0hPRVo0Zm05RW5rbEtkbGgtNTJjYXdlVHhOYkhlX2JXNW96b3EwaWhOQm5JLVhZZmFWWVN1YWJ6a0RF?oc=5",
+        "medio": "Telemundo",
+        "fecha": "2026-09-02T04:32:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Incendio forestal azota la zona de Arocagua y Bellavista en Sacaba y amenaza el Parque Nacional Tunari",
+        "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOM3dFZ2pxUGZqN2Vtd1pfbExtaEt4ZFptX1VVQURvVllYY3lxXzBWQ1h4a1FXVVZVY3p1eVVqVlh4ZGx0ZVo4emR6QklEdFNuajAySy1lYzdvYy1UZVhCTWx0a1JGU3N6RjRWYm1ralZUcUFWWFJrczlGQ1RUNkFWbEtzdEFmNzRrcTRDQlZ0TjBBVFhnLWFwM0V1MUxsSmJld0dzZkduZmZCZ2JMcGx4RzB0ZUZFbWR4RnRqcDVxcWlBdG1UZ1VLZG96Z2VzaXpGekdyX1Y1NVdFOGZjTlZyaElZb1pwdw?oc=5",
+        "medio": "reduno.com.bo",
+        "fecha": "2026-09-01T01:14:27Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Bolivia: declaran emergencia por sequía extrema y pronostican incendios en la Amazonía",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNNk4ybEZRZ2tVVGFvamJqbDJDRklQOEp1clNSNUlXWUJqUUU0XzdoUnFPNDMtcFFBMDNFM1hjUmRLRVNiMUJUTEFMU2FUS3hBUjN3dzhYM1BwTEx1TUhpVDdmNHdSMFRhMHpzQXlaT3RZUG1DR1VPNUIzNmk3ZE9abFpDbVFfR2ZEcEk2NTl4d01KR3o1SU1haDgyVnlIWkdYVzdzcVhfbWxmUQ?oc=5",
+        "medio": "Mongabay Latam",
+        "fecha": "2026-08-28T07:00:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      }
+    ],
+    "gdacs:WF:1031682": [
+      {
+        "titulo": "Crisis de incendios forestales en Bolivia 2026",
+        "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQdGhpTE94VlU1SnV0eDZnc3Z2Y0tfbVhFdFJkQmlQNWU4bFpGYjhPdFZUaXlyYkdCSFAtdm9HU1JyV1hPLXZUeXhzQXlGYlpvMlRHTDZzMHh1STk2cFNKYmNxcldsemM3aFF0Y09jSmRRTWVfZEwzRzJaWVdsWXJLTndUMnhpcTNOUnc?oc=5",
+        "medio": "La Patria Bolivia",
+        "fecha": "2026-09-06T22:33:50Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Una doble explosión en un cuartel militar de Bolivia deja al menos 3 muertos y 81 heridos",
+        "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE05bjhUVGNYUURzeU00VjVURlYzMFVMMFFHLTA2U1A2b0tEVWxFanNyamVvX0xOeGJrVnkwQThZT1RBeHpuQzdKNmM4aEZCTXNqOWU0TVVRQUZjYTDSAWBBVV95cUxNTkpzZVRRZm1Mak9TbjJpVUxoakV0UEJkWXNYTVVnT0tpU29yTFhPZ09tTXA3bDZOeTFKYUNDUmE1aTJmU0hDck9sSVNEVUZONnBUZ0p3QUF4X3VQWDcxaGU?oc=5",
+        "medio": "BBC",
+        "fecha": "2026-09-06T08:54:31Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Doble emergencia en Colombia: incendios arden en 8 departamentos en medio de tragedia por terremoto",
+        "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBiR2hOckpLUTBOZ2hVZ25YRVJiUG5hOUxzaDViZURNQVlnRjNoWEVLVmpmbzF6M1dBSjFyMUxuX3NWVjQ1WFRWZXRHUUd3clE1QVJsMXFpZUxfTjg?oc=5",
+        "medio": "TRT Español",
+        "fecha": "2026-09-05T11:43:22Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Bolivia: 2 muertos y 81 heridos tras explosiones en cuartel",
+        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNLWJ5akxidFJfbjRHWkJpNmpQUm9iSnpYZjdDampKVTExQml2TENZVWRiWTZKeDN1dU42NnB6TUZYVmdwNlNWbVVpeTVPMnhELVBySDlMZ18wTVRrQW1fYldCb1lRT1h4QVlIZ1NndzExMG9jVDQ0V3c4SlUzbzMyNHhwblI5NFQ4ckdBR29TOU5nUnlNMHfSAZYBQVVfeXFMTkFyaHJYRFlySlhzTlhReHZZeXlUamVjaGxQYnZaZVlBXzQzYUF1OUdLNl9VUS1JUjJrSEV5aV9HTFVqLU9naDdBcjU0Mm9CcGhmSEcyaUlwMmV0ZHAzcVpjVzZPcFZtOEtqOVZDSjBxUjlNRDNMUTdiVW90VU5NVjRHNHZQbFF4VmU5Ym1KNmxKTTRyamJ3?oc=5",
+        "medio": "DW.com",
+        "fecha": "2026-09-05T04:56:41Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Incendio forestal azota la zona de Arocagua y Bellavista en Sacaba y amenaza el Parque Nacional Tunari",
+        "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOM3dFZ2pxUGZqN2Vtd1pfbExtaEt4ZFptX1VVQURvVllYY3lxXzBWQ1h4a1FXVVZVY3p1eVVqVlh4ZGx0ZVo4emR6QklEdFNuajAySy1lYzdvYy1UZVhCTWx0a1JGU3N6RjRWYm1ralZUcUFWWFJrczlGQ1RUNkFWbEtzdEFmNzRrcTRDQlZ0TjBBVFhnLWFwM0V1MUxsSmJld0dzZkduZmZCZ2JMcGx4RzB0ZUZFbWR4RnRqcDVxcWlBdG1UZ1VLZG96Z2VzaXpGekdyX1Y1NVdFOGZjTlZyaElZb1pwdw?oc=5",
+        "medio": "reduno.com.bo",
+        "fecha": "2026-09-01T01:14:27Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Lo más leído | Alarmante contaminación por mercurio, incendios se extienden en Latinoamérica, tráfico ilegal de especies y crimen organizado en Galápagos",
+        "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPVk9heFUzbk03QWFWeWVtMU9nY1UwZUpITVhWR1dyNnk3RmNDczlya2JIN2c5dzFoZlpGRFlYSDU4U3pfZDhpa0hKUU15eVVDdDgydEV0Wlh2V0NKUUN2UzR2R1ZGbDdYaFNyNzBsaEFybVRVdDFiU0xqUXloUnpZVXZiNFpMZldBM2hHYW1kTWQ3LTZlVEktdDBQZTdlaEVNc1lZNGlnREJManh5Vi1LUkZLR1VkQXdCTm9hTUQyZEhxOWhZcmFieXlqcGg1SkxLUm1sb3dIc1Q?oc=5",
+        "medio": "Mongabay Latam",
+        "fecha": "2026-08-30T15:10:38Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      }
+    ]
+  }
+}
