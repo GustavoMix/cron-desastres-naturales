@@ -1,3 +1,4 @@
+import json
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
@@ -98,6 +99,30 @@ def test_una_respuesta_que_no_es_json_es_cero_noticias_no_un_error():
     assert BuscadorGDELT().parsear(b"Your query was too short.", 5) == []
 
 
+def test_gdelt_descarta_links_de_redes_sociales():
+    """"Qué dijeron los medios" es prensa, no un post de Facebook."""
+    crudo = json.dumps(
+        {
+            "articles": [
+                {
+                    "url": "https://www.facebook.com/BomberosBolivia/posts/123",
+                    "title": "Un post cualquiera",
+                    "domain": "facebook.com",
+                },
+                {
+                    "url": "https://www.bbc.com/mundo/sismo",
+                    "title": "Terremoto sacude La Paz",
+                    "domain": "bbc.com",
+                },
+            ]
+        }
+    ).encode()
+
+    encontradas = BuscadorGDELT().parsear(crudo, 10)
+
+    assert [n.medio for n in encontradas] == ["bbc.com"]
+
+
 def test_la_url_de_gdelt_acota_la_ventana_al_evento():
     """Sin ventana, "terremoto Chile" trae notas de todos los sismos de la década."""
     url = BuscadorGDELT().url(hacer_evento(), AHORA, 5)
@@ -142,6 +167,30 @@ def test_una_fecha_ilegible_no_descarta_la_nota(google_crudo):
 
 def test_una_respuesta_que_no_es_xml_es_cero_noticias():
     assert BuscadorGoogle().parsear(b"<<< roto", 5) == []
+
+
+def test_google_descarta_por_el_dominio_real_no_por_el_redirect():
+    """El <link> de Google Noticias siempre es news.google.com; el medio real
+    (y si es red social) sale del atributo `url` de <source>."""
+    crudo = b"""<?xml version="1.0" encoding="UTF-8"?>
+    <rss version="2.0"><channel>
+      <item>
+        <title>Un post cualquiera - Facebook</title>
+        <link>https://news.google.com/rss/articles/FBREDIRECT</link>
+        <pubDate>Thu, 06 Aug 2026 01:15:00 GMT</pubDate>
+        <source url="https://www.facebook.com/BomberosBolivia">Facebook</source>
+      </item>
+      <item>
+        <title>Terremoto sacude La Paz - BBC News Mundo</title>
+        <link>https://news.google.com/rss/articles/BBCREDIRECT</link>
+        <pubDate>Thu, 06 Aug 2026 01:15:00 GMT</pubDate>
+        <source url="https://www.bbc.com/mundo">BBC News Mundo</source>
+      </item>
+    </channel></rss>"""
+
+    encontradas = BuscadorGoogle().parsear(crudo, 10)
+
+    assert [n.medio for n in encontradas] == ["BBC News Mundo"]
 
 
 def test_la_url_de_google_pide_prensa_en_espaniol_de_la_region():

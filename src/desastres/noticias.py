@@ -81,6 +81,24 @@ PRESUPUESTO_POR_DEFECTO = 120.0
 # Dominios cuyas "noticias" son en realidad video.
 DOMINIOS_VIDEO = ("youtube.com", "youtu.be", "vimeo.com", "dailymotion.com", "rumble.com")
 
+# Redes sociales: no son prensa. Un post de Facebook o una publicación de X no
+# tiene editor ni cobertura periodística detrás, y mostrarlo en "qué dijeron
+# los medios" como si fuera una nota de un diario confunde a quien lee. GDELT y
+# Google Noticias indexan la prensa mundial de por sí (agencias, diarios
+# locales, BBC, Reuters, AP, etc. entran solos según el evento) y ocasionalmente
+# devuelven un link de red social porque ahí se republicó algo; se descarta
+# igual que una nota sin título o sin URL.
+DOMINIOS_RED_SOCIAL = (
+    "facebook.com",
+    "fb.watch",
+    "instagram.com",
+    "twitter.com",
+    "x.com",
+    "tiktok.com",
+    "threads.net",
+    "reddit.com",
+)
+
 
 @dataclass
 class Noticia:
@@ -164,6 +182,11 @@ def es_video(url: str) -> bool:
     return any(dominio == d or dominio.endswith("." + d) for d in DOMINIOS_VIDEO)
 
 
+def es_red_social(url: str) -> bool:
+    dominio = urlparse(url).netloc.lower()
+    return any(dominio == d or dominio.endswith("." + d) for d in DOMINIOS_RED_SOCIAL)
+
+
 # --------------------------------------------------------------------- GDELT
 
 
@@ -199,7 +222,7 @@ class BuscadorGDELT:
                 continue
             url = str(entrada.get("url") or "").strip()
             titulo = str(entrada.get("title") or "").strip()
-            if not url or not titulo:
+            if not url or not titulo or es_red_social(url):
                 continue
             noticias.append(
                 Noticia(
@@ -263,6 +286,12 @@ class BuscadorGoogleNoticias:
             if not url or not titulo:
                 continue
             medio = _texto(item, "source")
+            # El <link> de Google Noticias es siempre un redirect a
+            # news.google.com, no la nota real: para saber si el medio de
+            # origen es una red social hay que mirar el dominio que trae el
+            # atributo `url` de <source>, no el link.
+            if es_red_social(_dominio_fuente(item)):
+                continue
             noticias.append(
                 Noticia(
                     # Google le pega " - Diario X" al título. Con el medio ya en
@@ -284,6 +313,14 @@ def _texto(elemento: ElementTree.Element, etiqueta: str) -> str:
     if hijo is None or hijo.text is None:
         return ""
     return hijo.text.strip()
+
+
+def _dominio_fuente(item: ElementTree.Element) -> str:
+    """URL del medio real detrás de un <item>, no el redirect de Google."""
+    fuente = item.find("source")
+    if fuente is None:
+        return ""
+    return (fuente.get("url") or "").strip()
 
 
 def _sin_sufijo_de_medio(titulo: str, medio: str) -> str:
