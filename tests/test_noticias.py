@@ -343,6 +343,92 @@ def test_ordena_espaniol_primero_y_despues_con_foto():
     assert [n.titulo for n in ordenadas] == ["C", "B", "A"]
 
 
+# ------------------------------------------------------------- og:image
+
+
+def test_og_imagen_parsea_ambos_ordenes_de_atributos(monkeypatch):
+    directo = b'<meta property="og:image" content="https://medio.com/a.jpg">'
+    invertido = b'<meta content="https://medio.com/b.jpg" property="og:image">'
+
+    monkeypatch.setattr(noticias, "descargar", lambda url, **kw: directo)
+    assert noticias._og_imagen("https://medio.com/nota", timeout=1) == "https://medio.com/a.jpg"
+
+    monkeypatch.setattr(noticias, "descargar", lambda url, **kw: invertido)
+    assert noticias._og_imagen("https://medio.com/nota", timeout=1) == "https://medio.com/b.jpg"
+
+
+def test_og_imagen_sin_etiqueta_es_cadena_vacia(monkeypatch):
+    monkeypatch.setattr(noticias, "descargar", lambda url, **kw: b"<html>sin nada</html>")
+    assert noticias._og_imagen("https://medio.com/nota", timeout=1) == ""
+
+
+def test_og_imagen_si_la_descarga_falla_no_revienta(monkeypatch):
+    def descargar_roto(url, **kwargs):
+        raise RuntimeError("caído")
+
+    monkeypatch.setattr(noticias, "descargar", descargar_roto)
+    assert noticias._og_imagen("https://medio.com/nota", timeout=1) == ""
+
+
+def test_con_imagen_de_respaldo_completa_la_nota_principal_sin_foto(monkeypatch):
+    sin_foto = noticias.Noticia("T", "https://medio.com/nota", "medio")
+    monkeypatch.setattr(noticias, "_og_imagen", lambda url, **kw: "https://medio.com/foto.jpg")
+
+    resultado = noticias._con_imagen_de_respaldo([sin_foto], timeout=1)
+
+    assert resultado[0].imagen == "https://medio.com/foto.jpg"
+
+
+def test_con_imagen_de_respaldo_no_toca_una_nota_que_ya_tiene_foto(monkeypatch):
+    con_foto = noticias.Noticia("T", "https://medio.com/nota", "medio", imagen="ya-tenia.jpg")
+    llamadas = []
+    monkeypatch.setattr(
+        noticias, "_og_imagen", lambda url, **kw: llamadas.append(url) or "otra.jpg"
+    )
+
+    resultado = noticias._con_imagen_de_respaldo([con_foto], timeout=1)
+
+    assert resultado[0].imagen == "ya-tenia.jpg"
+    assert llamadas == []
+
+
+def test_con_imagen_de_respaldo_solo_prueba_la_primera_nota(monkeypatch):
+    """No vale la pena pedir la foto de las 6 notas de un evento, solo la mejor."""
+    primera = noticias.Noticia("T", "https://a.com", "a")
+    segunda = noticias.Noticia("U", "https://b.com", "b")
+    llamadas = []
+    monkeypatch.setattr(
+        noticias, "_og_imagen", lambda url, **kw: llamadas.append(url) or "foto.jpg"
+    )
+
+    noticias._con_imagen_de_respaldo([primera, segunda], timeout=1)
+
+    assert llamadas == ["https://a.com"]
+
+
+def test_con_imagen_de_respaldo_sin_resultado_deja_la_nota_igual(monkeypatch):
+    sin_foto = noticias.Noticia("T", "https://medio.com/nota", "medio")
+    monkeypatch.setattr(noticias, "_og_imagen", lambda url, **kw: "")
+
+    resultado = noticias._con_imagen_de_respaldo([sin_foto], timeout=1)
+
+    assert resultado[0].imagen == ""
+
+
+def test_recolectar_completa_la_foto_de_respaldo(monkeypatch):
+    monkeypatch.setattr(
+        noticias, "buscar_para", lambda ev, **kw: [noticias.Noticia("T", "https://a.com", "a")]
+    )
+    monkeypatch.setattr(noticias, "_og_imagen", lambda url, **kw: "https://a.com/foto.jpg")
+
+    resultado = noticias.recolectar(
+        [hacer_evento()], ahora=AHORA, timeout=1, reintentos=1, maximo_eventos=5, espera=0
+    )
+
+    notas = next(iter(resultado.por_evento.values()))
+    assert notas[0].imagen == "https://a.com/foto.jpg"
+
+
 def test_recolectar_agrupa_por_id_agrupado_no_por_id(monkeypatch):
     """Un ciclón de GDACS se republica por episodios; si no, las notas se parten."""
     evento = hacer_evento(id="gdacs:TC:1:14", id_agrupado="gdacs:TC:1", tipo="ciclon")
@@ -423,7 +509,9 @@ def test_un_evento_sin_noticias_no_ocupa_lugar_en_el_archivo(monkeypatch):
     assert resultado.con_noticias == 0
 
 
-def test_el_documento_sale_ordenado_y_con_metadatos():
+def test_el_documento_respeta_el_orden_de_relevancia_no_alfabetico():
+    """`por_evento` ya viene ordenado por elegir_para_noticias (relevancia);
+    reordenar acá por clave tiraría esa prioridad a la basura."""
     resultado = noticias.ResultadoNoticias(
         por_evento={
             "b": [noticias.Noticia("T", "https://b", "b")],
@@ -433,7 +521,7 @@ def test_el_documento_sale_ordenado_y_con_metadatos():
 
     documento = noticias.documento(resultado, AHORA)
 
-    assert list(documento["noticias"]) == ["a", "b"]
+    assert list(documento["noticias"]) == ["b", "a"]
     assert documento["eventos_con_noticias"] == 2
     assert documento["generado"] == "2026-08-10T12:00:00Z"
 

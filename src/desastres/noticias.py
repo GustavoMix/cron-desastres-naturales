@@ -31,8 +31,9 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import time
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, replace
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from urllib.parse import quote_plus, urlparse
@@ -76,7 +77,12 @@ ESPERA_ENTRE_CONSULTAS = 1.0
 # empezó a devolver timeouts y 429 en cadena; sin este tope, cada evento fallido
 # reintentaba contra los dos buscadores hasta agotar el timeout del job entero
 # (10 min) antes de llegar a comitear los datos ya scrapeados esa corrida.
-PRESUPUESTO_POR_DEFECTO = 120.0
+PRESUPUESTO_POR_DEFECTO = 150.0
+
+# Timeout corto para el pedido extra de la foto de respaldo (ver
+# `_con_imagen_de_respaldo`): es un enriquecimiento sobre un enriquecimiento,
+# no vale la pena dejar que se coma una porción grande del presupuesto.
+TIMEOUT_IMAGEN_RESPALDO = 8.0
 
 # Dominios cuyas "noticias" son en realidad video.
 DOMINIOS_VIDEO = ("youtube.com", "youtu.be", "vimeo.com", "dailymotion.com", "rumble.com")
@@ -432,6 +438,52 @@ def _ordenar(noticias: list[Noticia]) -> list[Noticia]:
     )
 
 
+_OG_IMAGE = re.compile(
+    r"""<meta[^>]+(?:property|name)=["']og:image["'][^>]+content=["']([^"']+)["']"""
+    r"""|<meta[^>]+content=["']([^"']+)["'][^>]+(?:property|name)=["']og:image["']""",
+    re.IGNORECASE,
+)
+
+
+def _og_imagen(url: str, *, timeout: float) -> str:
+    """La foto de portada de la página real, sacada de su etiqueta og:image.
+
+    Google Noticias no manda imagen en el RSS (a diferencia de GDELT), así que
+    sin esto una nota de Google nunca tiene foto aunque el artículo sí tenga
+    una. Es la única forma de conseguirla sin una API de pago: pedir la página
+    y leer la misma etiqueta que usan Facebook/Twitter para armar la vista
+    previa del link.
+    """
+    try:
+        crudo = descargar(url, timeout=timeout, reintentos=1)
+    except Exception as error:  # noqa: BLE001 - una foto de más no vale una falla
+        log.debug("no se pudo pedir %s para la foto de respaldo: %s", url, error)
+        return ""
+
+    html = crudo.decode("utf-8", errors="ignore")
+    coincidencia = _OG_IMAGE.search(html)
+    if not coincidencia:
+        return ""
+    return (coincidencia.group(1) or coincidencia.group(2) or "").strip()
+
+
+def _con_imagen_de_respaldo(notas: list[Noticia], *, timeout: float) -> list[Noticia]:
+    """Si la nota principal no trae foto, se intenta sacar la og:image de su
+    página real.
+
+    Solo se prueba con la primera nota —la que `_ordenar` ya eligió como
+    mejor, no las 6— para no multiplicar los pedidos de red por evento: es un
+    enriquecimiento sobre un enriquecimiento, y el presupuesto de tiempo ya es
+    ajustado de por sí.
+    """
+    if not notas or notas[0].imagen:
+        return notas
+    imagen = _og_imagen(notas[0].url, timeout=timeout)
+    if not imagen:
+        return notas
+    return [replace(notas[0], imagen=imagen), *notas[1:]]
+
+
 def recolectar(
     eventos: list[Evento],
     *,
@@ -443,6 +495,7 @@ def recolectar(
     maximo_por_evento: int = MAXIMO_POR_EVENTO,
     espera: float = ESPERA_ENTRE_CONSULTAS,
     presupuesto: float | None = PRESUPUESTO_POR_DEFECTO,
+    timeout_imagen_respaldo: float = TIMEOUT_IMAGEN_RESPALDO,
     dormir=time.sleep,
     reloj=time.monotonic,
     buscadores=BUSCADORES,
@@ -489,18 +542,26 @@ def recolectar(
         if not encontradas:
             continue
         resultado.con_noticias += 1
-        resultado.por_evento[evento.id_agrupado] = encontradas
+        resultado.por_evento[evento.id_agrupado] = _con_imagen_de_respaldo(
+            encontradas, timeout=timeout_imagen_respaldo
+        )
 
     return resultado
 
 
 def documento(resultado: ResultadoNoticias, generado: datetime) -> dict:
+    # El orden de las claves importa: `resultado.por_evento` ya viene en el
+    # orden de `elegir_para_noticias` (país prioritario, luego gravedad, luego
+    # lo más reciente), y la app muestra "Noticias" respetando ese orden. Antes
+    # se reordenaba alfabéticamente acá, que tiraba la relevancia a la basura
+    # sin ninguna ganancia real (el resto del documento cambia igual entre
+    # corridas, así que no evitaba diffs).
     return {
         "version": 1,
         "generado": a_iso(generado),
         "eventos_con_noticias": len(resultado.por_evento),
         "noticias": {
             clave: [noticia.como_dict() for noticia in noticias]
-            for clave, noticias in sorted(resultado.por_evento.items())
+            for clave, noticias in resultado.por_evento.items()
         },
     }
