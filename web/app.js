@@ -8,18 +8,21 @@
 
 const RUTA_DATOS = "datos/recientes.json";
 
-/* Umbrales de frescura, atados a la cadencia del cron (semanal, lunes 06:17
- * UTC). Si se cambia el schedule en .github/workflows/scraper.yml, hay que
- * mover estos números o la página va a mentir: con umbrales de horas sobre un
- * cron semanal, el aviso estaría encendido siempre y la gente aprendería a
- * ignorarlo — que es peor que no tenerlo. Se deja un margen de un día sobre el
- * intervalo para no gritar por una corrida apenas demorada. */
-const HORAS_VIEJO = 8 * 24;
-const HORAS_CRITICO = 15 * 24;
+/* Umbrales de frescura, atados a la cadencia del cron (cada 2 horas). Si se
+ * cambia el schedule en .github/workflows/scraper.yml, hay que mover estos
+ * números o la página va a mentir en alguno de los dos sentidos: umbrales de
+ * horas sobre un cron semanal dejan el aviso encendido siempre y la gente
+ * aprende a ignorarlo; umbrales de días sobre un cron de dos horas no avisan
+ * nunca, y el scraper puede estar caído dos días sin que nadie se entere.
+ * Se deja un margen holgado sobre el intervalo para no gritar por un par de
+ * corridas demoradas, que en Actions pasa seguido. */
+const HORAS_VIEJO = 12;
+const HORAS_CRITICO = 48;
 
-// Ventana del tile de actividad reciente. También sigue a la cadencia: contar
-// "últimas 24 h" sobre datos semanales daría 0 casi siempre.
-const HORAS_VENTANA_ACTIVIDAD = 7 * 24;
+// Ventana del tile de actividad reciente. Con datos que se refrescan cada dos
+// horas, 24 h ya es una ventana con contenido y se lee mucho más natural que
+// "en los últimos 7 días".
+const HORAS_VENTANA_ACTIVIDAD = 24;
 
 const TIPOS = [
   { clave: "sismo", etiqueta: "Sismo", icono: "〰️" },

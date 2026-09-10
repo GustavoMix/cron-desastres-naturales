@@ -22,9 +22,13 @@ ningún medio escribió nunca. Se eligen los que importan (ver
 `elegir_para_noticias`) y el resto queda sin noticias, que es la respuesta
 correcta: no las hay.
 
+Ninguno de los dos buscadores dice si la nota es un video, y mirar el dominio
+solo alcanza para YouTube y Vimeo: los canales de TV publican el video en su
+propio sitio, y son justo los que sirven cuando alguien quiere *ver* qué pasó.
+Por eso, cuando se pide la página del artículo para completar la foto, se leen
+del mismo pedido las etiquetas `og:type` y `og:video` y se marca `es_video`.
+
 Sobre el audio: no existe ninguna fuente pública que publique audio por evento.
-Lo que sí aparece son notas de medios que embeben video, y esas se marcan con
-`es_video` para que la app las pueda mostrar aparte.
 """
 
 from __future__ import annotations
@@ -76,13 +80,26 @@ ESPERA_ENTRE_CONSULTAS = 1.0
 # Tope de tiempo para toda la búsqueda, no por evento. El 2026-08-31 GDELT
 # empezó a devolver timeouts y 429 en cadena; sin este tope, cada evento fallido
 # reintentaba contra los dos buscadores hasta agotar el timeout del job entero
-# (10 min) antes de llegar a comitear los datos ya scrapeados esa corrida.
-PRESUPUESTO_POR_DEFECTO = 150.0
+# antes de llegar a comitear los datos ya scrapeados esa corrida.
+#
+# Estaba en 150s y quedaba demasiado corto: con GDELT lento, cada evento gasta
+# ~20s entre timeouts y reintentos, así que el tope se agotaba en el séptimo y
+# los otros 33 del cupo se quedaban sin consultar (corrida del 2026-09-09:
+# `consultados: 7` de 40). El job tiene 20 minutos; 9 alcanzan para el cupo
+# entero y dejan de sobra para escribir y comitear.
+PRESUPUESTO_POR_DEFECTO = 540.0
 
-# Timeout corto para el pedido extra de la foto de respaldo (ver
-# `_con_imagen_de_respaldo`): es un enriquecimiento sobre un enriquecimiento,
-# no vale la pena dejar que se coma una porción grande del presupuesto.
+# Timeout corto para los pedidos extra de la página del artículo (ver
+# `_enriquecer_desde_la_pagina`): es un enriquecimiento sobre un
+# enriquecimiento, no vale la pena dejar que se coma una porción grande del
+# presupuesto.
 TIMEOUT_IMAGEN_RESPALDO = 8.0
+
+# Cuántas páginas de artículo se piden por evento para completar la foto. Cada
+# una es un pedido de red extra: con 1 sola, un evento con seis notas mostraba
+# una foto y cinco tarjetas de puro texto. Con 3 la pantalla de Noticias se ve
+# como una pantalla de noticias y el costo sigue acotado.
+MAXIMO_PAGINAS_POR_EVENTO = 3
 
 # Dominios cuyas "noticias" son en realidad video.
 DOMINIOS_VIDEO = ("youtube.com", "youtu.be", "vimeo.com", "dailymotion.com", "rumble.com")
@@ -438,50 +455,97 @@ def _ordenar(noticias: list[Noticia]) -> list[Noticia]:
     )
 
 
-_OG_IMAGE = re.compile(
-    r"""<meta[^>]+(?:property|name)=["']og:image["'][^>]+content=["']([^"']+)["']"""
-    r"""|<meta[^>]+content=["']([^"']+)["'][^>]+(?:property|name)=["']og:image["']""",
+_META_OG = re.compile(
+    r"""<meta[^>]+?(?:property|name)=["']og:([a-zA-Z:]+)["'][^>]*?content=["']([^"']*)["']"""
+    r"""|<meta[^>]+?content=["']([^"']*)["'][^>]*?(?:property|name)=["']og:([a-zA-Z:]+)["']""",
     re.IGNORECASE,
 )
 
 
-def _og_imagen(url: str, *, timeout: float) -> str:
-    """La foto de portada de la página real, sacada de su etiqueta og:image.
+@dataclass(frozen=True)
+class DatosDePagina:
+    """Lo que se puede saber de un artículo mirando sus etiquetas Open Graph."""
+
+    imagen: str = ""
+    es_video: bool = False
+
+
+def _leer_og(url: str, *, timeout: float) -> DatosDePagina:
+    """Foto de portada y si la nota es un video, leídos de la página real.
 
     Google Noticias no manda imagen en el RSS (a diferencia de GDELT), así que
     sin esto una nota de Google nunca tiene foto aunque el artículo sí tenga
     una. Es la única forma de conseguirla sin una API de pago: pedir la página
-    y leer la misma etiqueta que usan Facebook/Twitter para armar la vista
+    y leer las mismas etiquetas que usan Facebook/Twitter para armar la vista
     previa del link.
+
+    De paso se mira si el artículo es video, que sale del mismo pedido y sin
+    costo extra. `es_video` por dominio solo detecta YouTube y Vimeo, y así se
+    perdían todas las notas en video de los canales de TV, que publican en su
+    propio sitio y son justo las que a alguien le sirve ver.
     """
     try:
         crudo = descargar(url, timeout=timeout, reintentos=1)
     except Exception as error:  # noqa: BLE001 - una foto de más no vale una falla
         log.debug("no se pudo pedir %s para la foto de respaldo: %s", url, error)
-        return ""
+        return DatosDePagina()
 
     html = crudo.decode("utf-8", errors="ignore")
-    coincidencia = _OG_IMAGE.search(html)
-    if not coincidencia:
-        return ""
-    return (coincidencia.group(1) or coincidencia.group(2) or "").strip()
+    etiquetas: dict[str, str] = {}
+    for coincidencia in _META_OG.finditer(html):
+        clave = (coincidencia.group(1) or coincidencia.group(4) or "").lower()
+        valor = (coincidencia.group(2) or coincidencia.group(3) or "").strip()
+        # La primera gana: si la página repite og:image, la de arriba es la
+        # principal y las de abajo suelen ser el logo o publicidad.
+        if clave and valor and clave not in etiquetas:
+            etiquetas[clave] = valor
+
+    return DatosDePagina(imagen=etiquetas.get("image", ""), es_video=_indica_video(etiquetas))
 
 
-def _con_imagen_de_respaldo(notas: list[Noticia], *, timeout: float) -> list[Noticia]:
-    """Si la nota principal no trae foto, se intenta sacar la og:image de su
-    página real.
+def _indica_video(etiquetas: dict[str, str]) -> bool:
+    """`og:type` de video, o cualquier `og:video*`, es una nota con video."""
+    if etiquetas.get("type", "").lower().startswith("video"):
+        return True
+    return any(clave == "video" or clave.startswith("video:") for clave in etiquetas)
 
-    Solo se prueba con la primera nota —la que `_ordenar` ya eligió como
-    mejor, no las 6— para no multiplicar los pedidos de red por evento: es un
-    enriquecimiento sobre un enriquecimiento, y el presupuesto de tiempo ya es
-    ajustado de por sí.
+
+def _enriquecer_desde_la_pagina(
+    notas: list[Noticia],
+    *,
+    timeout: float,
+    maximo_paginas: int = MAXIMO_PAGINAS_POR_EVENTO,
+    queda_tiempo=None,
+) -> list[Noticia]:
+    """Completa foto —y marca el video— de las notas que llegaron sin imagen.
+
+    Se piden hasta `maximo_paginas` páginas por evento y solo de las notas que
+    no traen foto: la foto es lo único que justifica el pedido, y el dato de
+    video sale de arriba. `queda_tiempo` corta el enriquecimiento cuando el
+    presupuesto global se agotó, para que esto no le robe tiempo a los eventos
+    que todavía no se consultaron.
     """
-    if not notas or notas[0].imagen:
-        return notas
-    imagen = _og_imagen(notas[0].url, timeout=timeout)
-    if not imagen:
-        return notas
-    return [replace(notas[0], imagen=imagen), *notas[1:]]
+    enriquecidas: list[Noticia] = []
+    pedidos = 0
+
+    for nota in notas:
+        sin_presupuesto = queda_tiempo is not None and not queda_tiempo()
+        if nota.imagen or pedidos >= maximo_paginas or sin_presupuesto:
+            enriquecidas.append(nota)
+            continue
+
+        pedidos += 1
+        datos = _leer_og(nota.url, timeout=timeout)
+        enriquecidas.append(
+            replace(
+                nota,
+                imagen=datos.imagen or nota.imagen,
+                # El dominio ya pudo haberla marcado; la página solo suma.
+                es_video=nota.es_video or datos.es_video,
+            )
+        )
+
+    return enriquecidas
 
 
 def recolectar(
@@ -542,8 +606,10 @@ def recolectar(
         if not encontradas:
             continue
         resultado.con_noticias += 1
-        resultado.por_evento[evento.id_agrupado] = _con_imagen_de_respaldo(
-            encontradas, timeout=timeout_imagen_respaldo
+        resultado.por_evento[evento.id_agrupado] = _enriquecer_desde_la_pagina(
+            encontradas,
+            timeout=timeout_imagen_respaldo,
+            queda_tiempo=lambda: presupuesto is None or reloj() - inicio < presupuesto,
         )
 
     return resultado

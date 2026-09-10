@@ -2,15 +2,20 @@ name: Scraper de desastres
 
 on:
   schedule:
-    # Semanal, lunes 06:17 UTC. Minuto y hora no redondos a propósito: los
-    # horarios en punto están congestionados en GitHub Actions y las corridas
-    # programadas se demoran o se saltean.
+    # Cada 2 horas. Minuto no redondo a propósito: los horarios en punto están
+    # congestionados en GitHub Actions y las corridas programadas se demoran o
+    # se saltean.
     #
-    # OJO al cambiar esto: la ventana de los feeds tiene que cubrir el intervalo
-    # entre corridas. USGS usa el feed de 7 días justamente por esta cadencia
-    # (ver fuentes/usgs.py); si se espacia más, hay que pasar a la API de
-    # consulta por rango o se pierden eventos.
-    - cron: "17 6 * * 1"
+    # Antes era semanal, y para una app de alertas eso es demasiado: un sismo
+    # de hoy aparecía recién el lunes siguiente. La ventana de los feeds cubre
+    # 7 días (ver fuentes/usgs.py), así que acortar el intervalo es seguro
+    # —sobra cobertura—; lo que NO se puede es espaciarlo más allá de esa
+    # ventana sin pasar a la API de consulta por rango, o se pierden eventos.
+    #
+    # El costo de correr seguido no es el tiempo de cómputo sino el peso que le
+    # suma al repo cada commit de datos; por eso el histórico completo se
+    # commitea una vez por día y no en cada corrida (ver "Commitear los datos").
+    - cron: "23 */2 * * *"
   workflow_dispatch:
     inputs:
       fuentes:
@@ -33,10 +38,10 @@ concurrency:
 jobs:
   scrapear:
     runs-on: ubuntu-latest
-    # Con el presupuesto propio de la búsqueda de noticias (~2 min, ver
+    # Con el presupuesto propio de la búsqueda de noticias (9 min, ver
     # noticias.PRESUPUESTO_POR_DEFECTO) esto no debería hacer falta, pero
     # queda como red de seguridad ante lo que no se previó.
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - uses: actions/checkout@v4
@@ -83,7 +88,26 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add datos
+          # Lo que lee la app va en toda corrida; el histórico completo, una vez
+          # por día.
+          #
+          # `eventos.json` pesa ~12 MB y se reescribe entero en cada corrida.
+          # Commitearlo doce veces por día le sumaría al repo varios GB al año,
+          # y este repo además se sirve por jsDelivr: cuanto más pesa, más tarda
+          # todo. `recientes.json` (~1 MB) es el único que baja la app, así que
+          # ese sí va siempre.
+          #
+          # No commitear el histórico en cada corrida no pierde nada: la corrida
+          # siguiente arranca del último commiteado y vuelve a pedir la ventana
+          # de 7 días de los feeds, así que todo lo de esos 7 días se
+          # reconstruye solo. Mientras el commit del histórico sea más seguido
+          # que esa ventana —una vez por día lo es de sobra— no hay agujero.
+          git add datos/recientes.json datos/resumen.json
+          git add datos/noticias.json 2>/dev/null || true
+          if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ] || [ "$(date -u +%H)" = "06" ]; then
+            echo "Corrida diaria: se commitea también el histórico completo."
+            git add datos/eventos.json datos/eventos.csv
+          fi
           # resumen.json cambia en toda corrida (lleva la marca de tiempo), así
           # que en la práctica siempre hay algo que commitear. El guard queda
           # igual porque `git commit` sin cambios devuelve error.

@@ -346,71 +346,156 @@ def test_ordena_espaniol_primero_y_despues_con_foto():
 # ------------------------------------------------------------- og:image
 
 
-def test_og_imagen_parsea_ambos_ordenes_de_atributos(monkeypatch):
+def test_leer_og_parsea_ambos_ordenes_de_atributos(monkeypatch):
     directo = b'<meta property="og:image" content="https://medio.com/a.jpg">'
     invertido = b'<meta content="https://medio.com/b.jpg" property="og:image">'
 
     monkeypatch.setattr(noticias, "descargar", lambda url, **kw: directo)
-    assert noticias._og_imagen("https://medio.com/nota", timeout=1) == "https://medio.com/a.jpg"
+    assert noticias._leer_og("https://medio.com/nota", timeout=1).imagen == "https://medio.com/a.jpg"
 
     monkeypatch.setattr(noticias, "descargar", lambda url, **kw: invertido)
-    assert noticias._og_imagen("https://medio.com/nota", timeout=1) == "https://medio.com/b.jpg"
+    assert noticias._leer_og("https://medio.com/nota", timeout=1).imagen == "https://medio.com/b.jpg"
 
 
-def test_og_imagen_sin_etiqueta_es_cadena_vacia(monkeypatch):
+def test_leer_og_se_queda_con_la_primera_imagen(monkeypatch):
+    """La de arriba es la principal; las de abajo suelen ser el logo o publicidad."""
+    html = (
+        b'<meta property="og:image" content="https://medio.com/nota.jpg">'
+        b'<meta property="og:image" content="https://medio.com/logo.png">'
+    )
+    monkeypatch.setattr(noticias, "descargar", lambda url, **kw: html)
+
+    assert noticias._leer_og("https://medio.com/n", timeout=1).imagen == "https://medio.com/nota.jpg"
+
+
+def test_leer_og_sin_etiqueta_es_cadena_vacia(monkeypatch):
     monkeypatch.setattr(noticias, "descargar", lambda url, **kw: b"<html>sin nada</html>")
-    assert noticias._og_imagen("https://medio.com/nota", timeout=1) == ""
+    datos = noticias._leer_og("https://medio.com/nota", timeout=1)
+    assert datos.imagen == ""
+    assert datos.es_video is False
 
 
-def test_og_imagen_si_la_descarga_falla_no_revienta(monkeypatch):
+def test_leer_og_si_la_descarga_falla_no_revienta(monkeypatch):
     def descargar_roto(url, **kwargs):
         raise RuntimeError("caído")
 
     monkeypatch.setattr(noticias, "descargar", descargar_roto)
-    assert noticias._og_imagen("https://medio.com/nota", timeout=1) == ""
+    assert noticias._leer_og("https://medio.com/nota", timeout=1) == noticias.DatosDePagina()
 
 
-def test_con_imagen_de_respaldo_completa_la_nota_principal_sin_foto(monkeypatch):
+def test_leer_og_detecta_video_de_un_canal_de_tv(monkeypatch):
+    """El canal publica el video en su propio sitio: por dominio no se detectaba."""
+    html = (
+        b'<meta property="og:type" content="video.other">'
+        b'<meta property="og:image" content="https://tv.bo/portada.jpg">'
+    )
+    monkeypatch.setattr(noticias, "descargar", lambda url, **kw: html)
+
+    datos = noticias._leer_og("https://tv.bo/nota", timeout=1)
+
+    assert datos.es_video is True
+    assert datos.imagen == "https://tv.bo/portada.jpg"
+
+
+def test_leer_og_detecta_video_por_la_etiqueta_og_video(monkeypatch):
+    html = b'<meta property="og:video:url" content="https://tv.bo/v.mp4">'
+    monkeypatch.setattr(noticias, "descargar", lambda url, **kw: html)
+
+    assert noticias._leer_og("https://tv.bo/nota", timeout=1).es_video is True
+
+
+def test_leer_og_no_marca_video_una_nota_de_texto(monkeypatch):
+    html = b'<meta property="og:type" content="article">'
+    monkeypatch.setattr(noticias, "descargar", lambda url, **kw: html)
+
+    assert noticias._leer_og("https://medio.com/nota", timeout=1).es_video is False
+
+
+def test_enriquecer_completa_la_foto_de_una_nota_sin_imagen(monkeypatch):
     sin_foto = noticias.Noticia("T", "https://medio.com/nota", "medio")
-    monkeypatch.setattr(noticias, "_og_imagen", lambda url, **kw: "https://medio.com/foto.jpg")
+    monkeypatch.setattr(
+        noticias,
+        "_leer_og",
+        lambda url, **kw: noticias.DatosDePagina(imagen="https://medio.com/foto.jpg"),
+    )
 
-    resultado = noticias._con_imagen_de_respaldo([sin_foto], timeout=1)
+    resultado = noticias._enriquecer_desde_la_pagina([sin_foto], timeout=1)
 
     assert resultado[0].imagen == "https://medio.com/foto.jpg"
 
 
-def test_con_imagen_de_respaldo_no_toca_una_nota_que_ya_tiene_foto(monkeypatch):
+def test_enriquecer_no_pide_la_pagina_de_una_nota_que_ya_tiene_foto(monkeypatch):
     con_foto = noticias.Noticia("T", "https://medio.com/nota", "medio", imagen="ya-tenia.jpg")
     llamadas = []
     monkeypatch.setattr(
-        noticias, "_og_imagen", lambda url, **kw: llamadas.append(url) or "otra.jpg"
+        noticias,
+        "_leer_og",
+        lambda url, **kw: llamadas.append(url) or noticias.DatosDePagina(imagen="otra.jpg"),
     )
 
-    resultado = noticias._con_imagen_de_respaldo([con_foto], timeout=1)
+    resultado = noticias._enriquecer_desde_la_pagina([con_foto], timeout=1)
 
     assert resultado[0].imagen == "ya-tenia.jpg"
     assert llamadas == []
 
 
-def test_con_imagen_de_respaldo_solo_prueba_la_primera_nota(monkeypatch):
-    """No vale la pena pedir la foto de las 6 notas de un evento, solo la mejor."""
-    primera = noticias.Noticia("T", "https://a.com", "a")
-    segunda = noticias.Noticia("U", "https://b.com", "b")
+def test_enriquecer_corta_al_llegar_al_tope_de_paginas(monkeypatch):
+    """Cada página es un pedido de red: no se piden las 6 notas de un evento."""
+    notas = [noticias.Noticia(f"T{i}", f"https://m{i}.com", "m") for i in range(5)]
     llamadas = []
     monkeypatch.setattr(
-        noticias, "_og_imagen", lambda url, **kw: llamadas.append(url) or "foto.jpg"
+        noticias,
+        "_leer_og",
+        lambda url, **kw: llamadas.append(url) or noticias.DatosDePagina(imagen="foto.jpg"),
     )
 
-    noticias._con_imagen_de_respaldo([primera, segunda], timeout=1)
+    noticias._enriquecer_desde_la_pagina(notas, timeout=1, maximo_paginas=2)
 
-    assert llamadas == ["https://a.com"]
+    assert llamadas == ["https://m0.com", "https://m1.com"]
 
 
-def test_con_imagen_de_respaldo_sin_resultado_deja_la_nota_igual(monkeypatch):
+def test_enriquecer_marca_el_video_que_descubrio_la_pagina(monkeypatch):
+    nota = noticias.Noticia("T", "https://tv.bo/nota", "tv")
+    monkeypatch.setattr(
+        noticias,
+        "_leer_og",
+        lambda url, **kw: noticias.DatosDePagina(imagen="p.jpg", es_video=True),
+    )
+
+    resultado = noticias._enriquecer_desde_la_pagina([nota], timeout=1)
+
+    assert resultado[0].es_video is True
+
+
+def test_enriquecer_no_desmarca_un_video_ya_detectado_por_dominio(monkeypatch):
+    nota = noticias.Noticia("T", "https://youtube.com/watch?v=1", "yt", es_video=True)
+    monkeypatch.setattr(noticias, "_leer_og", lambda url, **kw: noticias.DatosDePagina())
+
+    resultado = noticias._enriquecer_desde_la_pagina([nota], timeout=1)
+
+    assert resultado[0].es_video is True
+
+
+def test_enriquecer_se_frena_cuando_no_queda_presupuesto(monkeypatch):
+    """Pedir fotos no puede robarle el tiempo a los eventos sin consultar."""
+    notas = [noticias.Noticia("T", "https://a.com", "a")]
+    llamadas = []
+    monkeypatch.setattr(
+        noticias,
+        "_leer_og",
+        lambda url, **kw: llamadas.append(url) or noticias.DatosDePagina(),
+    )
+
+    noticias._enriquecer_desde_la_pagina(notas, timeout=1, queda_tiempo=lambda: False)
+
+    assert llamadas == []
+
+
+def test_enriquecer_sin_resultado_deja_la_nota_igual(monkeypatch):
     sin_foto = noticias.Noticia("T", "https://medio.com/nota", "medio")
-    monkeypatch.setattr(noticias, "_og_imagen", lambda url, **kw: "")
+    monkeypatch.setattr(noticias, "_leer_og", lambda url, **kw: noticias.DatosDePagina())
 
-    resultado = noticias._con_imagen_de_respaldo([sin_foto], timeout=1)
+    resultado = noticias._enriquecer_desde_la_pagina([sin_foto], timeout=1)
 
     assert resultado[0].imagen == ""
 
@@ -419,7 +504,11 @@ def test_recolectar_completa_la_foto_de_respaldo(monkeypatch):
     monkeypatch.setattr(
         noticias, "buscar_para", lambda ev, **kw: [noticias.Noticia("T", "https://a.com", "a")]
     )
-    monkeypatch.setattr(noticias, "_og_imagen", lambda url, **kw: "https://a.com/foto.jpg")
+    monkeypatch.setattr(
+        noticias,
+        "_leer_og",
+        lambda url, **kw: noticias.DatosDePagina(imagen="https://a.com/foto.jpg"),
+    )
 
     resultado = noticias.recolectar(
         [hacer_evento()], ahora=AHORA, timeout=1, reintentos=1, maximo_eventos=5, espera=0

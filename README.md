@@ -1,6 +1,6 @@
 # cron-desastres-naturales
 
-Scraper programado de alertas de desastres naturales. Corre una vez por semana
+Scraper programado de alertas de desastres naturales. Corre cada 2 horas
 en GitHub Actions, consulta fuentes públicas, normaliza todo a un modelo común y versiona
 el resultado como JSON y CSV dentro del propio repo.
 
@@ -172,9 +172,18 @@ La consulta se arma con palabras de diario, no con el título de la fuente:
 "M 4.5 - 104 km WNW of Houma, Tonga" no matchea nada porque ningún medio escribe
 así; se busca `terremoto Houma, Tonga`.
 
-**No hay audio.** Ninguna fuente pública publica audio por evento. Lo que sí
-aparece son notas que embeben video, y esas van marcadas con `es_video` para que
-el cliente las pueda mostrar aparte.
+**Video.** Ningún buscador dice si la nota es un video, y mirar el dominio solo
+alcanza para YouTube y Vimeo: los canales de TV publican el video en su propio
+sitio, que son justo los que sirven cuando alguien quiere *ver* qué pasó. Cuando
+se pide la página del artículo para completar la foto, se leen del mismo pedido
+las etiquetas `og:type` y `og:video` y se marca `es_video`.
+
+**Fotos.** GDELT manda la foto en el resultado; Google Noticias no. Para esas se
+pide la página del artículo y se lee su `og:image`, hasta 3 notas por evento
+(`MAXIMO_PAGINAS_POR_EVENTO`): con una sola, un evento con seis notas mostraba
+una foto y cinco tarjetas de puro texto.
+
+**No hay audio.** Ninguna fuente pública publica audio por evento.
 
 Si la búsqueda de noticias falla entera, la corrida **no** falla: los eventos son
 el producto y las noticias son el agregado.
@@ -214,28 +223,41 @@ git (ver más abajo).
 
 ## El cron
 
-`.github/workflows/scraper.yml` corre `17 6 * * 1` (lunes 06:17 UTC — horarios no
-redondos a propósito: los que están en punto se congestionan en Actions y las
+`.github/workflows/scraper.yml` corre `23 */2 * * *` (cada 2 horas, minuto no
+redondo a propósito: los que están en punto se congestionan en Actions y las
 corridas programadas se demoran o se saltean). También se puede disparar a mano
 desde la pestaña *Actions*, con opción de elegir fuentes o hacer un `--dry-run`.
+
+Antes era semanal, y para una app de alertas era demasiado: un sismo de hoy
+aparecía recién el lunes siguiente.
 
 ⚠️ **Si cambiás la cadencia, hay tres cosas más que mover con ella:**
 
 | Qué | Dónde | Por qué |
 |---|---|---|
-| El feed de USGS | `fuentes/usgs.py` | La ventana del feed tiene que cubrir el intervalo entre corridas. Hoy usa el de **7 días** por el cron semanal; con el de 24 h se perderían 6 de cada 7 días de sismos |
-| Los umbrales de frescura | `web/app.js` | Están en días porque el cron es semanal. Con umbrales de horas el aviso estaría encendido siempre, y la gente aprendería a ignorarlo |
+| El feed de USGS | `fuentes/usgs.py` | La ventana del feed tiene que cubrir el intervalo entre corridas. Usa la de **7 días**, que le sobra para un cron de 2 horas; espaciar el cron más allá de esa ventana perdería sismos |
+| Los umbrales de frescura | `web/app.js` | Van atados al intervalo: en días sobre un cron de 2 horas no avisan nunca y el scraper puede estar caído dos días sin que nadie se entere; en horas sobre un cron semanal el aviso queda encendido siempre y la gente aprende a ignorarlo |
 | `--dias-recientes` | `cli.py` | La ventana del feed del front debe ser mayor que el intervalo, o el front se queda sin nada nuevo entre corridas |
 
 **GDACS no tiene feed histórico**: su RSS muestra lo que está activo ahora. Un
-evento corto que aparezca y desaparezca entre dos corridas semanales se pierde y
-no hay forma de recuperarlo. Es el costo de la cadencia semanal, y no aplica a
-USGS, que sí tiene ventana de 7 días.
+evento corto que aparezca y desaparezca entre dos corridas se pierde y no hay
+forma de recuperarlo. Con corridas cada 2 horas la ventana de pérdida es chica,
+pero existe; no aplica a USGS, que sí tiene ventana de 7 días.
 
 El workflow commitea `datos/` con el usuario `github-actions[bot]`. Como
 `resumen.json` lleva la marca de tiempo de la corrida, **hay un commit por
 corrida aunque no haya novedades** — es el precio de que la app pueda detectar un
 scraper caído en vez de mostrar datos viejos como si fueran actuales.
+
+**Qué se commitea en cada corrida y qué no.** `recientes.json` (~1 MB, lo único
+que baja la app), `resumen.json` y `noticias.json` van en todas. `eventos.json`
+(~12 MB) y `eventos.csv` van **una vez por día**, en la corrida de las 06 UTC, y
+en cualquier corrida manual. Con doce corridas por día, commitear el histórico
+completo en todas le sumaría varios GB al año a un repo que además se sirve por
+jsDelivr. No commitearlo cada vez no pierde nada: la corrida siguiente arranca
+del último histórico commiteado y vuelve a pedir la ventana de 7 días de los
+feeds, así que todo lo de esos 7 días se reconstruye solo. Lo que hay que
+respetar es que el commit del histórico sea **más seguido que esa ventana**.
 
 Lo que sí está garantizado es que los archivos pesados **no cambian si no hay
 noticias**: `eventos.json` queda byte a byte idéntico entre dos corridas sin
@@ -306,15 +328,15 @@ Dos cosas que conviene hacer del lado del cliente:
 
 - **Cachear con ETag.** Si el archivo no cambió, el servidor responde `304` y no
   bajás nada. En Android con OkHttp es configurar un `Cache` y listo.
-- **Chequear `generado` antes de mostrar nada.** Con el cron semanal, más de 8
-  días sin actualizar significa que algo se rompió. En una app de desastres,
+- **Chequear `generado` antes de mostrar nada.** Con el cron cada 2 horas, más de
+  12 horas sin actualizar significa que algo se rompió. En una app de desastres,
   mostrar información vieja como si fuera actual es peor que no mostrar nada:
   avisale al usuario.
 
-⚠️ **Con cadencia semanal, los datos pueden tener hasta 7 días.** No es una app
-de tiempo real, y la interfaz tiene que decirlo — si alguien la abre esperando
-saber si el sismo que acaba de sentir ya está reportado, la respuesta va a ser
-que no.
+⚠️ **Con cadencia de 2 horas, los datos pueden tener hasta 2 horas.** Sigue sin
+ser una app de tiempo real, y la interfaz tiene que decirlo — si alguien la abre
+para saber si el sismo que acaba de sentir ya está reportado, puede que todavía
+no esté.
 
 ## El front web
 
