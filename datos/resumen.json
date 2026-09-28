@@ -1,54 +1,54 @@
 {
   "cambios": {
-    "actualizados": 0,
-    "nuevos": 2277,
-    "podados": 7,
+    "actualizados": 1,
+    "nuevos": 2090,
+    "podados": 8,
     "sin_cambios": 0
   },
   "fuentes": {
     "gdacs": {
       "error": null,
-      "eventos": 412,
+      "eventos": 264,
       "ok": true
     },
     "usgs": {
       "error": null,
-      "eventos": 1865,
+      "eventos": 1827,
       "ok": true
     }
   },
   "historico": {
     "por_fuente": {
-      "gdacs": 2847,
-      "usgs": 13940
+      "gdacs": 3102,
+      "usgs": 15767
     },
     "por_nivel_alerta": {
       "amarilla": 3,
-      "naranja": 25,
+      "naranja": 32,
       "roja": 3,
-      "verde": 2917
+      "verde": 3175
     },
     "por_tipo": {
-      "ciclon": 40,
-      "incendio": 2616,
-      "inundacion": 118,
-      "otro": 289,
-      "sequia": 24,
-      "sismo": 13698,
-      "volcan": 2
+      "ciclon": 48,
+      "incendio": 2833,
+      "inundacion": 139,
+      "otro": 330,
+      "sequia": 29,
+      "sismo": 15487,
+      "volcan": 3
     },
-    "total": 16787
+    "total": 18869
   },
   "noticias": {
-    "con_noticias": 7,
+    "con_noticias": 6,
     "consultados": 7,
-    "total": 35
+    "total": 30
   },
   "recientes": {
     "dias": 14,
     "magnitud_minima_sismo": 2.5,
-    "total": 1108
+    "total": 987
   },
   "retencion_dias": 180,
-  "ultima_ejecucion": "2026-09-21T12:56:50Z"
+  "ultima_ejecucion": "2026-09-28T14:05:53Z"
 }
