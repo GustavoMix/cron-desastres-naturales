@@ -1,116 +1,54 @@
 {
   "version": 1,
-  "generado": "2026-09-28T14:05:53Z",
-  "eventos_con_noticias": 5,
+  "generado": "2026-10-05T14:51:26Z",
+  "eventos_con_noticias": 7,
   "noticias": {
-    "gdacs:WF:1032289": [
+    "gdacs:TC:1001326": [
       {
-        "titulo": "Dos muertos tras estrellarse un helicóptero en el Parque Nacional Yosemite durante las operaciones por un incendio",
-        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQZXlwQ2k1Z3lpclkxR2dfOHB0TWMwRVJIM0VTckM3cUNkdTJsdVdBN0p1aXlRM2pIc1lkNVdWT3V2blVGbHhCZXNKWkRWNDNKX3YzNFBDUXhMd09sdXgxejR6UTNfaWtlRk0zY1JObk5VWjdNdXVzck9nbGJJb0UwZWdUbjl6TWs2VUl3R1B6bjhzTm8?oc=5",
-        "medio": "cnnespanol.cnn.com",
-        "fecha": "2026-09-21T16:42:00Z",
+        "titulo": "Ciclón tropical Polo se disipa sobre el noroeste de México: remanente llevaría lluvia a Nuevo México y Texas",
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOcF9JVVQ3N3RvbW1WY3Y2M3Y5azd4NnZIbVpvRG5YM1pnME5RaXFVMG1JQW1BQjNNUlhxMzZOd2ozWE5VbmFiZnd5bXdEOVFyS21GcWQyTjRBQkhHaEhJUUJIcnROc3lwbzdVd1N6RVRqTHphMXhYY014Wnc3Z1RZZVRYQV9FM3p3U0pKVTcza2pvLW0zLUZ6c21RUXJnVWNvUGRuTklGbkPSAbABQVVfeXFMT3hNWV9LYU5scHpucU1ZdUowUElYMDQ3WGk5XzN3QTJBQkY3Q2xxVC1Ha0xzd0Y2Zy1zZDdYeVBsbGhwbUsxMFFUZ1NheFpIbWlPcEhQazZxbFNjbnNwcnZ2aHBwTFZtR1AzdnA1Zzh1QUxkYU5UY0VuMTdOZnRJdzc1cHJLdGVjdkotY2xLYkh1UXdtN1VEaUpmdmFpM2oyaklyRWs2MkI4VkdmZkRNZDA?oc=5",
+        "medio": "Telemundo San Diego",
+        "fecha": "2026-09-27T07:00:00Z",
         "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
-      {
-        "titulo": "Un incendio amenaza una joya turística de los Andes colombianos",
-        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQdlI5ck5xUlpRTnp1emN1WUljSlBBXzQ3b18xQ05GUmE4LWVoMnRqd0UyLU5qSVZrY05vSmJjYkxHTzlGQlJFbkQ0RXBSQmh3RlpNb1ByOU0talZ6SnUwQ0lOUDAtN1BZU0dTYmdWTzRIWXRQbEpQdnUzRGRVMWYwVU12SHdKTUxwWWpJaDBJZmRpUnAwNnFoZWZrX1FkTHpMT1dhNlRMcjUwb1RSZTc5eG9qRVE?oc=5",
-        "medio": "france24.com",
-        "fecha": "2026-09-21T03:03:01Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Imágenes captan cómo bomberos combaten incendio forestal en California",
-        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPWEo3MUZmR2VBTVlpMW9qSUhXQWxKdUZ3ZFE3M0hRQ3E4R1NvRWk0eU9wUmpjUTl4SFl3dlFUUzF4U3dkVm1jSzRXNkxQZkYyQUF2Z2t6aUluVERfV1JtVElKMFN4SkNVOFVWSTZsRjFLQVAyQ0I3dUFnTS1URkZMX09icDZqUDBBWFNvOXFRcU4?oc=5",
-        "medio": "cnnespanol.cnn.com",
-        "fecha": "2026-09-17T07:00:00Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Unas 90 personas trabajan para el control del incendio en Benahavís, ya estabilizado",
-        "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPV1d0UDc1OGRZb1NQOGtCTUlWQ3ROc2t0VWQ5Y2t3WWthYUNuRWJreXB6TjJ1V3VsZkJjYTZadHRfMEM3bWFkVEVUanQwdy1jTG5BakU1M1VQVTJYNjl1OFlYZ3ctdlRNenc4R3ExZkp3MGlZSlZWUjZYNmVXdjk1Y0h4UTJFcDg5ZDlPbERmWnhYSDBDdTE4a2IxUjJ0YzNaRVZGc2tRTl9XRTRBVnI1OWpVcmlGVWZoaGRuM0s5SGhKNlkxZlZZTnhZRXgwR240Q2fSAewBQVVfeXFMUHZLZWhjNWFDXzFqYjRRQTdFQ3hVampMNzJsSWppb2hWd2FBWDFjWU5VMjUtemp6YU0wTzNNNTNGSy13d3FnaGZYMEh0Um9TZXV2bUhEZ0daNXBsTkU1d2NIZDVDbVV4b1FxSHdMd0pFY3B5MnZYd3B0bnN0dW1hS3ZsdzZndnJLNFZrd01iT0tlcG9LRWV4SVR3N3YxMmdvTmJHOUFHdHkxX0IzeWFpRGdqV1c0OEJQUjg5NUk1THh5dUpKbWVyWTFCX0k0QjFxZEFGSUdtWFFyNGduT0wydmZQNTZ4SU5YdHBNT1g?oc=5",
-        "medio": "Infobae",
-        "fecha": "2026-09-15T07:00:00Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Incendios forestales: temporadas más largas e intensas amenazan a los ecosistemas",
-        "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNYWo0NW1UM1NURklUZjVHR3prUkZiMklsYTFOeEhBU20zSUI4RlYxcndFMFVRMEFuS3dMQ1RPS1pfMnF4OTBBMjYySjhDQml1b2NxeWdQZl9Uc1k1YW1hT25iZkRwdU55bW1ueXNCSE9kZktkektYRUw4WmZMSndsQm40SDhSa21xT0lZcXR5MzlZQnJ2M2I0VkxJQTYxbUE3cTFUc01ZWmJBbWdDU3l4UnZLaFAwbUgwOTNSWi01aGdfOU1zME8xbtIByAFBVV95cUxOclowTUNaVTV2V1ppVFZqcHdXMk1MRDQtblRxNldpNEpxcFg5aWJ2LVN4ZWxIcEpyRk52OXJZZ29GT2JrUVljLWJFMXRrWGxkZFNJWE9EV2JtUVpWUVVGWnFUQlJOUTVaWmF0N09MQXdCeVZkR2RudlhYdUtWc0d3eU9ESFNDbk5FNWJRZWhRWjRxR282emczdHR5cU94WjJkSk5QWERINlhuSUdtUFAwT0E3Wl9XVlJXY1VPbFZWOFVSUEZQMm50dA?oc=5",
-        "medio": "NTN24",
-        "fecha": "2026-09-14T07:00:00Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Bomberos Calama controlan incendio de pastizales en Toledo",
-        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNdk15OWJvdjd0c1hzeTFKT25sdlJNdFBlZjJnZlE5dTlxZHN5Ykx0OGhNYW0tckh0OUJjdG1JV3FtV0dIeVZpWFItdS1ncVVrV0RTSHdTLTE5UG9oN2JJOWV3aGxOMl9OeFlnaUEyaEhVZk5fMkJ1OWdRRXNBTnVIV1U0S1RhMEZGNDRSeVBuNENzYzRmODBBZ0xXbHBmSVU?oc=5",
-        "medio": "La Patria Bolivia",
-        "fecha": "2026-09-14T07:00:00Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      }
-    ],
-    "gdacs:TC:1001326": [
       {
         "titulo": "El Niño, explicado: así cambia a los huracanes, tifones y ciclones en todo el planeta",
         "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQbkZrb3FXRUhhQXVRRVZxbndSS3pvUXZUc2tJVXRQMHNkOWF4QV9Eek5qc3ktVkdPcm1BaWZNbk1aZnZOeGd1YWQ4Vk5ac0lsZ2hzcUNWRDZ6ZXdlTE00ZWlnekE3RzJlSFhCamo3UDNXNUp1UlFUaGVPeGY0QV84eDlPeEtrLWpqYmxVRFJqRGg1VXgzMG14dm8wLUM4U1JIVkg0NtIBpAFBVV95cUxNSkFmMHY5a1lNaUktUnl4TlVkRVpkdm1pZ040M21hNjdpSDNSZDJlbEhPdnVuQUpfa0dSSXNxQ2g4amR0ZjIxV2o2S1VxdEplM25xdTRQUW5sZEtlSGNuUUVxMU90QzYydS1qRFRscXJUU1BzWEJtblVyZjhMNXV3ZlhqTGN3dDUyMUk0bmhGZ0FUcUwybmJsenF5aTg0ZF9md2JMMA?oc=5",
-        "medio": "DW.com",
-        "fecha": "2026-09-24T15:48:15Z",
-        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
+        "medio": "dw.com",
+        "fecha": "2026-09-24T07:00:00Z",
+        "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Huracán Polo se vuelve “una de las tormentas más fuertes jamás registradas” frente a costa de México",
-        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNX2gyRGtITXFvNFJldTAxS21hbzhDM29Qd2Vpa0txUnhkZ0NrVDRNUEkxLVM5N28tQy04ekd1NlJ2SUtDQmpVMzRjeDNZcUhtdGxHMkNOR1ViZjBkMVIwS2lyM1F3ZWxLZGlKWFRUVDhMUkJleENsZXNUb2Y5V1lXZVprNVkzZTNLaFoydnlLWDFDYzQ?oc=5",
+        "titulo": "El suroeste de México se prepara para fuertes lluvias y deslaves por el huracán Polo",
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQcExtd0xadUZualF1cW9pSk5relE5YjltbXJ1WnBEd0FnTnVFbW0yWnE0ai1QdGVNVV8wUmEzYlFNM1JSU19tNjM5NERQX1lkQXNicEswdmcwVE1CSS1tUGpCQkQ4MGJ1aVpmYm0tWTc3MkVJbThrRGYzUlZYZUZwU214ZXNDR2p4em9TS082NnBXVFNUM0dPNmNPMjdNS1ExVjNhRlVpX2c?oc=5",
         "medio": "AP News",
-        "fecha": "2026-09-23T03:51:00Z",
+        "fecha": "2026-09-23T07:00:00Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Polo, uno de los huracanes más poderosos de la historia en el Pacífico",
-        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNa3B4eDRmdEhuWmFpTTNWLWpwU1U4LWx5QXVLTHJucHU0VGFLc1B3S21aSjVLbzNpaTJhV0V1MTdSYUVESWIyOEJ1R2lKbFhMd2k3WXVoODFrYnlHd0gxX2h3SWFKLWFUMjNUaGlDTTlTM2J5R080MTZEdDZMTjYyX0xOYTVwWldNSjZpbHM5SUJZZFpheXRSNHF5MFA5Y0dCOGZFSzdOWEo0TjlKUXRBZFZmdnlwRmhjQURkak9hc9IBxwFBVV95cUxNNnN4NEhieTlBV1FPdjZXUV9SZWs1OTZBM2RzMElpUFFwTjJETEg0VzI3X3JNSi14ZUlqdkFadVEybE9qRjJzNjNzZWFnTXE5dWFXcmtCdnd4VmhzSFFJN2hMbktyRGpSdDRZb2JQQW9Ma2Y0c3hUdGFxeXJOUVNmdXdWSU1hSlMzckw5dzA3aG5OVllmWWhBVExMUFpnN2tRSGI0OVNxYTNiYUNPY1VLU2VKbFlKQk9EOWpfWGtzVC1oUjh6aEN3?oc=5",
-        "medio": "Telemundo San Diego",
-        "fecha": "2026-09-22T22:24:23Z",
+        "titulo": "Huracán Polo alcanza categoría 5 y amenaza México con inundaciones y deslizamientos",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNZEp2V2ppR24wNHBYa2hqWmdFUUUtZkdjdUd6YzZnNmhqOUxQYWlxclBBNUs2aGU1WnRUTUNHczNzTXc1SGdTNDV0Q2MtZW9Da1dJaXk5UXBnanYxeTF6S3FhenJiNlBjcTE0QUplN0lobHpLUnpWLVN1dnp4aUNXN3c5VXNDWXJCMGJqQmVXN1U2eFFDc2JmVDBEaw?oc=5",
+        "medio": "Yahoo",
+        "fecha": "2026-09-22T07:00:00Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "El huracán ‘Polo’ llega a categoría 5 y se mueve en paralelo a las costas del Pacífico mexicano",
-        "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPVzVSZVlwTlh0RWhkQlQyRWozTG40X084MmNnSkd6UlFUcHJ0ek5PQmFOQzY0QTY0Y2M4aDU5dUFzRTN2TGNheklrcnN2Q2h2MWo2WE9JTk1pWlJuZ1BEZ0RaaDJzNFY1TkRtUjc5aHVQc1VPUFN2cnczUjRyamExRVgxNGxpVGRKd0tZV3VwUjNvLUM3MXU2b0FkcmlIQTJFOFI3RDBMU1hwUmNHOGhWVG94am1rRVlUamJuRW5FOE5rekJjR1dpdjN2OGxIWXh1?oc=5",
-        "medio": "EL PAÍS",
-        "fecha": "2026-09-22T13:55:09Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Polo se convierte en huracán en el Pacífico y pronostican que se intensificará aún más cerca de las costas de México",
-        "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOUmtaMHhFUm84OEZNMXJBSzhZeGIta29fVy1KSW1jbkJKMS14bjViLXRBSlR4ZUNtc3VJcDdaaTEyUTRaNWp1UXVENGZhNUEwTE9JN1BqY2NYYTJMOVRhQlhOcGlhWkxlNjMyUFRYcEFDeS1UcjhmSW82TmdJSC1jY05rV2VkbXJrUl9jLXlZeTFoRGpocVNpa21SY2NFaUNBMWNnS3d1RlVrS0JIWDNOZXVlekpSTGxZTU5pRjdHNUR0NjlDX0tYR3diZ3lrbG8tbWZIZDduUjY?oc=5",
-        "medio": "Telemundo",
-        "fecha": "2026-09-21T20:19:57Z",
+        "titulo": "Huracán Polo de categoría 5 es una tormenta \"extremadamente peligrosa\" frente a costa de México",
+        "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxOY0ZYMHZIVS04dTUya01UR3k5R056M0hmcEI3aWhkcTQ1V0ZkdG8zd3BQY1kyUTRjaU9kTUFEaWRzbGlRMS1mS3NmYW93TVUzMlVYaGNwZVptNFI3My1DWE9weW5DMzIxeGRWNWtCUDNTcEVvdUxqWXJhSDBoenJESGpIbVFuejR6NkZHRmF4aFJHTTVuX3JzeU1zaTdKTDNRVnczaTF4d1FsVG5wd21JVzV1ZjBlUUVvUjZxWVZpTVNyd0RPbU1Ma2I2SGQtUlhrMHpHT1lsT0dyQ1A0d194Q2Q5dkY?oc=5",
+        "medio": "latimes.com",
+        "fecha": "2026-09-22T07:00:00Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
@@ -120,69 +58,7 @@
         "titulo": "Polo ya es huracán categoría 1 y podría afectar las costas mexicanas",
         "url": "https://news.google.com/rss/articles/CBMihgJBVV95cUxONmRYSlR0MGVrUDduWE0wTDUzeTE4T2JsakVjWmRrRTVXM2NQM1k0NmVyQU8zanhmRTJpMDlNZzBGUGNpNFRRSGpjTEZNNEU2Qk5FaEhqUlhrRTBmNmdEVDU2SnZaSGhqWG9VMU1QcWJHZFQtLXlNT1FWamtiQTBfNC1KTS1kRjFqVVBSY1g0LUN4OVR5dkRvVWdpa1Y0MlhGUVJ2djRhY2JQRmZHTHF6eWxiWFRUa1NzY3FaVkFkcjg2NUZqNVlZa0liRmd2T3hrWjl2a0U4WlhCc0czNmpSZDN3YzhLb0FBYk05ZS03dS1VajhfYjlqczJDVVVLcGg0WTJwUTd3?oc=5",
         "medio": "Univision",
-        "fecha": "2026-09-21T12:50:04Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      }
-    ],
-    "gdacs:TC:1001325": [
-      {
-        "titulo": "Esperan vientos fuertes e inundaciones en Hawai por huracán Nolo; Polo se fortalece frente a México",
-        "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPc0pSbjRZWGM4M2dJck5fd0xpM0xwRkx3UW9SaXVERDZGNHZMU1RaLUxqOFNaLWZrbW5PM1F0N3R2NFAyMlZobTAzVDB1bFN4blIzR0ZOOFhQS0JsR1NBYmhtY0FIR0VSeWtWWVQwVi12MndjWE1GY0FLMWRpLXg5TlhKaGh2VjA3ZE9kSDJSXzFfdEVNX1NLZEhiWTVZUC04cW5fSjE3bEZ1R2ZUNkQtZXlRRVQteFJJUUgtVlhXMUc4SHhXN1dLeHpB0gHPAUFVX3lxTE5BRmwtYVhCZEE1VUt5cFpnV3R4UG00MHVMWU5VaEpmb2hZTDl0MGxmWVcycm5uaktBQmw5c1AyMk1CNlRDMzBaRHpnWnRvQWRFYlZLZmxoWlJ2VEhVOVlIdWtpcDNQN09tRWktMno0TU9TYTQxQUVhZHlCTWdNSy1QSi1ndlhPRmtRcGxzVXdCNmF3NDhTc2FwYV9kRkRqVTZEczV6WWlCZXBvTTVrZFdIMHY1bGp2Z2RIWkpyX0MzTzJpbWoxM3YtTGJqUU04OA?oc=5",
-        "medio": "ABC7 Los Angeles",
-        "fecha": "2026-09-26T21:17:30Z",
-        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Huracanes en el Pacífico amenazan a México y Hawai con inundaciones y fuerte oleaje",
-        "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOZjNZdWhCQTlYQTRRbDdQT2hpbEVyYl9XRGhhS1dZZXlja1MyaHBqYUlOQmxEWWdFcWdMSi1RaHQtRGx4bXh5cHducmIzUVpLcWVRR3NQTHcyeEJBNHVHMjBNMmJSZFl2S3QxN0dIZGtpaThRc292ZmdnLWZ4ZUhhOVlXQUItX2dBeUxjcjByOU5RTDlJUnV6cGVfSkwzMDItWkM2bXlFOTFRQXQ2S1RVY3hGVDNGNVhBdURpTGNkVXF0WlRDLXc?oc=5",
-        "medio": "WPLG Local 10",
-        "fecha": "2026-09-25T15:52:42Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Huracán Nolo amenaza a Hawai con fuertes lluvias; Polo se mantiene cerca de México",
-        "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOMkZVREc5VkFLSFR3d1BYTWdIREc0dW5TeC1KRWlNVTRTZUQyeXdoX19BYVR0S0FfbEpwRnBBLVlXZ2g2SGotUWZUNVhUdmtZZGxMZDZsUmYteFBtM2FhNTZDcVdLa21rYUpTbkg2dmRKU1M3bFBpOVhuNGdQYy1GRkVkeGVLMW5vVTduNmRfWTU3ZmhLb2E5WkxmaW5EdzBtMk85WXd6ZG9icU9SY1Vz?oc=5",
-        "medio": "Audacy",
-        "fecha": "2026-09-25T15:52:00Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "La temporada de huracanes en el Pacífico ha sido intensa… y aún le falta bastante",
-        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPeU5fMDBBdzhMVUJmNW5VR0JodXp0ZkwzWU5sVnFkbG9hakt6dWQtY2I2aWZvM09xV0JLN1lFZnF2am5JdEw2cnY0ZEw3MlhFM01GRFZLaFFiZ2JoMGgwdnFVdVQydmlSWG1ia1ZublpkTTI4NVZtcHByeGF1QUZ2R0psWGFuUGRrNG5Xamw3d3lnYzh3Vm9ob3V0cmhoNkpJeF9YdzF3bDN6dHZmZF9sTFhteXY?oc=5",
-        "medio": "courant.com",
-        "fecha": "2026-09-25T00:52:11Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "El poderoso Huracán Polo amenaza a México con lluvias torrenciales mientras los trópicos del Pacífico se agitan",
-        "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQZzlEWU1fMEsyb3k3RzNFMnMtQTU2dnJnMGdnU3ZLTWJWSmVJVlVNRThzNk9SWHRzenF2OXhyNWlvbHZsOTBFV0p0UHB1aDVWQVA2U29fTG1lTEg4ZmVZbUFhSjB1OUstMS1XZ2dvTXVYZXFCbjBOVmw4QjBWdjh4WlJON19SMVl6UGtPY0ZjV2NUdHlSM3Vxelp3dEViTk5PTE43TEJmRDhwSXBHS3ZhNTk0NUFfUkVyQTJldFlKZndvcmVpaGpJRTlRNXJIYmRWTVdNY0dKX1RjdUUzbG42LXcyVWdhLUFuUmVZ?oc=5",
-        "medio": "Yale Climate Connections",
-        "fecha": "2026-09-23T20:44:15Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Polo se convierte en huracán en el Pacífico y pronostican que se intensificará aún más cerca de las costas de México",
-        "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOUmtaMHhFUm84OEZNMXJBSzhZeGIta29fVy1KSW1jbkJKMS14bjViLXRBSlR4ZUNtc3VJcDdaaTEyUTRaNWp1UXVENGZhNUEwTE9JN1BqY2NYYTJMOVRhQlhOcGlhWkxlNjMyUFRYcEFDeS1UcjhmSW82TmdJSC1jY05rV2VkbXJrUl9jLXlZeTFoRGpocVNpa21SY2NFaUNBMWNnS3d1RlVrS0JIWDNOZXVlekpSTGxZTU5pRjdHNUR0NjlDX0tYR3diZ3lrbG8tbWZIZDduUjY?oc=5",
-        "medio": "Telemundo",
-        "fecha": "2026-09-21T20:19:57Z",
+        "fecha": "2026-09-21T07:00:00Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
@@ -191,30 +67,30 @@
     ],
     "usgs:us6000txpi": [
       {
-        "titulo": "Terremoto moderado mag. 4.6 - Coral Sea, 53 km al noreste de Mare , Loyalty Islands, Nueva Caledonia, Monday 28 Sep 2026 a las 16:42 (GMT +11)",
-        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPUk16NW9vS3VSSGQyQVFBR2EwNjM1a09QSjBfejcxSlVreGpJQktfR2RUWkE0OTFUampuZHB5QUtkOEYyVHJQX0VMUVVKXzVWa2ZSSmJUNU9WSEh5X1NHdUJndmIzOF9iVG5YYkZsVVFMUTVQOGVZZGd0TTEyZHUzT0dMOHNKWExqVXF6ZGJmSlAzVTJFM0V6X01tQmpWNlFUOVVEV0F0X1hoakFUMGZTeTBZN3RqUFRKMEFaU3FkZw?oc=5",
-        "medio": "Volcano Discovery",
-        "fecha": "2026-09-28T06:38:17Z",
+        "titulo": "Terremoto en Nueva Caledonia | Fuerte sismo de magnitud 6,6 se registró este 25 de septiembre en el archipiélago francés: profundidad y detalles",
+        "url": "https://news.google.com/rss/articles/CBMingJBVV95cUxOSF9GZld5NThHcnJOOTRiTk9tZVFuaDdWbzVFRC1RTDVFX0JmTjdfTWM3ZV9qR1QyYWVlSXZPWExDb1RfS3k0dC1oQkdBNnJJdmstSUt4enZYZHVIQVc2dFFOLU9sc3RrbFB0NVB0TmF0aVJzMDRYRnJsM3NIUlU2UzZzTGJuVTNObGdpUzFiMGx4OU56TkxtNWZ1d2wxSl9YX1NEOWt5cDZyZlpNWW5xSkJjdzU1cjkzbTJBamczU0dsUzlWVWVpREcxMjM0NTd0M0s5MlNMelR1TG9vTkRoMXNVYkItZkxha1dmWHlDM1YwV2ZhWVh3eWR5ZTA1WUV1R2htUVhEUm9PNHd2RHFHWFdvdGhDSDktaDJIbmJn?oc=5",
+        "medio": "El Tiempo",
+        "fecha": "2026-09-28T10:25:00Z",
         "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Terremoto moderado mag. 4.9 - Coral Sea, 29 km al noreste de Mare , Loyalty Islands, Nueva Caledonia, Monday 28 Sep 2026 a las 16:42 (Hora Noumea)",
-        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOWERXNzBtMWwxRVVKVjNheGNOeDNjb3dob1RrYWdnU1A0NWZ1cFg5dGhtOEFKVm0yVDJ3aHZfSmx4OHgxSE81MVR1R19GUTVPVXdHekdkeUNiSVV3cVI1dWdSLWhCaFdqTUYyYlJqNnNIUFpzNEFkWDhseVE3YTJIMnd6cktabDcyeldiV2JtVGNMWlpBanU3N0FYZzFNMzNFSWRzMmd3ZnUxTHRCOGd0WXJTVzhORzgxYXNmWkdfMGVvM0lR?oc=5",
+        "titulo": "Terremoto moderado mag. 4.6 - 63 km ENE of Tadine, New Caledonia, Monday 28 Sep 2026 a las 16:42 (GMT +11)",
+        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPUk16NW9vS3VSSGQyQVFBR2EwNjM1a09QSjBfejcxSlVreGpJQktfR2RUWkE0OTFUampuZHB5QUtkOEYyVHJQX0VMUVVKXzVWa2ZSSmJUNU9WSEh5X1NHdUJndmIzOF9iVG5YYkZsVVFMUTVQOGVZZGd0TTEyZHUzT0dMOHNKWExqVXF6ZGJmSlAzVTJFM0V6X01tQmpWNlFUOVVEV0F0X1hoakFUMGZTeTBZN3RqUFRKMEFaU3FkZw?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-09-28T06:07:58Z",
+        "fecha": "2026-09-28T06:37:13Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Terremoto en Nueva Caledonia | Fuerte sismo de magnitud 6,6 se registró este 25 de septiembre en el archipiélago francés: profundidad y detalles",
-        "url": "https://news.google.com/rss/articles/CBMingJBVV95cUxOSF9GZld5NThHcnJOOTRiTk9tZVFuaDdWbzVFRC1RTDVFX0JmTjdfTWM3ZV9qR1QyYWVlSXZPWExDb1RfS3k0dC1oQkdBNnJJdmstSUt4enZYZHVIQVc2dFFOLU9sc3RrbFB0NVB0TmF0aVJzMDRYRnJsM3NIUlU2UzZzTGJuVTNObGdpUzFiMGx4OU56TkxtNWZ1d2wxSl9YX1NEOWt5cDZyZlpNWW5xSkJjdzU1cjkzbTJBamczU0dsUzlWVWVpREcxMjM0NTd0M0s5MlNMelR1TG9vTkRoMXNVYkItZkxha1dmWHlDM1YwV2ZhWVh3eWR5ZTA1WUV1R2htUVhEUm9PNHd2RHFHWFdvdGhDSDktaDJIbmJn0gGjAkFVX3lxTE05d1RULXZXbTRGcC1TZHVFalJDNVhReEotQkQyN3pGb05jQmhSLWpjYTRtN3lmTDl4N0pncVBwczcwWG95S0FEbGk2eVpEMXBjMWo4S0FRVzZhQ3F2eXJVanUzOVhrRnNFSVd6UVk1VTRmbnpMb2Z4ZFJSZ3NVRERqYlNMbWpkckR4bjhfcWpsWFp1bU5tMUJkTFlKRUg1RVRlZ0d0cHdscEVPTk5QR1d5b2U2TGpnbGJFN3piNmFMZUtLSlJUM3pELXlWRkdmWjd6NXB1ZnJEbWE1U2J2b2VfOTZnY3JkVDNib1dBSGtfNTlvOVZiQ0gxR09DbDl4Rk00dE9ILVI0VHdQeXVFcllrc0swa2FTMHFjWTNjTVdYbkVYcw?oc=5",
-        "medio": "El Tiempo",
-        "fecha": "2026-09-26T04:59:25Z",
+        "titulo": "Terremoto moderado mag. 4.7 - 73 km ENE of Tadine, New Caledonia, Saturday 26 Sep 2026 a las 23:11 (GMT +11)",
+        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPM1BTMDRqck9SbFh2T0d3WndYLTl1TUhmaTUzNFRtS0JkLUhRWWM4R1BuME9LN2dXVFR1VUVvdVFIWF9FbzJBZ3dJSjFZS21HcGoxWEs5Tmg1bngzWGFuTWVya1ZkNUFGa25iV2lJbmFJdEJtZHdGM0NUZEpQbzBMRDJZQnFIaVhYelp6aUdQNEdhaVBOLUZXUHFJVDV0RkQzb2lRMENhOGs1RDNnb2lvU2VSZWpILTdWTzRiemFqVQ?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-09-26T12:11:00Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
@@ -224,7 +100,7 @@
         "titulo": "Terremoto de magnitud 6,6 sacude a Nueva Caledonia, archipiélago francés en el Pacífico Sur",
         "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQTV94VWhyNkwzbC1GbVVhekF5V0d4X0RBNUNkcEZ0SnA4SzNIQVhhdnBHcFZDM2lUMG5RcHpIdG1FZ1RXcENwNE1OeVlwYWNlcnFTVEFNWTl3cldBdjQzQUVnLTBiMHEtdWhPbWJ3anVRY3E4T0gzMlhYbldZSEg5ZUE3d21vQUlXYmJRdUhmV1BfcmVlaHVkekVfRjZQbVdLMFltOEpNWXUzNXpoTUZLdnJ2VkVXcVViVGJLUDhXXzltcFoyMF95OVdtV2xMMlBrVTQ2M3hmTXc0T3dYZ3dHbXBWLXRaN0xfTktqbUNGSEVFdU0?oc=5",
         "medio": "France 24",
-        "fecha": "2026-09-25T22:34:00Z",
+        "fecha": "2026-09-26T07:00:00Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
@@ -232,9 +108,9 @@
       },
       {
         "titulo": "Fuerte sismo sacudió Nueva Caledonia hoy: reportan magnitud de 6,6",
-        "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOa1BhZXhBbEZVdks4UzZnN0dIbjU2SVlWTDBTcEJDV0tRUnBWOHVjV1B3WDd6a3Jpb1dIa3BDdV80MUpyeFVwaVRNY1JrcFJjcGlfM3NjR3Y1MzZmLXJ6cU01Z1lfUGkwbWNNTVVlckdDS3NNM2ZlamxQSjVBNERJS0RQdm8tV21xWEpoU1dZZ0VrdkVycFdKOUpnUkpKY054Vm93SWRGaXF5bG8xSmhndw?oc=5",
-        "medio": "Noticias RCN",
-        "fecha": "2026-09-25T22:11:54Z",
+        "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOa1BhZXhBbEZVdks4UzZnN0dIbjU2SVlWTDBTcEJDV0tRUnBWOHVjV1B3WDd6a3Jpb1dIa3BDdV80MUpyeFVwaVRNY1JrcFJjcGlfM3NjR3Y1MzZmLXJ6cU01Z1lfUGkwbWNNTVVlckdDS3NNM2ZlamxQSjVBNERJS0RQdm8tV21xWEpoU1dZZ0VrdkVycFdKOUpnUkpKY054Vm93SWRGaXF5bG8xSmhnd9IBsAFBVV95cUxPWENHMWs4c1R3dEZfN1BEVjFacWRscnpGVkNacEJaS0FhS3pTYkdkaUNLcGpJU1NQelhtX1JWMlE1eW1QNGQyN1YtU1hiek9xVFl4MTZMMFJVcGlpdkYyOXZGeDFaNmgxNW1pVXRJbEcwekx5MC1pN0trV2REZTFCbzBjc3NPSjVNa1hybUwzTElBZzFscHEwWWNSQ05LR2ZtTVdUUjRwUFFTZFF0SXFDZQ?oc=5",
+        "medio": "noticiasrcn.com",
+        "fecha": "2026-09-25T07:00:00Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
@@ -244,7 +120,7 @@
         "titulo": "Sismo en Nueva Caledonia HOY 25 de septiembre: temblor de magnitud 6.6 sacude la zona",
         "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOZVpsYnlNQlNmUzNCVzY2N082NDl5eGp3S3JwUmVyVi16Q21nRlR4RjVrRVJyYW1kNFBtV0ZMOHdhTzNUT2haV3JhbzF4OGxFVExEVkpPei1Qcmg2bHA5V3ZDZFlhQllHekFjeDlYVjEwZmVIX2NyTGg2T1BTbjhsQnNuMnZiQk13OHBycVExYWxSaGpXOWptZWxtWjkyX2xzUjE1RmFQd1JKOTlOQ0RCeUtidw?oc=5",
         "medio": "adn40.mx",
-        "fecha": "2026-09-25T22:00:23Z",
+        "fecha": "2026-09-25T07:00:00Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
@@ -253,30 +129,30 @@
     ],
     "gdacs:EQ:1568087": [
       {
-        "titulo": "Terremoto leve mag. 3.5 - Coral Sea, 30 km al suroeste de Anatom , Tafea, Vanuatu, Wednesday 8 Jan 1969 a las 13:44 (GMT +11)",
-        "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPSnZJNy1WY1NuQ1BsMXZKdFhMcUpKMTd0RVZ4NXZ1RGpEUVVMRnVTckNnRGx4MS1lX1I1UXhIcnFsZFdPNXZnU0VwR0tnUUNMTGhOMGMxRGRVd0tsQS1ILWJXbjBxem1FNWZzTXRQeWRWajd5bGpZNzZETDYtOUNlRA?oc=5",
+        "titulo": "Terremoto leve mag. 3.4 - Vanuatu Islands, Monday 13 May 1968 a las 15:07 (Hora Efate)",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNZXhEejJ3elgyUlo2R3FENW1SZzlZTUZOcEdnUjBLZUZyX0pJZWliOG5CY2t0Y0hFVHpyR1dPbXg3emFlaEpXWDVsNWRiVkl2b2lCS3YtRXNXSHY5ZWVnM2ZJNVdxUnk0V2ZPMEZfMHRQWUJYTnJrQkYwZGw1dFpmQ2xFUkYzVEl6TS15VGZqVEhzSTBPdEh3bVJZaVVodW9BMzJDM25wcldWQnpt?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-09-27T19:19:39Z",
+        "fecha": "2026-09-30T18:36:21Z",
         "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Terremoto leve mag. 3.5 - Vanuatu Islands, Thursday 27 Nov 1969 a las 02:48 (Hora Efate)",
-        "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOSkJnY0ZiZzA3NGtDZzBLN1ctMC1yUjZRZl8yUkV5UWc2aGdNcV9UYXZ5MUVHQ1BUOWFWdFJMT1J2Yk5QeXoxMHMzRlFOY2FLb2NIZTB2WmNGT0Q5elFCczU2WFVQUC1lTXd2X1VrWmY0WnNGcmZQcnluU3pCa1NxQw?oc=5",
+        "titulo": "Terremoto moderado mag. 4.1 - Vanuatu Islands, Sunday 21 Nov 1999 a las 07:20 (Tiempo Universal)",
+        "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPVVFldkNIWVJVcWY4UDZIQ3g4dzZHUnpfczZQbE82LWZPS3pUNkMyc3dRYWpBUkIxUTB6VDdCOHR4eGdIZklaZ0lVeHYweTJsZUhQUzFkWmg0SGtOakVTbnVOSnp6SjhRRUtEMV9MTUZwMXV5bzhYWnZMVzhMUkRmVA?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-09-27T19:17:13Z",
+        "fecha": "2026-09-30T04:39:14Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Terremoto leve mag. 3.5 - Vanuatu Islands, Friday 31 Jan 1969 a las 15:44 (GMT +11)",
-        "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOVjAwSmJKUWRIUmNoM1l3eGNlWmp0MWlVRUd1QXc2Q3F3RTNzMkQtb1pndG9zdndESktDWk9mT3Rnald4bWJQOGpjWlVlVHlxN1Z0RXk2VWpuaXlXczdrNmFxUlJmVTJqMkhPbnAxb2V4YTNIcFg3cUs4dFpCLVRweA?oc=5",
+        "titulo": "Terremoto moderado mag. 4.8 - Coral Sea, 98 km al suroeste de Port Vila, Shefa, Vanuatu, Tuesday 29 Sep 2026 a las 22:27 (GMT +11)",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQb1dESmh1eS1zc0VKYm9kaFdTOGtmVUpiajloc3gxeTZmSnp0LUk2Yy03dGZpb2FzZXV2anIta1lQRWpDSDNPUFNubnF4TXgzVVhGZnUzOVBmby1RSWpvZWk4WmpoS2ZJZzF1ZXY5SzdTdTVhWUtLaEZkWm9TazlaRGxrNEFhalBTTGFLOTA4bExWRTlqUUlkOUwxLWQ0UVBodkE?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-09-27T18:12:32Z",
+        "fecha": "2026-09-29T11:53:49Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
@@ -307,6 +183,254 @@
         "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPUzJLbDVFT2JNYmVURlhMcnJSb2pOZE9kZEpFZUswbF9EWmJKek5GVFRmUUJzQy1ZU3h5bHNjTm9pcnp2Y1NjU1VyMDhmXzRkN2lIOFFtTTNGck9SSGs2MW95bjk5TWtKMjdCYjBUNmJmRUpFVGExcjZHTUpseWVhWg?oc=5",
         "medio": "Volcano Discovery",
         "fecha": "2026-09-26T17:59:40Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      }
+    ],
+    "usgs:us6000tzer": [
+      {
+        "titulo": "Terremoto moderado mag. 4.0 - Océano Índico, 37 km al suroeste de Tambolaka, Indonesia, Monday 5 Oct 2026 a las 07:19 (GMT +8)",
+        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNUlNoZk55TU1XNE43WkdUZ29zeW13dHhNdkVGTGdlY1VBdnRzWmRzekE4eFhzdU1nNGEwMjkwXzNVZ3N2elo0ZGpaS1RXaUViemZiUXVhN0NGZTVnMmtVbWl5VUlScC1JYnN6TEF2MVZIbWVXTGVRVDFFMmhGaE9sZmlXdHYybVB5cFc2cDEtSWxBNlhqVzRFd2pOVXRmZFZpNzVkQ2Q2dlBMUUlvZXJQckZfMHU?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-04T23:30:41Z",
+        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto moderado mag. 4.2 - 65 km al suroeste de Tambolaka, Indonesia, Sunday 4 Oct 2026 a las 22:59 (GMT +8)",
+        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPOXNPUExpV1ItQmJnNlJ4NnktOVdrUEJGV3M3QmhWVjJROWo3ay1SQUVPcERpRGR6R1o4a1F0MVFfVzlheDllc1k2Z0R3WEZHV1RQY2hZS3ZjSGlhSkcwVnl4SWNjY0gyc1Vma1lhaWRDejQtTk9XMEM4TExLVGZyd0lndU9Jazl3dnZuQjk2Y2NoSXhyLVc5NzFySjhlVGppckRBVzY2VllLeDB2aUotYmhfOFo?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-04T15:10:06Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto de magnitud 5,9 sacude Indonesia sin daños confirmados",
+        "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNTXpteWJydXlqMG43SnpKWjBhaHJaUTNVREZtM3hYOHAzSW1kZF9xYXN1dFJGM2tFZ0cxb1FlclZpNkMtUUowcGY3VFV2WThHVWs4dmpjZ0g2Vm5VdThrd0wwTy1mRXhhQUpNVTdfVG1JUmQtLV9mZEw4aUVOTURNdnNPRXJmbE40TVJRTTlfT0ZiYkc5S2pBR1V5Wl8tVzEwWk1ULVhPUXprX0p0UlN2Nkg2MFFMTlhRSUp3aTRlM2lnZEY5ekEyeVNVQ3JiUmpn?oc=5",
+        "medio": "Negocios.com",
+        "fecha": "2026-10-04T06:36:18Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto moderado mag. 4.3 - Océano Índico, 202 km al sur de Tambolaka, Indonesia, Sunday 4 Oct 2026 a las 11:52 (GMT +8)",
+        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOY2VSRmRQMDdmaEFGN0NGMFNsV2RlQndqVHFSN3AzWVVZNFRlRTU4c1RFd3BGLTZtSnhYbTFVeVFKS2VnaTJKZHhtRDVPS3JqNE02S2xocl9Dd0dNSXJNendRMmFoODdFemVnLXMtSGhJVVpwNlZJQ3p5bkdJVGNKX0dXZ3V4ZUdpbGVCN3ZOcFFQTmpTLTVsdUItdHNraWc3WllKcUduWnZCNUtON0c0NUlLM3hDeVk?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-04T04:05:38Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto moderado mag. 4.0 - Océano Índico, 38 km al suroeste de Tambolaka, Indonesia, Sunday 4 Oct 2026 a las 09:32 (GMT +8)",
+        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOTi1NYmZwaERMVUJVaXZHeGxHeHROVG5LaXQwZmlkMlBCMzdrYlhQM2h5bXVoMXVqT0pob2UxNnBBRFBUUEVTSy13Y2F6SHozaDdKcHR4Y2JWMjJfYXhwYm9WNmRSRWRNNVJoWkRlN2tZLTRHTGFRUU5EVjFneTZzZzBlSE92VmpQN1poak45X3VrTzJheHluUmltQWUwaHBsV3N0MWhsWk1tVnd0bXI1dlZ6Ri0xb0E?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-04T02:46:34Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Significativo sismo de magnitud 6.1 sacude la zona de Tambolaka (Southwest Sumba Regency, East Nusa Tenggara)",
+        "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxQRW1rNTR1S0VBX2c3LXh0YmRGUzBUQ2RWdlVBS1E2am14M05CWGVhQXZmUUJ0QUFKcWNsd0ZoMXlIWFRsLU5Wbl95Uzh2OUktZWJ5YTUzTmNxZ0U3RFd5ZllQaEVlOUtLTWZ4NnJCcWNiX0JyWXh0UnNwQ2FZTmhTckdtRUdJU3FJOUs5M3NqSm8weV9QYWZxLUQ3YzRyRUtJdC0wOHc0MXhnQVZuNVVob29JYXlmY3YxRFRNb0cwTzM5X1psbFpvblU2cFRyTUxDeG1LTXR5bC10WFVDNTFnNnotVzdGWlRxZ0Z5ekpCMHM4aVhra21V?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-03T23:09:41Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      }
+    ],
+    "gdacs:EQ:1569326": [
+      {
+        "titulo": "Estudiantes de Banda Aceh participan en un simulacro de tsunami y terremoto",
+        "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOeXJ0S25NSmt1QzhVS0tDTDRWSXB6WEx1Um5tTTdPRHJJd3MxcGwyZXNGMEp0YzhZcnBoR2xaOXNoUnhpV0sxOGYxc09yOHVCaFExam5RbDhWRnJKYlhOMEJmSm1ub21vS3dHTWNBMWQwYW5hMm43X21TNkxaNmx5VUJ6ZlFOZ05PaXJ2RXM3TGlUS1N3MzB2aFZpUHFWOFZvM3V4VzlEaUcxTWlQQVpz?oc=5",
+        "medio": "ABC",
+        "fecha": "2026-10-05T04:30:33Z",
+        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto de magnitud 5,9 sacude el sur de Indonesia",
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxON29OWHM0TGd0ZHltS21qcGM3RWQ2M3owUFJyTG9OM1NRbVNaYy15QlBxblp2bzhNc3h1MWZOYVdBSFhpUEU2UXRfMzFRZG1yWTdXblRMVzJWVkw3VUJfcFFOTmd5cEc2QURlaDBfd3VUdWx0cDVRYVoyWWpDX1NDYjhjVE01eTVFNzlQc3BFNGlzMUMwT2J0TldNY1VBaWtXaWxLWTd5R1c?oc=5",
+        "medio": "elcaribe.com.do",
+        "fecha": "2026-10-04T16:22:04Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto de magnitud 5,9 sacude una isla al sur de Indonesia",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNd0JQejBtTkxGR1BwbkJ6VnRNRE5BdmFjUXZMd2YzbV82dlFfb2dlc3RmdVdIVmlrYU1INVJRcUJ5Q0FVS1VvclBZbl9JRFdFSUVYVXNVZmljSlRKLVNJWk9nUGJERUJMQko5Z0JFR2xhNy02VUloRjVjV3FONjJ1TWFiMmhvVFZtZk9nZG1nLWlZVDU4Uk9EanJXcVRmcXdnemNJU3ZsZjU4SjQ20gGyAUFVX3lxTE5Ybi1penF5YWVhcHhObmoweXYxQ2x0ckx3ZnR2cDhEdjc4bGx2WVlBRXlnRDhpNHlFSU10TkY1ZWREd0kzRkVQQkUta0tfcG15RXhWSmJPX0VMUElXUW9mVUpDX0gzNVVuM1BUc1VFd1V4RUFKYW9FQzByOGR3c09HYTNWTFdSMndxVGtQaEFfNGFoN2I1elR3RmlHbkV2RldJaFBYTXZEek50NXIzaVFHRWc?oc=5",
+        "medio": "Listín Diario",
+        "fecha": "2026-10-04T13:47:30Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto de magnitud 5.9 sacude Sumbawa, Indonesia",
+        "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBxbmtLZTgzYWF2cTB2N3hqSzBLWF9ZTVB0TG5IMzhsT2R4Wk5WS3ZjT2QxdlZUeFZlaWJJQWJuOHdnSGFkUEEzWFc1UmZhdF9JN0dFTFp3?oc=5",
+        "medio": "saba.ye",
+        "fecha": "2026-10-04T07:15:40Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto de magnitud 5,9 sacude Indonesia sin daños confirmados",
+        "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNTXpteWJydXlqMG43SnpKWjBhaHJaUTNVREZtM3hYOHAzSW1kZF9xYXN1dFJGM2tFZ0cxb1FlclZpNkMtUUowcGY3VFV2WThHVWs4dmpjZ0g2Vm5VdThrd0wwTy1mRXhhQUpNVTdfVG1JUmQtLV9mZEw4aUVOTURNdnNPRXJmbE40TVJRTTlfT0ZiYkc5S2pBR1V5Wl8tVzEwWk1ULVhPUXprX0p0UlN2Nkg2MFFMTlhRSUp3aTRlM2lnZEY5ekEyeVNVQ3JiUmpn?oc=5",
+        "medio": "Negocios.com",
+        "fecha": "2026-10-04T06:36:18Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto de 5,9 sacude una isla en el sur de Indonesia",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPNDRUcHpNNEFYWTM3eWlWeEctZFA5M3JKaUpITEt3R2Ftdy1maWRzaVJpVXRubzZLb3N0QWUzUkpLYlBDN1dMSEhSRjNyTGlxbEFtM19yaUR6U1BzSmVfam5KWEpBRUs4RDE2cXo3RFhPNHdvQl9ZSmxfWmFyUjRKdmhhcmNuckNRX05jcDhZTDluU0d3QWlqNzRWSjhRY0VnU2hMMnIzbFhjaUpW?oc=5",
+        "medio": "Noticias Venevisión",
+        "fecha": "2026-10-04T04:54:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      }
+    ],
+    "usgs:us6000tz62": [
+      {
+        "titulo": "Terremoto moderado mag. 4.0 - Océano Pacífico Norte, 196 km al sureste de Petropávlovsk-Kamchatski, Kamchatka, Rusia, Sunday 4 Oct 2026 a las 08:47 (Hora Kamchatka)",
+        "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQOXhHeGhJRmFZd1RnYTE2ZndVaG43LXlKMHdHVmNLZDNLTTVYMnJxZ0hTb0hEbzVDNnQtVlBrdzJXSmVnNGNmdWY1MTlCSUxOU0pRTU9KVW90X3BZQV9Qd1BUSnl3YW1zb3d3dWExYTg0Z2toSXpKLWtYUHN2Z0Y5OC1KYzh4WHZndFpOOGhWdXRSMUJtN0VjNVN4VkJmbG5LZ1ZQM2RaYTFOQWlqUlJtSllteEgxUWJwcVlsLWIza0tXSFNqT1ZiYnJyR3FtOVQwLXc?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-03T20:45:05Z",
+        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto moderado mag. 4.4 - Océano Pacífico Norte, 207 km al sureste de Petropávlovsk-Kamchatski, Kamchatka, Rusia, Saturday 3 Oct 2026 a las 19:30 (Tiempo Universal)",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOMjVNeHoway1jZ0lac0JpOHFSS2ZyM0VuYXA5NDBhU3o0VW9LY1pra01zY2t4YjdsMjYxLU5JNVRFRGpoblcwM3ZxOUYzVFFra0s0RFdaSi1kVTBfYnJybEx4U1FTbWQxU1RJYkF0cXNuY0doTkh3LUNRSGNqaGN1X3JhcFA2eWg2M042OHppMTZQWjRPZEY3NzBpNE5YTEVKZmUyR2VNdXRBV2pnODhTX1pUazJocTV0eFZ1Ym95ZW83Zw?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-03T20:10:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto moderado mag. 4.6 - Océano Pacífico Norte, 170 km al sureste de Petropávlovsk-Kamchatski, Kamchatka, Rusia, Saturday 3 Oct 2026 a las 18:52 (GMT +11)",
+        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOUzdSUF93MGZnM2ZZcG1OVVNGMUYxZ05wZC1RU1ZVNlJQeXg3Nnl3VWJ4SmtoYzdrS1hiejRObEtqYWhuVjI2b19WVFhtN3F4czhGRG5mckROYnh1SjVmQzFHektOcUxHdWZ4QzlXTDZyLUpzdWhkRG9mMFJSOHRRNm1PcFFVc3hYMFIyN0tJMGRsVWFoakd4WjRWcUsyaUdFWlhWdERKYld4X1h6Y0tvLWVub0JjRjVxOTFRWWZPWFNQVGFR?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-03T08:46:36Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto moderado mag. 4.7 - Océano Pacífico Norte, 153 km al sureste de Vilyuchinsk, Yelizovsky District, Kamchatka, Rusia, Saturday 3 Oct 2026 a las 10:54 (GMT +11)",
+        "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNaldSV3NfMlluamRlQzV0SWtqWmdveVBCNGZBc0NYaG1wcnllTDNlR2VndWFrZWo3Mk13VE1YU0dseUJNUkstSWJtWDgyclpHWnJJQ3JCUjlwdXY5VWRMSGxVdVpEZWdyaG9UcUFKMjZDODZJNHozNFIzd2pWT3lmaGttbVRRSDNzQVZjX2w2MnBOOHhVRG41WmxucExvWEUybl8yT2tCc2gzR2E3LTBobkt2ZGJpOW9ydG9USlRSdjhtV1RzM2c?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-02T21:16:07Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto moderado mag. 4.9 - Océano Pacífico Norte, 143 km al sur de Petropávlovsk-Kamchatski, Kamchatka, Rusia, Saturday 3 Oct 2026 a las 08:25 (GMT +12)",
+        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPS3pmaHZwc3ZvU2t6Y2lkbUJNS2xlUzRyMTFOVEhBQ0dkU2Z6TkhlRGFEeXo3R2xNWTRLcy0xSWIxY0NTb3F2WDhoc1NLX1FHcUE1TFJPRzJBOVZ3QkZwbU04dmt3YlZFcjJQbTQtaU9CdGdxZ1VXTUZCbkJVQ2lOTkdnVzlBUWtqRC0zRjZNN19ZUmlNb19BejZYaHdnQVNlMmt2NmhQMmo5RV9JLWtBS1hoeDVIWnc5bHlXa1IzQVE3dkt3?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-02T20:40:46Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Fuerte terremoto magnitud 5.0 - 179 km SSE of Vilyuchinsk, Russia, Saturday 3 Oct 2026 a las 05:25 (GMT +11)",
+        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNelJzVld3aWpQVDFvN3FZdVZTRXhOWk5lR0RqNTF6UjFKUW9YdGttRFRPUkxVUV8tMWJxSmY2Z0sxYzRRUVd5TkVLREpvQmhWZm1ZRHBGLXJUMWlNS29KZFFKRHpud0NsTWh4X1Z6ck9xU1QtQlVsR3pocTdjVVRMX1lkbGNHNHNIUDYyY0UxeTEyRlcxRC16ZlhjLVBwOURZcVN5b2R1ZGxCUFJvd1N4NGJDSG5VSXkzMy01dzJGNDdEczVH?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-02T18:45:34Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      }
+    ],
+    "gdacs:EQ:1569129": [
+      {
+        "titulo": "Terremoto moderado mag. 4.3 - Océano Pacífico Norte, 211 km al sureste de Petropávlovsk-Kamchatski, Kamchatka, Rusia, Monday 5 Oct 2026 a las 14:14 (GMT +11)",
+        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPLVRlNEpkM3VqVVJFQmxtVVJQQy1FMTBNSTNkTThBbXAyRW44QzFtQi1QTWNEMXpsUEt3cGxBRGdhNDlVcEF5LUNweW5pQ2tQTEw0TWJMLVdoT1IzTGN2Z2ItdkxjaDlsZW54RnJUYmJkd2Q2Y0VodHRISFQ4V3JZNkpqdjJPXzNnTjRUQm5tN2F6T05ORHBzeksyQ3dHYzE5MWZlakhxaTF2WmN2UU5FQzB1OGRSbFNVak5jenJFTmVIeEJl?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-05T04:00:39Z",
+        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto moderado mag. 4.2 - Tyndinskiy Rayon, Amur, 197 km al oeste de Neryungri, Sajá Yakutia, Rusia, Monday 5 Oct 2026 a las 09:27 (Hora Yakutsk)",
+        "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPQXJZMnY5WmhOc3ZZZnlTNGNzOFZCOEI3YXBzMC0xY1AzMFhwdUE4ZnpBQjFRcXBNUUlLRGN4dnI3djBJdFVsZldqVVVicVdqdUl5NkdWbXhSTFZSMUhvTGNsa0xtTVVDOTF2UVNwVVhwRFFYSmxLM1JqU0hQUWxobFptbzNYd3RldlNCblFNRkdJdldIOEItX0wwQ2QwMTJnaFZRc3EwZC11cE10UkhPSm5NTmN2Zw?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-05T00:49:44Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto moderado mag. 4.4 - Barguzinskiy Rayon, 30 km al oeste de Ust-Barguzín, Barguzinsky District, Buriatia, Rusia, Monday 5 Oct 2026 a las 06:54 (Hora Irkutsk)",
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPYmZUby1NOVRJY3ZZZlBWSlNRLTRVTXRUVENxNVhvdTQ0X00wallwQmF4d0NZcXR5d3lOUEU5UWY0V0xNd2ZUdE8zVWdKaWFBSjNiaEw3MGFXMU5Cb0M1Q1p0N0V5NVFFekMtQ1lWVEM2NTBjMmhYWHFYTWJ3bXBadkVBaENtak1SLWxuc3hBVF94dzZsbTV5UWhyd0RWOG96YVlRdVJBNFgxVThPSVBhQ1BmeWlIYlU5?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-04T23:10:37Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto moderado mag. 4.4 - Océano Pacífico Norte, 87 km al sureste de Ostrov Chirpoy , Sajalin, Rusia, Monday 5 Oct 2026 a las 07:16 (GMT +11)",
+        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQWEJzRWhkQlRBYXA5RmhmTFZkVWhtV1pwRkpRZ0ZlVlIzTWdTYmJ4OE9VZ1Z1TnRFVU1BRVFiUzhlazVIMEdtaWs2a3hnYUFCRTA1RWNvejJiZmZNLTViYk9mZUk1RFlQNlgzeFZQMFR5VnBUVkh0ekJGMXhZdTE1OEJ3RDJIb2RXei1XRTZ6RFZ0cUZpazRtTXFkNlEyTnhralZjNy1POWtlU212ZXVUbHU3VHZHN09UdFgyUw?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-04T20:49:14Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto moderado mag. 4.7 - East OF Kuril Islands, Wednesday 10 Jun 2026 a las 17:05 (GMT +11)",
+        "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNM2xuNVlZZk9CUnJHVFlOXzBPWXRHNzN4VlpqMDZnOFRfclhndEM0QzczT1NScUpsV0wybVY3bFJ4eTBjOHFRd1l6MHRHZ0dxUHhnNFdLWWN1NVcySGxQN3dRMHk0LURtY0VwQmdONlE1ZV9GdFlGNGtONkYyQm5hazlXUWh5UUc2MWZLclN1RmNWcGJIODYzZkdMcU5GSjZKcHNnUnBpWjMzaldhRWZBbmZ4aG1VMjQ2R0U0MGtB?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-04T14:42:01Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto moderado mag. 4.1 - Océano Pacífico Norte, 189 km al sureste de Petropávlovsk-Kamchatski, Kamchatka, Rusia, Sunday 4 Oct 2026 a las 16:34 (Hora Kamchatka)",
+        "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNXzhIVEZ1NDVwenVMbXU2UlozaUhLSVlXV0NjajN2M0YtTXRINmJNbGNMVkJTZGRCUzN2eFBpel92Y1kwOFc3QUNKR3NuSlQ5Ql9sMldhbWxFMTQzLW1wbVRaaEE5aUNwSDhkQVdwQTAtS3BkaHZRNC1aZHBlbXVCQ2gwM1dQYWFTRmRpNDZYeld3STNGTzZrSXFjeXcwcHRLRU4zS196ZWljVm5FMGRlMkpOSTVhYWk3R2diQ0czMXpOdW04X2Y5cHluSks2emt3VVE?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-04T13:50:32Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
