@@ -1,126 +1,64 @@
 {
   "version": 1,
-  "generado": "2026-10-19T13:30:05Z",
-  "eventos_con_noticias": 7,
+  "generado": "2026-10-26T13:13:44Z",
+  "eventos_con_noticias": 5,
   "noticias": {
-    "gdacs:WF:1032697": [
+    "gdacs:WF:1033142": [
       {
-        "titulo": "Incendio forestal arrasa cerca de 300 viviendas",
-        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOdjRnT1NLaVBUN2tiSU41cjBQTF9jaG9RSjNxbUFiMklJdmpyVElHUjBtSlRCVzM5MV9uV3BIeFBjbHVMUENhRF8xQ1JHVFlCcExNeDZ5eVE1ZmVMd1Vaa3VFdlJQeGZqMm1EU0hpRzFKUWlGTmFoRnhxejdhR0VvMUJXcEwyZHdfVDVsbkk1Wnk0VkVZNVE?oc=5",
-        "medio": "El Diario - Bolivia",
-        "fecha": "2026-10-14T10:13:52Z",
+        "titulo": "La IA ayuda a predecir la deforestación en el bosque seco chiquitano de Bolivia para evitar incendios",
+        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQM1FCdDUwSWUyQlBfVTZnVF9KeC1FajE4Zk1aYjZub00yYTV6WjBpVF9BdGQ4WmVCTi04TENSaDV2QUFha3Vsa2VtZGRoZW9UMHB2Mm9rNG01TTJlRTlpNjZEalNpckREeTVjdjB5RWcxZkRhaW9COUlUaExJSks5Qkx1dE9SZWRtZnlISlpuWkJPSWI0U3VfQlBKLXpyTGNRVUJXME9QNVM5RHNxaFlBRk93?oc=5",
+        "medio": "Mongabay Latam",
+        "fecha": "2026-10-24T13:32:39Z",
         "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Perú: medio centenar de incendios forestales afecta al menos a 13 regiones y se extienden por territorios indígenas",
-        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOV0JUOEJoZ0dONEY3T2hLMXlER3dNem5hdWxhOGlkZW9uRG94Y2FfS3Q1UVVNX2lZRnJ6djRBdE0xbENlUGpwZ2lVWVBnOUNFMG1raDhoRjNZNVdjd1ZocFhqR1Z6X0xCY2VqQnJINlAyUDJhWS0ycGJ4Q2hPR21ESEdGY21rUEY2U2Z5M3Z3a2thU2dXdWRNVkgwSlp4cVg0TDg2elY4MWZpMjhadlNBNURFQk15YUx6UHNSaw?oc=5",
-        "medio": "Mongabay Latam",
-        "fecha": "2026-10-14T00:16:59Z",
+        "titulo": "Incendios forestales afectaron regiones andinas y amazónicas del Perú",
+        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNdW9hbTZHcjZuckZoVlJTOUNQTkhzaW5la2ZtMzZvOERmdy1rajJsSS1PaDVvM1B4WXJ2WFd0ZDNEUkZkT0NCZmZ4OElnOGs2VG02V1Q2SHBlckhNUERBbjFUTUVTN3pnNHY0RW5raGFZOGM0NWxjYm5iYS1RZTRrSEU0S2xPR0RXVVg3b3BrZjFTRXc?oc=5",
+        "medio": "Avispa Midia",
+        "fecha": "2026-10-23T22:10:30Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Bomberos heridos tras quedar rodeados por incendio en Cochabamba",
-        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOdF9PWnBfd0tlVkRuRGFrZHk2TFZzUncySnBiRzlPREc5UllZR2ZkNzNwbGdyZlBUQUgzaWtfMFRYUXA5UjBOQzlIbkFKS0o1VWZwbXRwUFBTNkFCOXJmWnFfcVFpUmRCRVo3QlVfR3QwZ013U3NYUkdEYjN0OHdzNkNiWG1seXItOXRQOUNxV3RaRTB5dHpUWG8wcTl5Q0JR?oc=5",
+        "titulo": "Calidad del aire en Chuquisaca",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBFYkx6NDU4UkNwdVcxWTNWYTQwSXY0YWd0eExLRFhibFY5WnZ1RDA2NUY5TWNRUXYwNF9ZQjZPT0xLQlU4SEluTzlVenlKdmhtMTVWUlpMemRQSEd1UFlaN1kyUXg5QQ?oc=5",
+        "medio": "IQAir",
+        "fecha": "2026-10-22T04:19:31Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Incendio forestal amenaza las turísticas islas peruanas de los Uros, en el lago Titicaca",
+        "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxObHNCWGI1eVBueHVSVGlfeWZQYzRqZ0Jld1dzVXFIMnFqWXNkMjEweHpaMzJ4elMxaDlkVlZXVzA0bldRTHlsWkxMcHl2bWtXWjlldFRqX0JzQ3E4amZnbmJMQzhJa3ozX0d6blJCay1RTW8yNl96TGNocXZrZHRfY0FsQlRoMF9GcmVmRnE5MkhJWEhWSFlqQW1nbnNOVnFxbHdnTHpMTk9SRUVqb0NWNEo5V0p4dGFyeUE0bWNPR0Q1QTBmNHhGRTVyYmNYWGowQmlYNWpyTdIB8gFBVV95cUxQbHJCUjlVUXVmdlVLeGNfOGZtbWQ0Z2xjSTBMNk5IZEhhdjlNbzdUTGZndC1oU1FUeERjUkNjRkg3WEpoMUd4RWtqdTRodG12ekt1UXlESHh6RXRuTUtOLXlUcHRYRnVrV29mc0VsbFZadXFvMkpPS0owM2FucW1kODFRQzZEelNYZ3dIaGZiYVpFemtaVzVuVldtVm84cUphRlZaVnJaaXUtdUxGSzg0Z3BrbVdjTDA2Z1JkMnlXZU90cXl4eWVrVkYtcEYtUFdjeUt6cGFkSV93b040eTQwVkF2c3Y1VHlRd3hQSTNRYjdDdw?oc=5",
+        "medio": "Infobae",
+        "fecha": "2026-10-22T01:30:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Gobernación reporta 160 focos de calor y ningún incendio forestal",
+        "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQSlpTeElNWHpiMFd0QjFDUGVfSWkzV3ZCaWdjYlhSNEp2TUhlWFN2Mm5JM0NqSXhOT0ZOdXRNRzVJTjJVY2VTdlRMRldZV3VnQkFrc0NmSFN2S0RUaE4tNXpKbEtOYWpKVE0tWXdCcnZJcDhOdzF6RXl0aTF1bXM2Rnl0TGVVSW1sUVc2di1iTVQ3R2IybHBPMEozTXdwWHc3Si1EeElISXh4TVI2Y1JXQkpiQQ?oc=5",
+        "medio": "EL DÍA - Noticias de Bolivia para el mundo",
+        "fecha": "2026-10-21T00:08:52Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "ALDO inspecciona zonas afectadas por incendio forestal en Corque",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPbGN1SlIzVlp3amdReWJhdzV4ZXk4Vi1SQ1lnZ0RvYVZYdk1VXzE4YVBNTnFXdF8ydHptWEtyRExvXzdSWFkybHdmVnpUQl9wQWxMLXlqbG8zWHZkWlNFN3h4aFZMTi1naXhHQnQ4NFc4S2tfYlBPTFVlNzVvR2tMRkRicWpvWjlZc0VEWmdUMktOTFJ3RUJWRnZOQ1ZTeGFRV25rMGZR?oc=5",
         "medio": "La Patria Bolivia",
-        "fecha": "2026-10-13T14:18:25Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Bomberos sofocan incendio forestal en Alto Munaypata",
-        "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNQVpQMlNmRWhOai03VWJWWENyMXpTWWtISjJnQkxDQkI3d3NRZS1sSzd3a3I3Zkp3N1Y1VTJyZjRmNk1jRElIWnRTQlRHZUl1OHZFeEplaEtxWTd6UjlVbDQ2VUd5MVZwNi0yU3pzZDRsOS1JdmtFVmZXaDZJVEQ4OHhLbWlIdnpSMjVla0RSVkZqMTk1YmZYQWRpcllhSEUtQlRZSw?oc=5",
-        "medio": "Red Uno",
-        "fecha": "2026-10-13T01:02:40Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Incendios forestales: financiar la prevención antes que el bosque arda",
-        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOb3JLN0VJd2tjVTZOZUNvMFV6ZEFuOWhoTkpSQldoTENKMmFUcHM3MDZfSm4zUVhlQXZZSERscnZNb2lOc0gycU9XTVdpWHdxd2FPY1hzZmVoWUZwYlM4SHlVV3lrbi1GYm1VN2JFYnF0Q1JFM1FqRkE1VXZ0eFB3SHRVaDhyak96V2lLcnhvNWs5bXNtRl9IVzRn?oc=5",
-        "medio": "Laregion.bo",
-        "fecha": "2026-10-12T12:48:19Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Incendios forestales afectan 1,25 millones de hectáreas en Bolivia, un 80% menos que el promedio histórico",
-        "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOZ1Jhc25BUmhTZDVzb1o3bG9kUWEtNEVuN2VaaHVuZzBDclp1YW5yREt5MFNuTENXeGRRcGwyMHRUZmFRZkxTWVRGVV9BSVctSzRkSDh6dWF6UUZVWVdYcVVXTWRyVEpsc2h6UEkwWmtyRUVLb3lvbk1qN1IySkwtMWdxTzJwZDBCZVZxYVVDd3N5QWlpZHlMeG9lSF9aOE5nMGZxemxJc1d1b054djBIejJGbS1fX3M5Y3FxcTEwXzg3dS15Q0JGVnZoSTh1bVhVRjZyYWlVM1k?oc=5",
-        "medio": "La Voz de Tarija",
-        "fecha": "2026-10-12T01:50:48Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      }
-    ],
-    "gdacs:WF:1032686": [
-      {
-        "titulo": "Perú: medio centenar de incendios forestales afecta al menos a 13 regiones y se extienden por territorios indígenas",
-        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOV0JUOEJoZ0dONEY3T2hLMXlER3dNem5hdWxhOGlkZW9uRG94Y2FfS3Q1UVVNX2lZRnJ6djRBdE0xbENlUGpwZ2lVWVBnOUNFMG1raDhoRjNZNVdjd1ZocFhqR1Z6X0xCY2VqQnJINlAyUDJhWS0ycGJ4Q2hPR21ESEdGY21rUEY2U2Z5M3Z3a2thU2dXdWRNVkgwSlp4cVg0TDg2elY4MWZpMjhadlNBNURFQk15YUx6UHNSaw?oc=5",
-        "medio": "Mongabay Latam",
-        "fecha": "2026-10-14T00:16:59Z",
-        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Incendios forestales: financiar la prevención antes que el bosque arda",
-        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOb3JLN0VJd2tjVTZOZUNvMFV6ZEFuOWhoTkpSQldoTENKMmFUcHM3MDZfSm4zUVhlQXZZSERscnZNb2lOc0gycU9XTVdpWHdxd2FPY1hzZmVoWUZwYlM4SHlVV3lrbi1GYm1VN2JFYnF0Q1JFM1FqRkE1VXZ0eFB3SHRVaDhyak96V2lLcnhvNWs5bXNtRl9IVzRn?oc=5",
-        "medio": "Laregion.bo",
-        "fecha": "2026-10-12T12:48:19Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Incendios forestales afectan 1,25 millones de hectáreas en Bolivia, un 80% menos que el promedio histórico",
-        "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOZ1Jhc25BUmhTZDVzb1o3bG9kUWEtNEVuN2VaaHVuZzBDclp1YW5yREt5MFNuTENXeGRRcGwyMHRUZmFRZkxTWVRGVV9BSVctSzRkSDh6dWF6UUZVWVdYcVVXTWRyVEpsc2h6UEkwWmtyRUVLb3lvbk1qN1IySkwtMWdxTzJwZDBCZVZxYVVDd3N5QWlpZHlMeG9lSF9aOE5nMGZxemxJc1d1b054djBIejJGbS1fX3M5Y3FxcTEwXzg3dS15Q0JGVnZoSTh1bVhVRjZyYWlVM1k?oc=5",
-        "medio": "La Voz de Tarija",
-        "fecha": "2026-10-12T01:50:48Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Incendio en Cochabamba cobra la vida de un hombre",
-        "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPU2dhX0hsaVdGSjY1bmVSa1ZIdlBpNnljamxvaG95MExIVlJNbjJrd3RsWGUwdzQtTW8wejM1MWZISEgyNWUtZE8teVFoTWwzNGpoUVpFRno2VkowZ0JmX1lnQWk3ZzVtNmFDYjZKSHV3elFoYXhvUHRuNC14a1FZbG85ODhmTlBJd3pZUg?oc=5",
-        "medio": "La Patria Bolivia",
-        "fecha": "2026-10-07T15:45:30Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Aeronave combate incendio forestal activo en Mizque",
-        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNVThSd0xVcGtsRWRZWC1IZlRlRjZnUlZHMk9pRWdOMU82bmR6TkwtR281T1ZUSm9zNUpzU01uS2hxVEN0OWU2Z2ZOVVBiT2pMcUJSWE4wSWlTZWpfR2VjcVFCeDdKV0JGbWthOVlhb0owbk1TSklVUGwzY2RSTnFLX3RpRW9iWmo5X0U0LU9RWGFPUUFKbE5Qd01UWQ?oc=5",
-        "medio": "El Diario - Bolivia",
-        "fecha": "2026-10-07T07:00:00Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Pocona: Gobierno y brigadas intensifican acciones para controlar incendio forestal",
-        "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQVEttaG9Cal9FbWR2aTl6ejREZnNQS1pQS1dETWEzM29FYWphbDNUWVozb0VDeHJyZ3hOTTdxemZjRU5kLW5jMXlDdGp2QmpXTmROMWV0N1h4bnB2RTg1WFljanV4ajdHN25ZZVByNlhHS1BfU1lDdHFfMG1WVmwySnQ1ZkdhQW5acEhhbmtLZlY3ck5GU2xfaWpzUjlua3ZRN2E3c3ZIUF9fQzdHUXJQSm1wRXN5ZFFUWlg0Q3B3?oc=5",
-        "medio": "La Razón Digital Bolivia",
-        "fecha": "2026-10-07T07:00:00Z",
+        "fecha": "2026-10-20T22:07:39Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
@@ -129,20 +67,40 @@
     ],
     "usgs:us6000u30x": [
       {
-        "titulo": "Informe de terremotos en todo el mundo por domingo, 18 de octubre de 2026",
-        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQSjVuYUlyUzFaV1NxZjV4WlBWLTZEM1JyMHNrS2JmWDdtcC1lY1o5V2Rka2VjVkI5ckZsWHhrazc1WWdYUEY4R3dReV9uUjJmeDl5YUZrY1JPR2VZWFpRaFpRQ0MzUFR6OFc5LVIxYjIwUU1OaFBsb3htbXFnTHBma0ZadjVVMW1EaFdadmREYnVIeHdpbThPTy1nSS1ianptalFvOF9ZLV81QQ?oc=5",
+        "titulo": "Terremoto leve mag. 3.0 - 86 km al suroeste de Huanuni, Oruro, Bolivia, Thursday 22 Oct 2026 a las 05:40 (GMT -4)",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPMERndkMxVzEzZlItNU5FVkN6ckx4NTF4bFBnUXZhREF5dzNEMVlwWElQT3Yta2dfUHZJTzhqSTBfUkdBZzdNTkdCQktzR3RGczVUN3hRWllVQ2RFX1hrV3ZEeEpxQWYzUTlFUUE5RDV4M19sTi1DVzdteHpaLTNrVU9MbERtOVFDSEh4T3JwWFk4RXVKZk9XSkJNZzZjQVBLdXk1WmlSLVRHczZw?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-10-18T06:10:03Z",
+        "fecha": "2026-10-22T10:22:08Z",
         "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Terremoto moderado mag. 4.1 - 193 km al este de Calama, El Loa, Antofagasta, Chile, Saturday 17 Oct 2026 a las 17:29 (GMT -3)",
-        "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOODNNRFJyNld3eTdjRmZldDZjQ3ZlVzFUUVBUMWlVRXZRSE1Cc0g2Z3h3aHUwYW5zLURTdnpVamtaWldLb0VLSDdmVm82Z29JWU4zcTJUbHRYWTJxdEl2SzJRTXBXNU1INHZSS01fWE55eS14dlJ2clpxY1ZrM2pidS1LY0QtLUNXUDBwTnZkWTJraV92S2dSc2ZTMGFjc21OMkczN214bHlMZDNCanZv?oc=5",
+        "titulo": "Sismo débil mag. 2.8 - Potosí, Bolivia, Tuesday 20 Oct 2026 a las 23:37 (GMT -4)",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOVnJCVmZpR3hkRC1lM09RRDhzMGxrV080TUVseDFDMGg2WnhMZEtnOTRJUVdsa2x6Q2FQV01uV3h0ckpLNlFRUXFmTjdjeEVlNl93b0cwakd6djBzTGFBdDBOWC1yQnJGMU1NVmJad2VnOUJlWHRpSTVVZDhURjIzYV9HTmt3b3dDYU1McmttMWIzZ1RVMnFNWEsxc29rblRUNzcxQWtTSk9UMDg?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-10-17T20:44:19Z",
+        "fecha": "2026-10-21T01:08:42Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto leve mag. 3.3 - Potosí, Bolivia, Tuesday 20 Oct 2026 a las 18:35 (GMT -4)",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOMUlHaDZadVlmRHhDcm1aOWZ3a01sQzdJUHNRblRQVDZFeWRXOHhKQThiV1pLeGdYMUtEZWE2cEstRnFxZXJ3cmxraEE2bVpVUkNhb291WnJPTmxqRUZ3SXhMcC12SGt5amZ4QmJrcEVhZXg4ZE9iMF9RenQ2WkZoR1hObVJiSjFZTUdrLVZMQzNnSHJhVl9sS1dxMktoZmFfV3ljQ0hQT2NxUWM?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-20T22:51:07Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto leve mag. 3.0 - Iquique, 58 km al sureste de Pica, Tamarugal, Tarapacá, Chile, Sunday 18 Oct 2026 a las 09:59 (GMT -3)",
+        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPZ3BCLU9WSnpOa20tc3lPV09uc0NWMl9maEhVLTF0YnMxTjA4ZXNSWGhyek83ZDA2cU9tdTlZcEUyLUdDcW41cE02MFRuSEV3ekc0OUVLTUdLUWYtM29mMENSVkVJdFh4OWRPaFdXVllnWEZxd3BXbVQybzJlaEdFU1VsN0Nka3JqNEdHbGRBWF91MEJMUDF5THpIY1lsNkMzNXotRU5DbGxDRGNmcFFlSXZ2S1ZCNUljYWNUNVcxcw?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-10-18T11:53:43Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
@@ -152,185 +110,163 @@
         "titulo": "Terremoto moderado mag. 4.6 - 89 km al suroeste de Uyuni, Potosí, Bolivia, Saturday 17 Oct 2026 a las 12:52 (Hora La Paz)",
         "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNd2t2bVd5c1dOQnZicF9GYTlfOFUzbnhhcXpoXzZCWE10cGx0cjJxRDJNV0YwcmxobklFNmRZZmV0NDBYWE1iYmh5SDJyVHp0ZTNmbmRXVU1KVGZ1cWU5eWpZMVB4UF9jOHhlb0tCa0RtMGFDSWV3dGpXY1R2b3lCcVI4aFFSYkZ3WHhVUi0xZDVTYVhISnM3cTRhX1JJMTM3ZS1lMXA2M0V1cHlKNFVJdGVtNlJvZkJNZ0xrcg?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-10-17T16:49:31Z",
+        "fecha": "2026-10-17T23:38:02Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Terremoto leve mag. 3.5 - Iquique, 70 km al sureste de Pica, Tamarugal, Tarapacá, Chile, Saturday 17 Oct 2026 a las 18:35 (GMT -3)",
-        "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNVWZteFljLUFPbThsaGZDWVdKUEhOWFFYY0xDNHFySlI0Mm1NUm5wci16d3NzS3Y1UTFVVndhX2ZGVWFkRV9JYXkwekk4S3RESkQwZThjeFVUR21wZnk4MVJxRjNTc3hVSmF3YktBZVpVdFYxaWlQdE1rVHBQLUxmSEpOSVExREh6X1JuNktNZjBrdWRaMmxDV2VnbHJ2MlhnakJVOVZxZ3pPQ0ZZUXlj?oc=5",
+        "titulo": "Informe de terremotos en todo el mundo por sábado, 17 de octubre de 2026",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPeEI3QjZuWTBaYklFOWVqNVF1RGpOcXRkSk12ZFBEeUltX00wRkJnNGlOdE14VnhQUGlaOHk1Mk1pUWdpN0RTcXJnaWJmWEhkUHctbnQxYU0ydW9MUEtzMVl3Q0M5RDBJazlEU0JVWkVnODQ0d3Y4ZUQ2RmFtTTVhOGxyOUw4cGdocFNYbDg1UU1WbjJDS3BvSC11VkUtLWlCczZGb2hjYm9pdw?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-10-17T14:44:19Z",
+        "fecha": "2026-10-17T23:24:00Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       }
     ],
-    "usgs:us6000tzva": [
+    "usgs:us6000u49c": [
       {
-        "titulo": "Fuerte terremoto magnitud 5.1 - Iquique, Tarapacá, Chile, Friday 9 Oct 2026 a las 07:22 (Hora Santiago)",
-        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNS0xhcVFsLUJsOHJ3T2RubWFPSF9ibEVVTnJWT0FZbTFwSVczQ2M0TlVtVXVtNTh6S2tDNGxxdmc4b2R5M0tIMUJnMEt1Q1prWXhJdVhFZUlvUkFFT1BhS1NjdXFxNWpJT0hSaS0tUHlEaTBaNGdhOWdWTGlWalh1bUdzYjFweWZhcTJXQklkZG1BZGtVSS1YTWFjeGVYZXlYc0VrN2l5dE1DUQ?oc=5",
+        "titulo": "Terremoto moderado mag. 4.5 - 36 km al suroeste de Porco, Potosí, Bolivia, Thursday 22 Oct 2026 a las 22:45 (Hora La Paz)",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNRTdHUW5YejBQU0FYT0gwLXFscm1STzgybjZCdGRlTFdVWlF0MENWQ2t3NE1rQWdzdVF6QWtzYm0zRmI3WXl1WVJUT2o4ejg0c0NHeHI4MHNvaWpDNmE2OXBZOFpIcl9ZcjBWS3Z5NlhmWlp3cWxMN0NYSjVYTEJ6OWVJc2loMHZ4X3d4bzkwQTJUVVlUb21qNk5Pa3JoOGd5d0hvV2UyVmdsM2M?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-10-09T10:53:25Z",
+        "fecha": "2026-10-23T05:06:26Z",
         "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Terremoto moderado mag. 4.5 - 60 km WNW of Colchani, Bolivia, Tuesday 6 Oct 2026 a las 02:54 (Hora La Paz)",
-        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPdG5uYXAwOVQtcWptUVNLanIyeFRtZUFhVlNyeEdPNWVneTB6djNhT0RSUHcycDNqTW5aTzl3cUw3MmpENTlkTkFZeEYybDVQQjk3VVJibGtVZUFZZ2tfNEszNXVMelJ2S0d5SUpUbHctRDB2cktYbW02Vjk0UUw2V0F0NjhKRlVadDVIRk14UUt2ZlRRUF8yZ3IzOU5taE9HT3FSVm1qdDMwU191?oc=5",
+        "titulo": "Terremoto leve mag. 3.0 - 86 km al suroeste de Huanuni, Oruro, Bolivia, Thursday 22 Oct 2026 a las 05:40 (GMT -4)",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPMERndkMxVzEzZlItNU5FVkN6ckx4NTF4bFBnUXZhREF5dzNEMVlwWElQT3Yta2dfUHZJTzhqSTBfUkdBZzdNTkdCQktzR3RGczVUN3hRWllVQ2RFX1hrV3ZEeEpxQWYzUTlFUUE5RDV4M19sTi1DVzdteHpaLTNrVU9MbERtOVFDSEh4T3JwWFk4RXVKZk9XSkJNZzZjQVBLdXk1WmlSLVRHczZw?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-10-06T23:42:53Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Terremoto moderado mag. 4.7 - 148 km al norte de Calama, El Loa, Antofagasta, Chile, Tuesday 6 Oct 2026 a las 03:16 (Hora Santiago)",
-        "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQT0trbWstRFVfd1ExNVRsUmhCMFNRV1JrdXA5T19uSldaUExVWEM1eVNnUmVnZENFQkdiVnBZUEYwcGpJU2lrdlB2QmRsVjRSTFVoR3lEM042MHdMYkltRl9qalRMemJaOW9KZmpBT3VabUl5OTdNTDczcU1CY2Z6UV9wWEpCRmk2NDVJa0ctdzQ5d2FiNWViV3lmSkx2Wi14M2c4akRmTzdjcDdDQ0I2bnJHVEM3YWZnbEF3?oc=5",
-        "medio": "Volcano Discovery",
-        "fecha": "2026-10-06T06:31:11Z",
+        "fecha": "2026-10-22T10:22:08Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       }
     ],
-    "usgs:us6000u0d2": [
+    "gdacs:EQ:1573141": [
       {
-        "titulo": "Terremoto moderado mag. 4.1 - General Jose de San Martin, Salta, Argentina, Tuesday 6 Oct 2026 a las 12:57 (Hora Salta)",
-        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQUkY5a01Dbm9EV0pYaWlENmpmRHp5bWFJOHJUcUNCS1lsbFRqdjkxS284dFJrTUJVQnF4c2JvZ09oUHhTaE5pN01MUEE0cl9RUUFwbS1QLVNRVUVNaDBVRmIzbzhDVV90THhFeVRsZ2pBeFpvb1BWVFJFa1o2bldYUFpDWmdGdzJLQ2FsTUJ3aGhVcGFIOWltelRkTnh1cTk3Nzk1Wk02dFNnbGJw?oc=5",
-        "medio": "Volcano Discovery",
-        "fecha": "2026-10-06T07:00:00Z",
-        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      }
-    ],
-    "usgs:us6000u18k": [
-      {
-        "titulo": "En imágenes: los graves destrozos que dejó el potente terremoto que sacudió Panamá este viernes",
-        "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBuUXhZN0lrY2VYenN4UU96dXBld1pQMjUyWmo5bWp5R3BEaER2bFJtbTByQm95SW55blUxYXBJLW1GN09rR3NlYVpGR2ltQlZySEx6Z1ZhM2h3TDBs0gFiQVVfeXFMUFlmenRScXhoZVpRTkhRZ3FDdGxKbTl0cHZNcXBoaEdNeXE3ZWR4dGZXUmN4VVJpT1RGOVpsaUs1TDRWTGhHZ0tqTWktbkVETnBkcGlTb205S205cHk0dmJLVXc?oc=5",
-        "medio": "BBC",
-        "fecha": "2026-10-10T07:00:00Z",
+        "titulo": "Esfuerzos de rescate y ayuda continúan después de que terremoto en Xizang de China",
+        "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNbjNrSlV3NEJEdFVoWkdFR3JScF9pcG1iYnBtV0pWQ09PRk1lTkpPWFhFZmxCY0RpUmN0RDV4eWIzSS1lUkRrVFFhQkNKY3o2WXNwTXNpVFBidXhodV85dDQ3WFYyTldUVDRXNkREZy1YZ014U0FJVmJDa0w0Z3hOZjh6azg?oc=5",
+        "medio": "Xinhua Español",
+        "fecha": "2026-10-26T01:32:20Z",
         "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Pitaloza Arriba, la localidad rural donde se reportó el terremoto en Panamá",
-        "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNZ0VTZXJQR1E0T3c0SlFoVWE1akZDWXJOZzg4Q2tkU0c4aEVHbENHZmxSaWVlRWtNMnZsRkdBZkE3dTlDMlk2TldCMWhyZnNDVTRuUFI4ZUNBbDR1c0hZMU45V2tSUWxpektxUlB5Mk9wODlJbURFTWFyTnZMMnJTTTRacmoxUnZ5QlpIUWl2TGU4TUc3d1FFVFp2Tmw?oc=5",
-        "medio": "elsalvador.com",
-        "fecha": "2026-10-09T07:00:00Z",
+        "titulo": "China instala viviendas prefabricadas para familias afectadas por terremoto de magnitud 7,0 en Xizang",
+        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNU29ERjZmSWl0R1M3bUFTcC1LQU5ST2hoZi1QbVB6aWlRWk96WFBaOVk5Y0RxQkotOTBjVTdDeDRITlpPTmRiNTMyV1M4N29KbVg4VEQwTVJPdlBMcTR2RGpUa2cxb3NzMG92SlN3M0NSdjloTE1vSDdjNFpTanFTNi04QndGOXFsLUdYU0lBMGRRME45dmpGaGhhMEtSc1pyVl9jUHFlZXZod1dsaTNsT2s0ek5HNXZhQjVSbERzWFc5U05Z?oc=5",
+        "medio": "TN8",
+        "fecha": "2026-10-25T22:24:11Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Aquí queda Pitaloza Arriba, el sitio exacto del terremoto de magnitud 7,6 en Panamá; se sintió en Bogotá y Medellín",
-        "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxObjJBd0F1YVRxajdKem9seDRZVTd2QmNFRk9tblFMM1lJa3dodFNSTXhLZTZMaTduaUQxNGtubFdYUzVpaHZSQzNVSmUzcjhYX1p1d2RIN3diZEZFSzVJMElIY0JiYVZMT1VEaHJhdzg3M0RkQ2lJVVdZYlZDMXV5SkdLc3FtSmxRcFBFQjlCYWQxWEN1T1J1bVpPcHRlbUpTejlQSkhlZ3J6Zk5UaThLcHh4OEZTXzZFWl9BbndSQUJ1N3JDNWVIUWxlcHROVlZicE5lQlg1Uk1PNzhHMDYyaUV6bF9BUDM0VzBQeGQ5WDFpM0dBWjNzR3BR0gH_AUFVX3lxTE5ydEJZb3lINHVfUVhfamtacmw3d0ZiRnBEZ1ZDS3VGTUVXV0dBaF9xZFBfdlFlTEpwa3poc09LcTUwLVRPVlBZcTlHUjlEaUdBcUx5d0VBOUY3M1U3elY3djA1S1FSY0VsSkZYdnF0VnF1OUtmdHpRc3c4bVpzbXoxYTZTbG83Mkg0YWszRkJHczFWS3VuRUhXYXFnWDZ1dFFvNVN5MklMaWZrb1hzX2FmT2RlLUllSzZoZGZlMjhDcy1BRDA0YnZWZUlsUWdxU3lfWDc2VldCclFRbU8zREV6eXBfdlFKanNXV1RHZDlmWlNUbmszMVFPbzJmZVlkaw?oc=5",
-        "medio": "El Tiempo",
-        "fecha": "2026-10-09T07:00:00Z",
+        "titulo": "Fuerte sismo en la región china del Tíbet derrumba cientos de viviendas y deja al menos 16 muertos",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPZXUzRUR2TkVjbUlGQ2JTTnZwa1hQQ09DRTE2bzRIR2tzVkhCWFJ6Wkx4Nkw2cVM0OElfVmdpdzR1SW1pWlhsb3RSX25NcF9Fa3REZ19OSUxZRW1uSzlMc0tubGlEMmNqdkVsZXltNUdFdkkzU3QtQ203ZHJseEVFbl9HVE5JaU9xX3BnM1FVWjZNNEgyM21Ld0VYak91cEZSNnhBUS1IWjVGbXBwQ0E?oc=5",
+        "medio": "San Antonio Express-News",
+        "fecha": "2026-10-23T07:21:23Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Terremoto de 8.0 sacude Panamá: lo que se sabe hasta ahora",
-        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNVG1wNXhEQjlONGpDY2VNQkNxeUJZU2U1TU5EUDUyQ0tEWkkyY0prc1VaSlBvbmlvdXVYR3VkcFdaMXhwMFdKbENyMmw3SDJaakNacHo1TkZpUnFaMXBkQkdEb3M5WVJkR3hlVDZIQS14c2Rma2Nfb0xDZEtHRUQxclZEaGdOS2dzNXY4cXV3OVVrVG9UcExNaFZsSGZ0QXFF?oc=5",
-        "medio": "RTVC Noticias",
-        "fecha": "2026-10-09T07:00:00Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Un terremoto de magnitud 7,7 sacude Panamá",
-        "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQZFQ4NkJKM2Z2LUlCRjV6WWlFR2RtQUdPRld3OERDNHV4VDdzVXUwM0ctdkM0Z3FvbkZWdWtHSzJJWUxlRmsyeXJLdGJUcGRkYVltY2hZT0xZUlRUcG8zcEpZSmhjR1hNYnZuMGQ3Q1pWdlJnT0FSX0tKSUZ0LUxFNzY4Z9IBlwFBVV95cUxORWVCR2x5Ymh2UjY5TEF6dFNXa1Y5eXMtWG84Wk9zQ1lGblpBTkFuVlNkY1VBU3U2NHBBZlRkdUZQNmNfOFZjdlJtVlZaT1hBVnJkbW1kWEYxMm85Y09lX0o0RE9NLXE2ZVBYTkczSFhJWEVSY3pzLWZkbENsSGNNZFVqeC1mcGswdGI2XzZUVnNpaFQxdUNr?oc=5",
-        "medio": "EL PAÍS",
-        "fecha": "2026-10-09T07:00:00Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Terremoto de magnitud 7,6 sacude Panamá: NOAA advierte posible tsunami",
-        "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOMzhDaVlUTE5tUGxNNGczNTdDTjV5WXhBbGoyeUY0YmNDbGFDWjQ3d0JiMC0wX2dQdmtqMG44WC01aUZWOVVhbWZWejdPbmhnUXlweGZQbTE0ZUtqWkkyb3ZGTFIySzJMQWxIMVVodzlKZ1NQVUN0V2F6bmVwWHdZZVhUc2stSmNNTGFjRTBCdF80SHhCcFFEb1l3THMtajI4cVgtWVZmQmZmVXVGSHdHYkJIQkJNSWdLX0VF0gG7AUFVX3lxTE4zOENpWVRMTm1QbE00ZzM1N0NONXlZeEFsajJ5RjRiY0NsYUNaNDd3QmIwLTBfZ1B2a2owbjhYLTVpRlY5VWFtZlZ6N09uaGdReXB4ZlBtMTRlS2paSTJvdkZMUjJLMkxBbEgxVWh3OUpnU1BVQ3RXYXpuZXBYd1llWFRzay1KY01MYWNFMEJ0XzRIeEJwUURvWXdMcy1qMjhxWC1ZVmZCZmZVdUZId0diQkhCQk1JZ0tfRUU?oc=5",
-        "medio": "CiberCuba",
-        "fecha": "2026-10-09T07:00:00Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      }
-    ],
-    "gdacs:EQ:1570339": [
-      {
-        "titulo": "Panamá informa de una muerte por sismo; réplicas impiden que cientos regresen a sus casas",
-        "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOcDdfeDYwem8xaDZGUXZzOFlNakt6X29nWGMxVVdjQWJOaExsMm1mMXV6V1FhMEUzakhQOWROdHVtWHVCLXowdW1ocGg4SnY0LW5Gb3B3eEFXZHpSdHNrRTBobXBiZWhUekRaVWhlUXlVZGdUNFpkbFdhMnRNZURvZDlteW4zWFNtdzNlOVVJazRKZw?oc=5",
-        "medio": "AP News",
-        "fecha": "2026-10-14T23:40:00Z",
-        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Un nuevo sismo de magnitud 6,1 sacude el sur de Panamá",
-        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOUzJ5bXZYV0swRFFtbm56dXlnN1dUVTFuaF9nbnlaalFUWVFxX1B3Q0M2cUlianR2dlRpY0UxS0NHclJnWFZIdWRVNmkxbjNERlFCUURwLS1KMUpsd2lxcUltc2hBVF8tUjhIZlJ1R0NGZlgwODJSY2ZXQ2dhdkdFTzBnZjk2RERXaWdPV29nb3FRdkpHQmw3blJDSQ?oc=5",
-        "medio": "Chicago Tribune",
-        "fecha": "2026-10-13T03:06:35Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Un nuevo sismo de magnitud 6,1 sacude Panamá en medio de la emergencia por el terremoto de la semana pasada",
-        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOTEQtNkNhZWNQVERXd0NxeDktVlNOQ0JVUFRmNmxtVmpxQ1YzeEVUcFY3eUg4S051Q013am15Nk4wZ0oxOWZrUzZ3UGhhMF9uWEdERkswaGNnSGx5aE1ULUxzTHZBdzljWm10aFdnTFdJR3BaVlBSZUYxMmx5dmpRcldfMU5SNmRqWjJrNTVoNA?oc=5",
+        "titulo": "Al menos 16 muertos y decenas de heridos tras terremoto de magnitud 7 en la región del Tíbet, en China",
+        "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9JM2ZwT2liaUpuTlN6ek8tRVl3azFYRmF0eGl1b3p6M3B3WmdxaEpwZGxkaENtZU0wWWt0Zlk4UTBzRFBudy1fYXZ1LTdYUmIxU2lDbXVZczdsaF9wazYwcmRhaUYzTGp5aXU5R1ZjeDZGcVF1d0kzaW1B?oc=5",
         "medio": "CNN en Español",
-        "fecha": "2026-10-13T01:13:00Z",
+        "fecha": "2026-10-23T05:47:00Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Terremoto sacude Panamá; se registran más de 200 réplicas",
-        "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQUUFkN0U4dGFXREtLbjQ5c1gwT25aUW12U1E1MjMyby1Hei1wOS1UWWRYeWplRnktZ0YybVY0VzlJMlN0cnh3Tk5iOEtzb0l2VzVoUHRGV3Vrak9peFYwVUl2WDRLWTlzMlE4dGFKM19OTTB5dHNhQVg4TjFvaFVIQmVDUHQ4STRuNU9zSHhUenBEZGxseU1Od1hlVk5VRy1CMGtYaXFUNk1WV1JkbzNuUHhqWnhpazVsdXFZSi1nSWgwcHRTYTlvWg?oc=5",
-        "medio": "USA Today",
-        "fecha": "2026-10-12T17:00:00Z",
+        "titulo": "Terremoto de magnitud 7 deja al menos 16 muertos y 32 heridos en región china de Tíbet",
+        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQMk42UFN5Q1hMX0d2MEt0UkFnRnBTWEtVcDZ1VGM5SDBNTngydkdQME9IQkc3eHhVa05NeDdfdWM4aTFuZ2NvRE5jS1I0M3MyVDhkNEh6aHZ2RFBHTXBvR1pSNzEyOGpLV1FEd2pDUFZGcldvaUZnY2s1SFNSdFdPb2V0WkExaDBjdTV5YUhlamR0RG1fS0ZGMTdlMjVYdjlWVTlvWXpzMmRNLWp6VjVDbUtEWkFWLUHSAbcBQVVfeXFMTlRXSU5Pd2pycWIzQWE4Mmg1Z2lvMmU1RFctbkMyeHFvS3c2WF9yeTFycVRzcWt5MGxPUTc3VFRLeDBqWEc1SWpwZ2U0VkVqeDJKb0J5UTFKZ051OTVLdUxTbTJLMkpZR2oyZUlOZElNZWFoZnpWM3pLeHNRa2hGSzBmMUFQVDh3a094UnFDbUtQc3JvVzZvbnowNTcxRlA1RzBQN2VqbExJOGZ3V3l0aXlLaWREeGFJ?oc=5",
+        "medio": "DW.com",
+        "fecha": "2026-10-23T01:20:17Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "La ONU está preparada para apoyar a Panamá tras un terremoto de magnitud 7,7 | Noticias ONU",
-        "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1rcVF4LTJobnNwTElSTzZ2UGpSSXRSOUliTnBZT2VOUENqWlE5RnpWYXJYaTZQcnlWS0oxSzcwQjRhRFdmSXU4SzJnQnVpWE5MT2dZdDVpTQ?oc=5",
-        "medio": "UN News",
-        "fecha": "2026-10-10T07:00:00Z",
+        "titulo": "Terremoto de magnitud 7 sacude la parte china del Tíbet, dejando 16 muertos y 32 heridos",
+        "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOa1FkczlMOFhlN2hhekZQTDdfTFB6S1REcl82bDJGNTg4RnJOOGFiRVAwZ1pzXzNxQ1B1SDBXbmZyRkhPeUhjTy1nX2pyaXVJZC00LUdLcmx2YVpwUF8wczNnOUlKLVNuUW1Ga0pLY0RPUTZweFVBZ0otY0xYUHgwQWNXczNIY0RQTmhzNndmWU9ma0VUajB5NUdGRURuMk85aldmaUNoN3dVTnVVUl9IcXBjM0hkNGowSEE?oc=5",
+        "medio": "ABC7 Los Angeles",
+        "fecha": "2026-10-22T22:21:20Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      }
+    ],
+    "usgs:us6000u43g": [
+      {
+        "titulo": "Terremoto de magnitud 5.8 sacude la región de Nagqu, China",
+        "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPMERNR25BcGNIa2NiVm5aSmZBc3NwWVJMdTdxU25qNzBHMXNwNThBbHFIb3Z0cm9ia0l0NGtjUXNYUFItcFd0YmY2Ml8wbHFlSk5Sek9XRzNiUjAzT3ZEX0tOaVI0cjRvS1lsRUZaMEVUdVlxQ0VXN0hmRWI2MHZYSzdQeWJwQWR4UWl6bUY0bTY0dUhCZXR2cHlubUI2WFQxRi000gGoAUFVX3lxTE1QUzRONkwtTzJRd1hVZVVBN2hKS0h6T1JqeTBUVDFJWHB0OFFmUHp0ZHZJTE4wNUdUbWtyREYxVURDdWphY1NkZ2hqTUp3bFFVS0ZXOG9WenJPN2dZOUZPNm5TRVFDeFNDUTlWbThSUi1ERWsxczJiblJfdWZJdEF5QnhGN1A0Zms4WDlJa1E2Z1poRjN6Ml9reVNxVGdORW9FVnhmdW0wTg?oc=5",
+        "medio": "El Tiempo",
+        "fecha": "2026-10-25T17:54:27Z",
+        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Rescatistas buscan sobrevivientes tras sismo en la región del Tíbet chino",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOZVBycUNhN0VXOFp6M0Y3bDVoXzctYmhyeFFPUURQU1hhLVhKWTd2QU5MLW03R0FWaFBvaVV3bnotUVVDSVZPeU82MjVHOXRDWXJIaVc1dHAzZ0ZkRzdEUm1wZVU4VjFsMDBiWU8ybU9nXy1SelliSnZISllXOFJxT1ZONGtDaEU4bHVyaHZQQXlJUFA5cFoxTnVjTQ?oc=5",
+        "medio": "Audacy",
+        "fecha": "2026-10-23T17:59:00Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Panamá declara el estado de emergencia tras un fuerte terremoto de magnitud 7,7 que deja cientos de edificaciones destruidas o dañadas",
-        "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5wdTZVOXVuRlRUSUVZaVJWX0Q1OEZlejJYWUViMjlnaDkwUFZsVkNiQWJ1WDJmR1VHNEdIRGZvaF9pRkJvZFZvZmQ0TEhlMkhFOVM4MEJIVVRaamVE?oc=5",
-        "medio": "BBC",
-        "fecha": "2026-10-09T07:00:00Z",
+        "titulo": "El terremoto en el Tíbet deja 16 fallecidos y 65 heridos",
+        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPNXgyYnpQZkJFUzBvUTNZT1J3bHJaSy1hY3gzN2Vkb0Fjajl3UWZqX1pCbzYwdjRYelMzSExCT1Bib2NSc3gyMHR1RmtFRTFQT1JqcFVwUHJXZHFiTkxSemw3a194RGZwVFIzY1NaYnZYZ1JyV3g0OVZLZEQ5V0NnVnBsdUstMlV4anhfcUwyalk?oc=5",
+        "medio": "Yahoo",
+        "fecha": "2026-10-23T06:53:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Al menos 16 muertos y decenas de heridos tras terremoto de magnitud 7 en la región del Tíbet, en China",
+        "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9JM2ZwT2liaUpuTlN6ek8tRVl3azFYRmF0eGl1b3p6M3B3WmdxaEpwZGxkaENtZU0wWWt0Zlk4UTBzRFBudy1fYXZ1LTdYUmIxU2lDbXVZczdsaF9wazYwcmRhaUYzTGp5aXU5R1ZjeDZGcVF1d0kzaW1B?oc=5",
+        "medio": "CNN en Español",
+        "fecha": "2026-10-23T05:47:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "16 muertos y 54 heridos tras un terremoto de magnitud 7,0 en Nagqu, en el suroeste de China",
+        "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE93eWFuQkNZWHRhZmd6Tlh0SUNrczJERlcxN01kMUgtQV9FS0Znd2lkNkl0UmVtV2d0LTExWFNNYUV0LUdPcGVCZXJXVGw3c3FxY1lGcXY5bzhob0VFbGhqWjZwZWo0RUU?oc=5",
+        "medio": "CGTN",
+        "fecha": "2026-10-23T03:07:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto de magnitud 7 sacude la parte china del Tíbet, dejando 16 muertos y 32 heridos",
+        "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOa1FkczlMOFhlN2hhekZQTDdfTFB6S1REcl82bDJGNTg4RnJOOGFiRVAwZ1pzXzNxQ1B1SDBXbmZyRkhPeUhjTy1nX2pyaXVJZC00LUdLcmx2YVpwUF8wczNnOUlKLVNuUW1Ga0pLY0RPUTZweFVBZ0otY0xYUHgwQWNXczNIY0RQTmhzNndmWU9ma0VUajB5NUdGRURuMk85aldmaUNoN3dVTnVVUl9IcXBjM0hkNGowSEE?oc=5",
+        "medio": "ABC7 Los Angeles",
+        "fecha": "2026-10-22T22:21:20Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
