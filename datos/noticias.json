@@ -1,243 +1,151 @@
 {
   "version": 1,
-  "generado": "2026-11-09T16:32:25Z",
-  "eventos_con_noticias": 6,
+  "generado": "2026-11-16T15:59:00Z",
+  "eventos_con_noticias": 7,
   "noticias": {
-    "gdacs:WF:1033508": [
+    "gdacs:WF:1033835": [
       {
-        "titulo": "Europa y América Latina refuerzan la cooperación para anticiparse a los desastres naturales",
-        "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPQkduNnVLbkxXS0Ewck82Q3FRWm1NQmNQUmVFeHpZY2dqeF91ajg1ZFJDd1Y0T1lZYWUxNjV3eGJMcGo0OTZxYl9aaVlEdVR5TmxBbWdHeWFiY21Cc2tWc0gwUkN6TmYzeUQ5eWRpNkpsLTFBeElUUnpjWnpPUzl1TEhoQjdzSnU1dkVaYTZkaTRqT2V1Mnd1X1QtV1dXZ9IBngFBVV95cUxQYnJwQ1huR3N6d2FndldsaFQySVM3QzlSdnlDWHNWX2Z4OUozTFQzNjhyWDU2Q0t5M0pxeXlycjlwWVFDSGI4OGwwYm5KU1RhZF9PS2ZGaUQ3XzJCbG8yakFfcFpWdUZ2V0xxbTduOU1reWROWmVlM1F1NGFtVzdBcjktTktSVDh3cGNCSEVpdVJaSWNtV3ZyZVJ1RXJ3Zw?oc=5",
-        "medio": "DW.com",
-        "fecha": "2026-11-05T20:28:46Z",
+        "titulo": "Declaran como \"liquidado\" el incendio forestal en San José de Chiquitos tras las lluvias",
+        "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPMExGRktZY0FhcUFUa0tjTV92ZWpRcTVyNU02X0U0ZVhNeFpqamphbDZVeUhhdU9oY1ZxbmthRjhlRUlJNDg0RjVFRXFmbnRHUmtqVzIxLXUzajV4d2tHeWFiMVdUVjNNLWtZam04UHA0OU1lYjA2Q0F4ODJPaUZ3bkdnSFZMVUZEd2FwUXE0LVJDbk1ZaS1UMzZYd3FtUUJyX012RVJuNklOdUdtVFNMNVNQMC1ycE9yM0VvemY2b0hVa0d0YWludXRTa1JPcGs?oc=5",
+        "medio": "EL DÍA - Noticias de Bolivia para el mundo",
+        "fecha": "2026-11-16T00:07:27Z",
         "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Una América Latina fragmentada se dirige a la COP31 en Antalya",
-        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNWm10WVVoT2JLOXFKZnBrb3JobGl3MlBvY3R4WVRzTFRKMG5fY2VxS3l2MjJHdnlvYnVIb2w0SE92UDZELXhKdGNqMVJfbno2OWZnblR6ZUFIYkdycDUxRTI3ZUd6MWlIZFNXOW1PUTYtZm8tcTNlWXBMdlVYb3hSa0g4c0twendlT2ZNdnFfUHFXTE0?oc=5",
-        "medio": "Dialogue Earth",
-        "fecha": "2026-11-05T18:38:24Z",
+        "titulo": "Envían 194 efectivos y cinco medios aéreos para combatir incendio forestal en San José de Chiquitos",
+        "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOeENLU0RqX0xBZGtxdGRuWTNtUnVfVkhhQjlPb05YaThLR2VFZUJxcVRMUGN4cXpPREZRMXNTYmFQVWxPY1poM2ZoM1FhSVJ5TXc2YUYxMmt4eUdiajNTb3hSVGlhZE43N3BKZURURlpvYXR2emRjVmRiYUFDZFEyUGhtZ0RjZUJFVU5PSEdrb3k2VEhtSVVGam1sRVpkWFVaSXE3ZkNMcV9XR1ZBUWtSeGlsVmNPZ2tMb2g2dW5pX28waEV3bWdyZ1hmc2UybU1sMm5TaFJzU0VVUjQ?oc=5",
+        "medio": "El Potosí",
+        "fecha": "2026-11-15T15:42:10Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "El incendio de Madeira se ha extinguido tras 13 días de intensos combates",
-        "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNcTAzN0dia2R3NEI4RWdVck1kTWgyTUxnSE9XTjdFVTdSMV9nY21BTnBOcm81eU5CLWx1czhNaGtEdVlleGg2UFhuU05RV05UeUdmd2Z2WW9WTzZBcWV6a1V4LTlGbXF4OWZjQ1dYOVdpdWwtUGJZalZOaUxIWC1GbjEzY05nRk44UmZ0WTNOZVpnNWJFZmRETTlpZGNRZkVEd3JmWkJHZTVHZ2MyeUZkRlROYzdkdlBpUDBwMjNNQ0pvZlY5TVBTdkR0Q0d5Z3l6RGlJdQ?oc=5",
-        "medio": "Portugal Resident",
-        "fecha": "2026-11-04T11:52:11Z",
+        "titulo": "Incendio forestal consume 6.000 hectáreas en el este de Bolivia",
+        "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNLUNMVXVSVlFHcTgzUnY2T1RFZFFZbkg1Um81UmdCN2ZhYzhmSWtvM1Z1UGhRS3Z3U196REhLbGNjYU9xdVVUYzc1dHQwR040UGxEbGxTTTJhR25fOE5GZTVPckxjMHpqNmJwSlhDZlBoN29OOWRydE5GT1U5ZkRXSy1FR3JsMjVmV0duTDczVXNiNmJF0gGaAUFVX3lxTE5jeTVWemZ4a19PSTVXU3JqcklvZk5xZ3dnMjA0bGRZeHRoak1iYmNjVmlCd1N4RmhrcUtKLWpDdjBXeUJOa05MeHQ1MFlOa1RvN1RlaUdWQUFkdlA5WnlER2JQdk11UEx6SGduZzc4SzQ1M1BiRkJpT1VMOW95d0hGUENHc3J6X0FXbVlsRjN1WTNPbk5UcEJGcHc?oc=5",
+        "medio": "América Económica",
+        "fecha": "2026-11-13T21:53:35Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Víctor Resco, catedrático en ingeniería forestal, sobre los incendios forestales: «Hay demasiados árboles»",
-        "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOYWt6cjVUTzItTHdPZkRIb25TTTQ0aFE0RVJxRkdtclIzQ2d4cVVpeXFwdnJBcDB1SVBnQ3U4R3h5ZWdZTXlIWjhFUVdHUUVSV0NJMTBKMmhoU3czOTk1aU9IT3otN1NhNFVVRU9QWE1PcThGZ2FEWTYxd2piX05NWWg1a3llSlFLbG45NWdNZ21nQU1MNVdYbngzNUR5Q1FvQnB6LU5pVXVMMnlmeXVabDFRLUJVV3cwUXpxYXAzYURPc0Y3dFJoYXcteHVnVmJRSVFqSjZBWjZud0dZc1Z6UFhB?oc=5",
-        "medio": "Segre.com",
-        "fecha": "2026-11-04T07:30:46Z",
+        "titulo": "Incendio en San José arrasa más de 6.000 hectáreas",
+        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNWnNIYU84eXlzRXhBRE8zNUs3clUzV3lndlc0ckltSGxJNjFSUF9LRkNtR2RUQm1EUzBiX0FzdFpyVFRpRWpkWW9rTzNGdEg3RzFFQ2JjSkVOTEpGcUtxLS1nVERqUTE2T3hfS1JiYVVjZkhtQ19yaE5rMjBuMzhsaTN2dGFlWU4yTGduaUU3NURndjBoUTNFdjNR?oc=5",
+        "medio": "El Diario - Bolivia",
+        "fecha": "2026-11-13T17:48:42Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Vehículo incendiado en Santa Cruz genera denuncia por Conductor",
-        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOMHFqRTVNbEZ2b1pTeHVIdlVBb0V3V3ZGU1FoOGV5ODJKdHVuTXhGWlJ3WjJ3Nl9iajVrOW5zNTd4NWFDM2FkVS04Q0YwOUg2NlJLNWFINGdFOXhDeEhVa2FJTVB6ZkNTV3NUVl82ekN6UWpsdUFUdDZUbHl5dWF2b3NvU0FDZ1JwMFhTTTJnRGhZakdfRXZDeXNuZ19PcHcxdEh3SVVB?oc=5",
+        "titulo": "Santa Cruz reporta seis incendios forestales con 50.000 hectáreas afectadas",
+        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOYmswMkdmaEVDbWxjTU5GSW5RTk90cjh3RWRiUjd0UDREZFNvU2ltVWZlZE80aEZLUTBoUDBoWUVmdm9BUnAwOV9TWW4tUEtDU2lfNWtKa2pQVnRQZzBBVnNITDdQdkRvekwzUTFROWZLWW5wSnlYNV9NRi1mcENkV3NXWUNCdktldFdkcTNMNUR3NnRqSHc?oc=5",
         "medio": "La Patria Bolivia",
-        "fecha": "2026-11-03T15:42:47Z",
+        "fecha": "2026-11-13T15:51:46Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Incendio en un restaurante deja daños materiales en Santa Cruz",
-        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQazJxXzFPT2duQXo5TUpFWUxNcXNValQtaUtiWGV2ZExGTnFkUlh4aGM3UUZ0OXlHbk16TG05UDhrNjlVLVhLQXhCUTNlRlNBeTdRYVJoWUFJd3VkSTJFZjdaejF3WXRCYTNDbTdHcG5ieVRGSFY4b0VFSnhIT2c5Sy1LS2twMXYyNjlvcjh2NnBEcF9kazV5MlVQZG84QzZtTmVFQnpvOVNLb0pLSlE?oc=5",
-        "medio": "Red Uno",
-        "fecha": "2026-11-02T11:23:40Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      }
-    ],
-    "gdacs:WF:1033500": [
-      {
-        "titulo": "Europa y América Latina refuerzan la cooperación para anticiparse a los desastres naturales",
-        "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPQkduNnVLbkxXS0Ewck82Q3FRWm1NQmNQUmVFeHpZY2dqeF91ajg1ZFJDd1Y0T1lZYWUxNjV3eGJMcGo0OTZxYl9aaVlEdVR5TmxBbWdHeWFiY21Cc2tWc0gwUkN6TmYzeUQ5eWRpNkpsLTFBeElUUnpjWnpPUzl1TEhoQjdzSnU1dkVaYTZkaTRqT2V1Mnd1X1QtV1dXZ9IBngFBVV95cUxQYnJwQ1huR3N6d2FndldsaFQySVM3QzlSdnlDWHNWX2Z4OUozTFQzNjhyWDU2Q0t5M0pxeXlycjlwWVFDSGI4OGwwYm5KU1RhZF9PS2ZGaUQ3XzJCbG8yakFfcFpWdUZ2V0xxbTduOU1reWROWmVlM1F1NGFtVzdBcjktTktSVDh3cGNCSEVpdVJaSWNtV3ZyZVJ1RXJ3Zw?oc=5",
-        "medio": "DW.com",
-        "fecha": "2026-11-05T20:28:46Z",
-        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Una América Latina fragmentada se dirige a la COP31 en Antalya",
-        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNWm10WVVoT2JLOXFKZnBrb3JobGl3MlBvY3R4WVRzTFRKMG5fY2VxS3l2MjJHdnlvYnVIb2w0SE92UDZELXhKdGNqMVJfbno2OWZnblR6ZUFIYkdycDUxRTI3ZUd6MWlIZFNXOW1PUTYtZm8tcTNlWXBMdlVYb3hSa0g4c0twendlT2ZNdnFfUHFXTE0?oc=5",
-        "medio": "Dialogue Earth",
-        "fecha": "2026-11-05T18:38:24Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "El incendio de Madeira se ha extinguido tras 13 días de intensos combates",
-        "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNcTAzN0dia2R3NEI4RWdVck1kTWgyTUxnSE9XTjdFVTdSMV9nY21BTnBOcm81eU5CLWx1czhNaGtEdVlleGg2UFhuU05RV05UeUdmd2Z2WW9WTzZBcWV6a1V4LTlGbXF4OWZjQ1dYOVdpdWwtUGJZalZOaUxIWC1GbjEzY05nRk44UmZ0WTNOZVpnNWJFZmRETTlpZGNRZkVEd3JmWkJHZTVHZ2MyeUZkRlROYzdkdlBpUDBwMjNNQ0pvZlY5TVBTdkR0Q0d5Z3l6RGlJdQ?oc=5",
-        "medio": "Portugal Resident",
-        "fecha": "2026-11-04T11:52:11Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Vehículo incendiado en Santa Cruz genera denuncia por Conductor",
-        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOMHFqRTVNbEZ2b1pTeHVIdlVBb0V3V3ZGU1FoOGV5ODJKdHVuTXhGWlJ3WjJ3Nl9iajVrOW5zNTd4NWFDM2FkVS04Q0YwOUg2NlJLNWFINGdFOXhDeEhVa2FJTVB6ZkNTV3NUVl82ekN6UWpsdUFUdDZUbHl5dWF2b3NvU0FDZ1JwMFhTTTJnRGhZakdfRXZDeXNuZ19PcHcxdEh3SVVB?oc=5",
-        "medio": "La Patria Bolivia",
-        "fecha": "2026-11-03T15:42:47Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Inteligencia artificial ayuda a anticipar la deforestación y prevenir incendios en Bolivia",
-        "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPWmpMRkdZaGxrSTluSHdCZnhaNGluM1loSUNRYy1HdGp1bnJVWDNHNVNDNDJhdlRDTXlnVndrcTRXbTVidVZyTjQzeFc5aWpwSVRaZ05LaXRha3JUMDF5S0l5VVhEUzRUMXg0MFdXLWswV09EWnBhanowWmQ4NFNnZTR1djBBSnRzbTVOVFMtUjJMM3Y0MnlhenJ2N0tEbzMwTVFYVGhsMnVjOWtLeFQzdkhIcXBMckM0VHFmN0tTdlBSRGduYS1melNMNA?oc=5",
-        "medio": "https://stakeholders.com.pe/",
-        "fecha": "2026-10-29T17:07:19Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Se declara un incendio en una instalación nuclear; Estados Unidos emite una advertencia sobre un \"derrame radiactivo\".",
-        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNZGVCUTFqaGRNZG9qSkJSdW1KWG5fNmlCN0JlTzV5dW16ZndYMGc5ZmU3RGVWeG1HM212dTd0c3J3WnQ0SWZqMHRuczZ4dkY1MlRrTXV1THdNYkFvZDBSUDNtX1VvdGJiSURRZ25WRzZmUW1NNkR2ZnRNQWhibkNoMVNvWFBZaTJYbWhVZ2tZcVNVNGsyNEI4bExBRUFTNHc?oc=5",
-        "medio": "Vietnam.vn",
-        "fecha": "2026-10-29T10:00:05Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      }
-    ],
-    "gdacs:WF:1033609": [
-      {
-        "titulo": "El incendio de Madeira se ha extinguido tras 13 días de intensos combates",
-        "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNcTAzN0dia2R3NEI4RWdVck1kTWgyTUxnSE9XTjdFVTdSMV9nY21BTnBOcm81eU5CLWx1czhNaGtEdVlleGg2UFhuU05RV05UeUdmd2Z2WW9WTzZBcWV6a1V4LTlGbXF4OWZjQ1dYOVdpdWwtUGJZalZOaUxIWC1GbjEzY05nRk44UmZ0WTNOZVpnNWJFZmRETTlpZGNRZkVEd3JmWkJHZTVHZ2MyeUZkRlROYzdkdlBpUDBwMjNNQ0pvZlY5TVBTdkR0Q0d5Z3l6RGlJdQ?oc=5",
-        "medio": "Portugal Resident",
-        "fecha": "2026-11-04T11:52:11Z",
-        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Víctor Resco, catedrático en ingeniería forestal, sobre los incendios forestales: «Hay demasiados árboles»",
-        "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOYWt6cjVUTzItTHdPZkRIb25TTTQ0aFE0RVJxRkdtclIzQ2d4cVVpeXFwdnJBcDB1SVBnQ3U4R3h5ZWdZTXlIWjhFUVdHUUVSV0NJMTBKMmhoU3czOTk1aU9IT3otN1NhNFVVRU9QWE1PcThGZ2FEWTYxd2piX05NWWg1a3llSlFLbG45NWdNZ21nQU1MNVdYbngzNUR5Q1FvQnB6LU5pVXVMMnlmeXVabDFRLUJVV3cwUXpxYXAzYURPc0Y3dFJoYXcteHVnVmJRSVFqSjZBWjZud0dZc1Z6UFhB?oc=5",
-        "medio": "Segre.com",
-        "fecha": "2026-11-04T07:30:46Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Vehículo incendiado en Santa Cruz genera denuncia por Conductor",
-        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOMHFqRTVNbEZ2b1pTeHVIdlVBb0V3V3ZGU1FoOGV5ODJKdHVuTXhGWlJ3WjJ3Nl9iajVrOW5zNTd4NWFDM2FkVS04Q0YwOUg2NlJLNWFINGdFOXhDeEhVa2FJTVB6ZkNTV3NUVl82ekN6UWpsdUFUdDZUbHl5dWF2b3NvU0FDZ1JwMFhTTTJnRGhZakdfRXZDeXNuZ19PcHcxdEh3SVVB?oc=5",
-        "medio": "La Patria Bolivia",
-        "fecha": "2026-11-03T15:42:47Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Inteligencia artificial ayuda a anticipar la deforestación y prevenir incendios en Bolivia",
-        "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPWmpMRkdZaGxrSTluSHdCZnhaNGluM1loSUNRYy1HdGp1bnJVWDNHNVNDNDJhdlRDTXlnVndrcTRXbTVidVZyTjQzeFc5aWpwSVRaZ05LaXRha3JUMDF5S0l5VVhEUzRUMXg0MFdXLWswV09EWnBhanowWmQ4NFNnZTR1djBBSnRzbTVOVFMtUjJMM3Y0MnlhenJ2N0tEbzMwTVFYVGhsMnVjOWtLeFQzdkhIcXBMckM0VHFmN0tTdlBSRGduYS1melNMNA?oc=5",
-        "medio": "https://stakeholders.com.pe/",
-        "fecha": "2026-10-29T17:07:19Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Se declara un incendio en una instalación nuclear; Estados Unidos emite una advertencia sobre un \"derrame radiactivo\".",
-        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNZGVCUTFqaGRNZG9qSkJSdW1KWG5fNmlCN0JlTzV5dW16ZndYMGc5ZmU3RGVWeG1HM212dTd0c3J3WnQ0SWZqMHRuczZ4dkY1MlRrTXV1THdNYkFvZDBSUDNtX1VvdGJiSURRZ25WRzZmUW1NNkR2ZnRNQWhibkNoMVNvWFBZaTJYbWhVZ2tZcVNVNGsyNEI4bExBRUFTNHc?oc=5",
-        "medio": "Vietnam.vn",
-        "fecha": "2026-10-29T10:00:05Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Théo, el joven que ha creado un mapa interactivo de los incendios forestales basado en una simple observación",
-        "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQU2E3NkNuVlpfSmM2Q0JHMlozMUV3amR2UHd2ai1sWGdjNnA1TzhnWDZkbmR2R19Md2pRRUY5STFxbVVYYzd2ekJuVjZkeHdkT0tQaHZjdkJNWW1oTXd6VHIxM1F2WDBOaDhFeUE4c3dSLTR6WmlHMjBrYzM5VlB1OGZRTVZ3bWM4SDVESHpFc083anFSYk9FTUxidVh6aFZQbVE2Q3AwOFlPSEQ4QzlOM2xnUDlxX1dLSTd6aWR6VTdsVE9kN2sxb2NZby1RQTl1R0pnR2hIam1CcHNEaW9sUGtKMFJZZ9IBgAJBVV95cUxNT25ZTDZoQU5CRmpYejNMd3pSeGtHTFhSdGpnN2R3MmMyUEZjc1dmYVpvS0VGaGZWRlNESTdJT2ZqVVlKTXpVVnlVS1hKUUdELThzMHo5Wk9sVXZUd0JmMlZCNGV1Vnh1d185NjhlNkYwX2FIT0dEUjctR0lQOUcxc3dWOTlBb3dnb0JIMWZfZEVaYVBkOW1VMjJzUEpsa25XNW5UN1ludEVCNWZsQk9LLWxnSGwwQWk5bjY3S3laYnpnQ3NPOU5Hb2lsWHByWFEzMHFCRVFNLVZxX21hOWJScHlBRm5QQjh2Y3RDRnVacjdUZ3J5YXNHZjVQaFdlbm9T?oc=5",
+        "titulo": "Perú combatió 57 incendios forestales en áreas naturales protegidas desde junio pasado",
+        "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPejAxV0VxZzAwdEtZZ3g3YUs5bTNYWXViektvbTdtNzdKWWw0N0FGRFVmRnVPeEl1RkJ3MGlJY21BcURRSFkza1VseHB2bktUeEh0NkhVR3dlQ2ZDdmZPMzV3anVNcTdJVm01bS0yaGtWcUE4THN6NXc0WmY5RHhBR3FHaW9HSjhKRlo3YjBvVHVUdlpDNC0zRDBDRy1mS1ZxYW9wMllhNEpmOVlObGZ6MFZrbFA5VE5RYUN2bEJmZjlDdURnZ1duOXR3LVJBT2lEZHVuamF30gHwAUFVX3lxTE5oTkhqT09senl4c2d6RXl4aWpwQ0NnanBQYjhZMWstSEpSbUdmWFdncG1RaG5fUEhWYnJXdE1DZXJLMzhxS3RtNkQ4Y1VXT0hidWFrZS05Z2FnWkVDd1JLeEx2aldFdmhydWlnRGExa2VCSHh3TDF4emRVckxFUHBIZlpLTWd4SmJSMlBEd3RkX01HQTJRNnc4dFpPWjVCTTdoSmw1ZUtselkyaVM0d1hYSVFVc00wUV9RU1FQU1NGMzkyYmZ5QXJXUlBxZDJTenlLbVlBTHljcHZwRUY4Y1NjMGFXRlpBTnRYY2hBbEwtUA?oc=5",
         "medio": "Infobae",
-        "fecha": "2026-10-29T07:00:00Z",
+        "fecha": "2026-11-11T21:16:00Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       }
     ],
-    "usgs:us7000tu0w": [
+    "gdacs:WF:1033775": [
       {
-        "titulo": "Terremoto moderado mag. 4.2 - General Jose de San Martin, Salta, Argentina, Thursday 29 Oct 2026 a las 13:08 (Hora Salta)",
-        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNQVM4UDNiWWNhb3F2ejVlbXR1Sk11b2FYYlFrcEhlUjJsYWV5Z1h4bjFCbTlZVlR5aFlnVE9Day1WQWdhclVkd2xaWWlicGgzZkZ2b1I0b2N2cmJ6RzhpODdOWjBRM0dEQ3JIay0tYjVtQzBudmJiNGNCZnQyeUxMQndwY2xEV1pzcURYVmV2RDJvSlZYM0V4VWdlUF9JY1VCdWxsZDdoMWNZZ09rN09qcTVWa1R1Q0Zt?oc=5",
+        "titulo": "Declaran como \"liquidado\" el incendio forestal en San José de Chiquitos tras las lluvias",
+        "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPMExGRktZY0FhcUFUa0tjTV92ZWpRcTVyNU02X0U0ZVhNeFpqamphbDZVeUhhdU9oY1ZxbmthRjhlRUlJNDg0RjVFRXFmbnRHUmtqVzIxLXUzajV4d2tHeWFiMVdUVjNNLWtZam04UHA0OU1lYjA2Q0F4ODJPaUZ3bkdnSFZMVUZEd2FwUXE0LVJDbk1ZaS1UMzZYd3FtUUJyX012RVJuNklOdUdtVFNMNVNQMC1ycE9yM0VvemY2b0hVa0d0YWludXRTa1JPcGs?oc=5",
+        "medio": "EL DÍA - Noticias de Bolivia para el mundo",
+        "fecha": "2026-11-16T00:07:27Z",
+        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Envían 194 efectivos y cinco medios aéreos para combatir incendio forestal en San José de Chiquitos",
+        "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOeENLU0RqX0xBZGtxdGRuWTNtUnVfVkhhQjlPb05YaThLR2VFZUJxcVRMUGN4cXpPREZRMXNTYmFQVWxPY1poM2ZoM1FhSVJ5TXc2YUYxMmt4eUdiajNTb3hSVGlhZE43N3BKZURURlpvYXR2emRjVmRiYUFDZFEyUGhtZ0RjZUJFVU5PSEdrb3k2VEhtSVVGam1sRVpkWFVaSXE3ZkNMcV9XR1ZBUWtSeGlsVmNPZ2tMb2g2dW5pX28waEV3bWdyZ1hmc2UybU1sMm5TaFJzU0VVUjQ?oc=5",
+        "medio": "El Potosí",
+        "fecha": "2026-11-15T15:42:10Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Incendio forestal consume 6.000 hectáreas en el este de Bolivia",
+        "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNLUNMVXVSVlFHcTgzUnY2T1RFZFFZbkg1Um81UmdCN2ZhYzhmSWtvM1Z1UGhRS3Z3U196REhLbGNjYU9xdVVUYzc1dHQwR040UGxEbGxTTTJhR25fOE5GZTVPckxjMHpqNmJwSlhDZlBoN29OOWRydE5GT1U5ZkRXSy1FR3JsMjVmV0duTDczVXNiNmJF0gGaAUFVX3lxTE5jeTVWemZ4a19PSTVXU3JqcklvZk5xZ3dnMjA0bGRZeHRoak1iYmNjVmlCd1N4RmhrcUtKLWpDdjBXeUJOa05MeHQ1MFlOa1RvN1RlaUdWQUFkdlA5WnlER2JQdk11UEx6SGduZzc4SzQ1M1BiRkJpT1VMOW95d0hGUENHc3J6X0FXbVlsRjN1WTNPbk5UcEJGcHc?oc=5",
+        "medio": "América Económica",
+        "fecha": "2026-11-13T21:53:35Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Incendio en San José arrasa más de 6.000 hectáreas",
+        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNWnNIYU84eXlzRXhBRE8zNUs3clUzV3lndlc0ckltSGxJNjFSUF9LRkNtR2RUQm1EUzBiX0FzdFpyVFRpRWpkWW9rTzNGdEg3RzFFQ2JjSkVOTEpGcUtxLS1nVERqUTE2T3hfS1JiYVVjZkhtQ19yaE5rMjBuMzhsaTN2dGFlWU4yTGduaUU3NURndjBoUTNFdjNR?oc=5",
+        "medio": "El Diario - Bolivia",
+        "fecha": "2026-11-13T17:48:42Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Santa Cruz reporta seis incendios forestales con 50.000 hectáreas afectadas",
+        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOYmswMkdmaEVDbWxjTU5GSW5RTk90cjh3RWRiUjd0UDREZFNvU2ltVWZlZE80aEZLUTBoUDBoWUVmdm9BUnAwOV9TWW4tUEtDU2lfNWtKa2pQVnRQZzBBVnNITDdQdkRvekwzUTFROWZLWW5wSnlYNV9NRi1mcENkV3NXWUNCdktldFdkcTNMNUR3NnRqSHc?oc=5",
+        "medio": "La Patria Bolivia",
+        "fecha": "2026-11-13T15:51:46Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Perú combatió 57 incendios forestales en áreas naturales protegidas desde junio pasado",
+        "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPejAxV0VxZzAwdEtZZ3g3YUs5bTNYWXViektvbTdtNzdKWWw0N0FGRFVmRnVPeEl1RkJ3MGlJY21BcURRSFkza1VseHB2bktUeEh0NkhVR3dlQ2ZDdmZPMzV3anVNcTdJVm01bS0yaGtWcUE4THN6NXc0WmY5RHhBR3FHaW9HSjhKRlo3YjBvVHVUdlpDNC0zRDBDRy1mS1ZxYW9wMllhNEpmOVlObGZ6MFZrbFA5VE5RYUN2bEJmZjlDdURnZ1duOXR3LVJBT2lEZHVuamF30gHwAUFVX3lxTE5oTkhqT09senl4c2d6RXl4aWpwQ0NnanBQYjhZMWstSEpSbUdmWFdncG1RaG5fUEhWYnJXdE1DZXJLMzhxS3RtNkQ4Y1VXT0hidWFrZS05Z2FnWkVDd1JLeEx2aldFdmhydWlnRGExa2VCSHh3TDF4emRVckxFUHBIZlpLTWd4SmJSMlBEd3RkX01HQTJRNnc4dFpPWjVCTTdoSmw1ZUtselkyaVM0d1hYSVFVc00wUV9RU1FQU1NGMzkyYmZ5QXJXUlBxZDJTenlLbVlBTHljcHZwRUY4Y1NjMGFXRlpBTnRYY2hBbEwtUA?oc=5",
+        "medio": "Infobae",
+        "fecha": "2026-11-11T21:16:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      }
+    ],
+    "usgs:us7000ty9z": [
+      {
+        "titulo": "Terremoto moderado mag. 4.7 - 35 km al noreste de Tartagal, General Jose de San Martin, Salta, Argentina, Saturday 14 Nov 2026 a las 15:04 (Hora Salta)",
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNaVBNejBLYml5ZTdTX29kbUE2eENVSXN3SjlveUlVQmZvSG9xNjRtYnd5UW1qOF9RdUpSNzRkUFVwOE9Bc0h2RHd5QkplckVZWVVUMzROY3JVMEJoQ0NKZV9BN3djdC1aalQwM0RLRExSYVViUEVaM0hoenZZZjd0N1c3Wl9iRDJRZ0szdFQ0RlBIYXJnSGJtVUxYRzdhZzlmYWlmYS1KQ0twX3VpMHJCU2NjVG05bUVD?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-10-29T16:14:51Z",
+        "fecha": "2026-11-14T19:17:10Z",
         "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       }
     ],
-    "gdacs:TC:1001346": [
+    "usgs:us7000tuym": [
       {
-        "titulo": "Inundaciones en India tras fuertes lluvias por el ciclón Murasu",
-        "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOY1pqVEFlc1EwMmdKcUlwaUdpQWVkSlpHckZxbHVqd09WVGtOTXdXbloyMm5INmYzamFEelhzS2p5RkpUYW1FYnlqZi1tcDd6QmlrckU1NWRuQVlGemdMOXM3MjJZMEhMSmFzNjF6Zm5Wa1g5ZlluNURlcm4taktnNUxPN01RbFlydjhaLWl6ZXlUYUZ5RFo1N2pCcFVDU2ZTT0NQcFczV1hqaFpWMEdmZEhVbWxic3FIYVdscWtnaU96c2lCZVI0RUc3Z2tOWld3bVBiY0xR?oc=5",
-        "medio": "TV Azteca Baja California",
-        "fecha": "2026-11-06T02:46:24Z",
+        "titulo": "Terremoto moderado mag. 4.4 - Cochabamba, 71 km al oeste de Villa Yapacani, Santa Cruz, Bolivia, Monday 2 Nov 2026 a las 14:54 (Hora La Paz)",
+        "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOMVREQWZGS2Iybm54cE55dmVVZjlMaUh0SlIxTVkyQ19kWHdJRE0wM0NnRUlJN2EybDdzTDZkenUtSUkxT08zNDk3X3FFZjBkRVhvUW82UExSQlhHNHhzR3FfV0swcWJkZ1pyMi04SnFlUlRSRk9OUXNJa1RYY3hqZzR1akFhSDhYNnJwbWRtZjRGWjZlb2lGeGkxaE41MEhQSjNEZmttRVAwc1NWMTA0?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-11-02T08:00:00Z",
         "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Mueren ocho trabajadores electrocutados durante unas obras viales en India",
-        "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOUWZxZFBDbnVQb25KQjNTX09NMVRXclhBa2t3a3owYzg3WENqY2ZQVGcxMDFPUHBhaEJGNFpELWRUWm5BX1RDdVZYSzVGVGx2QTlVY29yLVRxQ1lNRDdPSHhDdHFWTjVVZFVPWW1ZemxSazg3cUxDNjlMZnRXZThrVUQ2QkV4MFZ3Q1FCcGJ0M1ZkMXhEQjU0Q01NRjlOQzFGUHJ4WQ?oc=5",
-        "medio": "Quinta Fuerza",
-        "fecha": "2026-11-02T23:06:14Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Ciclón amenaza costa este de India; tocaría tierra este martes",
-        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQRy1fRExQMkhkR1Zfc2E1SFZpMTdkTzcwTWZuUnNYR245R3YxaUhjVHlkekVkdEhSXzRmRDg0eTRkSlR1UW9UdGVhRjN4NmpwVkk1LUZUckNDNnN2UURnRHZEMmZQWU1KXy1fakVKQVprRmNvV2ROMDFhQWt5d3B6N1N1NVZaSTl5c000NzZWbU9naUdzaHVpZWtOenhybXd3WHB6OGZn?oc=5",
-        "medio": "INFO7",
-        "fecha": "2026-11-01T16:56:00Z",
-        "imagen": "",
-        "idioma": "spanish",
-        "es_video": false,
-        "buscador": "google"
-      },
-      {
-        "titulo": "Un fenómeno de El Niño de récord: cinco impactos que ya se sienten en el planeta y que podrían persistir hasta 2027",
-        "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPWkdyR1ZEenFzTnVNVDFRREhjQW1ycUpwZi1tWVhaY2laMEVXWWg4YVRHOG41S21iWWlIbkpZY3JrMThRczQ0RVBNUEtPREJadWZOZlVoeWtHUGRpWlo0SndWTGFZY3NDM2Zxa2ljQThsQ3l1OHJieUE4V3MzUURzb1E0T01WNC1Xd1JiRHVncGllSlVpOWFnVi04anh1QWZZeEVOelpIS3dlQmVILU05WlhaaEJlQk1vSHNMclpoTWZhT0RjQ1dsQmpPUWhzeVJK?oc=5",
-        "medio": "Meteored España",
-        "fecha": "2026-10-31T07:00:00Z",
-        "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
@@ -245,30 +153,50 @@
     ],
     "usgs:us7000tx16": [
       {
-        "titulo": "Un terremoto de magnitud 6,4 sacude las islas Salomón sin alerta de tsunami",
-        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQdkVSREhnN0JteUluUUd4T1FGYk1NSnh2dzVFRjluNXBTYjBUZVg2ekItTTRHUVlwbTNiMVBZdVN1djVINkVPZ0RTQzlHVEtibmItTHNCUWItN0x4bjdXVHlSWjluWVk1dDhxbmlVRWxRenRLS3k4RFgyUEhuNWZReEkwMUtPSXlTekQwMTdENXNZV0s0M0hEMHl3?oc=5",
-        "medio": "El Confidencial",
-        "fecha": "2026-11-09T06:31:00Z",
+        "titulo": "Terremoto moderado mag. 4.8 - Coral Sea, 20 km al sur de Lata, Temotu, Islas Salomón, Wednesday 11 Nov 2026 a las 02:52 (Hora Guadalcanal)",
+        "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNQkt0LVA3ajhEWjUyZEpnWnR3a28zLWpQanFrWURrckwwMExaRldtTVM2eFFMSEgyLVVMeHRrV1hTQTAzYnh6M2I0T1BJakpzTVRibjBNUkJiUHlEZ3lQSUdZVHJNWHJjMno4UVRwX1hBSEJrOUtWa3RRMVhOdFZrQjF6a1NIc28xMlZKTnBwQmxCLWNJU2NlcWpJSHI5UU1TekstOURmdjhsSVl0MklMQ2ZHNUliM3hudXphVHI0QjktazUxLWc?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-11-10T16:56:30Z",
         "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Informe de terremotos en todo el mundo por lunes, 9 de noviembre de 2026",
-        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQUkFMVkZRWlVQUzEwenc5Tjhmblh4R1RZRTJuU2YzZ003TnpFNzdzRHp2MElTbTNPeHJjQmxrX1FtWHBuYkt5a2JZV0x0QTZOQzVob0hFdjQ5WWw3WDA0eVVycXo3cDhQb3ItNjNCSkh4d1pWSC1URzJpOGZlUFZqVVpxSExlaFBjdjNwcUc4YlBoallwUlAwQkFZNlpzU19oWFNJa2FfNGQ?oc=5",
+        "titulo": "Fuerte terremoto magnitud 5.2 - Coral Sea, 20 km al oeste de Lata, Temotu, Islas Salomón, Tuesday 10 Nov 2026 a las 14:37 (GMT +11)",
+        "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOT3BCMHVMMTRUaWExN3ZROXFJUHJ0Nm9oSmYxaWdTUXZrcnJVOGhHdXVGQjlSS1VVMDZoOGxFdXFlUHQ1V0VEU1c1bjR4dGg3djNyWEVUQkRxVkNjQXp1VWZuNXdMcmRPWlp4TklaS1ZEenE1cHIwdFpqdnZWZlY5dDB0TVVkX3FCVllZanVJTWVxbE1KLTdJbEFtYVlEMVVHNDZHLTFIVUZRMjByb2VmXzFtVGZtTnI5d1JDVzBTWEhzNGdTM1E?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-11-09T05:57:07Z",
+        "fecha": "2026-11-10T03:56:08Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Terremoto moderado mag. 4.8 - Coral Sea, 27 km al suroeste de Lata, Temotu, Islas Salomón, Monday 9 Nov 2026 a las 16:16 (Hora Guadalcanal)",
-        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPekZCeVFUcGVHWk1QcDJXTGlZbDlLQkg1YnJ3a2RlRlM0M3NXcldveDlFZEp5VWJtQnhrT0lReG9DMVFBcjVjQWYyUU5nRGlXLW4wLUY5VDBjVHJjTHk3cW92TjI0OG96aU9CQU43UTE3RnV4NjViZEZTNnQzcWxfMnM3UUJYQkNZcWFjeURDR1BnTjBoQXNRUHI1QzZpZG5ZZVVCUC1yMHA2cHB3UGNjTVlBREpRald4aDFiZDlvN2RXQQ?oc=5",
+        "titulo": "Islas Salomón y la trágica relación con el Cinturón de Fuego: ¿cuántos temblores al año?",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOdTZIWXhBYThwUzBibktvT2Z5ZlVpU1BrYko2T3FhM3Uxbk14MkJETWFCT0ZwTUFiUmN4QmFFM2RQX09lbkE3VkhrTHhnb3hUc1JDSUdPWWo3SDFBTlRyTlZBVzFaVU5FQzYtYWJ5ZDVQdGplRk8tYmR0Q0g5VjdRSGNGQkRvVV84dkZWUE1HR3NGN0FmUENhZERvUQ?oc=5",
+        "medio": "Minuto60",
+        "fecha": "2026-11-09T20:20:31Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto moderado mag. 4.6 - Coral Sea, 217 km al sureste de Ulawa , Makira, Islas Salomón, Tuesday 10 Nov 2026 a las 05:51 (GMT +11)",
+        "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNRmNLd05lTkNEOFBOU3RXMjlhTzhmYkZYZDB4Y2JoYndtTTZ3UnNqTXFhR1BWcTdCSnZhUmhheTBSeGd2WDRIbTFTUnRVaVQtbVlMamJGYlkzNmJwUXZWQUVJdXhMLVJPZjRhZ2o1UmYxbkhXcHJjS2hFd3FfcDFmZGZTMTVXWkpfVzYtblVMMjJWajJhOFJNWkxjOUVzckduSk9ObkJ3ZWdBTlRMNmJmMTJ5OC1YQ3BTWkNuaUFJMVF4b1VoVVRr?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-11-09T05:46:04Z",
+        "fecha": "2026-11-09T19:11:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto de magnitud 6,4 sacude las islas Salomón sin alerta de tsunami",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPMjhLZUhqNlZuRmU3NzVHUzd6Y2dUZ09YN2wwUE5ZZkR6TmNqRTZXeERjWG9iWGtiMzhST0VPNURLbmhrWW9XeVhkVjNYOGpVUWlCcVp0anRZM0xvZERpZHNwb2NJTUxEeWJpa3hIMGcxZUZnLWV4ZXRKSUc1d0VOSDdFVEtLRHZIUjk0Tm1aUFA3QTBOWkFlR1c4ckZ1V3hPS1BMOXo0UTBkZjA?oc=5",
+        "medio": "El Nacional",
+        "fecha": "2026-11-09T10:17:11Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
@@ -283,22 +211,126 @@
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
+      }
+    ],
+    "gdacs:EQ:1576364": [
+      {
+        "titulo": "Sismos en Islas Salomón: Temblores recientes últimos 14 días",
+        "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQaDZEMjFFY0NHVE9PUmcxellLcWdPZUdOeW9uUTNPNmtDMnRQc2VqSnREdDgxMEF5UF80T3FMS3JSVzFyamNUcjcyWW5GYUtWYm13NThYbjhCZVc3ektwSWViMFIyU2wtLWlOVEVoRklDckFMZ3RrQzlLdXF5UklxemFybEZ1YnoxdDlhbHVrUGVGV0JPOHVseE1oamZIMWdUbkJZLXEyaEhYY0RvMHpEVkpzTW9za1hBV0wzdldEM1VhSTUtalBTYUJjYnFLWlA2bUoxNE8zQUtrOU1BUjZwazZZa0dfVU50?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-11-10T19:15:12Z",
+        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
       },
       {
-        "titulo": "Terremoto muy fuerte magnitud 6.4 - Coral Sea, 30 km al suroeste de Lata, Temotu, Islas Salomón, Monday 9 Nov 2026 a las 14:34 (Hora Guadalcanal) -",
-        "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNLXJkY0ZHTlZBUDZxMUtjVzBOWXFBalVnR0FaemxYdjZLdkp0TnZGSmI3cXByN2tVb19uVFEzdVRKYlJhbFd4ODNwV2o3VWRQVHBJbFpXRTdIMjI1X3dESzl2M09YUUdWMVAzTEpDM2pvWUFWcDJTbU02NUdROVdrSVNpa05kYk9XQ0E0M0xMQ2RPdzhuQWIwY1pIYmdVUQ?oc=5",
+        "titulo": "Fuerte terremoto magnitud 5.2 - Coral Sea, 20 km al oeste de Lata, Temotu, Islas Salomón, Tuesday 10 Nov 2026 a las 14:37 (GMT +11)",
+        "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOT3BCMHVMMTRUaWExN3ZROXFJUHJ0Nm9oSmYxaWdTUXZrcnJVOGhHdXVGQjlSS1VVMDZoOGxFdXFlUHQ1V0VEU1c1bjR4dGg3djNyWEVUQkRxVkNjQXp1VWZuNXdMcmRPWlp4TklaS1ZEenE1cHIwdFpqdnZWZlY5dDB0TVVkX3FCVllZanVJTWVxbE1KLTdJbEFtYVlEMVVHNDZHLTFIVUZRMjByb2VmXzFtVGZtTnI5d1JDVzBTWEhzNGdTM1E?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-11-09T04:54:57Z",
+        "fecha": "2026-11-10T03:56:08Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
         "buscador": "google"
       },
       {
-        "titulo": "Terremoto de magnitud 6.2 cerca de Lata (Luva Station, Temotu)",
-        "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNSmNkSW4wWFRlaXlHNDdGdklsRVpUMzBKMDRYczNuOWJoRzlmZ2p1ZUo5cjBMc01VcFlEN0NETG5sY0hmckpEb01IdlhxMEtnSlh2Q2Jsak8wNlpBaUxiMlA3SHdfbTZiQTZxbzUxR1gwb2VTU2ZWNGlIbmlPRDJaU0NfTk1WQzZaT0tRME1WQ3RhVDVqTWJZaGRwUXE0cDhmbV9peko2UU9HVHUxQjZYMlIydll5MVdXNmN5TWd3aTU?oc=5",
+        "titulo": "Islas Salomón y la trágica relación con el Cinturón de Fuego: ¿cuántos temblores al año?",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOdTZIWXhBYThwUzBibktvT2Z5ZlVpU1BrYko2T3FhM3Uxbk14MkJETWFCT0ZwTUFiUmN4QmFFM2RQX09lbkE3VkhrTHhnb3hUc1JDSUdPWWo3SDFBTlRyTlZBVzFaVU5FQzYtYWJ5ZDVQdGplRk8tYmR0Q0g5VjdRSGNGQkRvVV84dkZWUE1HR3NGN0FmUENhZERvUQ?oc=5",
+        "medio": "Minuto60",
+        "fecha": "2026-11-09T20:20:31Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto moderado mag. 4.6 - Coral Sea, 217 km al sureste de Ulawa , Makira, Islas Salomón, Tuesday 10 Nov 2026 a las 05:51 (GMT +11)",
+        "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNRmNLd05lTkNEOFBOU3RXMjlhTzhmYkZYZDB4Y2JoYndtTTZ3UnNqTXFhR1BWcTdCSnZhUmhheTBSeGd2WDRIbTFTUnRVaVQtbVlMamJGYlkzNmJwUXZWQUVJdXhMLVJPZjRhZ2o1UmYxbkhXcHJjS2hFd3FfcDFmZGZTMTVXWkpfVzYtblVMMjJWajJhOFJNWkxjOUVzckduSk9ObkJ3ZWdBTlRMNmJmMTJ5OC1YQ3BTWkNuaUFJMVF4b1VoVVRr?oc=5",
         "medio": "Volcano Discovery",
-        "fecha": "2026-11-09T04:08:57Z",
+        "fecha": "2026-11-09T19:11:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto de magnitud 6,4 sacude las islas Salomón sin alerta de tsunami",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPMjhLZUhqNlZuRmU3NzVHUzd6Y2dUZ09YN2wwUE5ZZkR6TmNqRTZXeERjWG9iWGtiMzhST0VPNURLbmhrWW9XeVhkVjNYOGpVUWlCcVp0anRZM0xvZERpZHNwb2NJTUxEeWJpa3hIMGcxZUZnLWV4ZXRKSUc1d0VOSDdFVEtLRHZIUjk0Tm1aUFA3QTBOWkFlR1c4ckZ1V3hPS1BMOXo0UTBkZjA?oc=5",
+        "medio": "El Nacional",
+        "fecha": "2026-11-09T10:17:11Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Fuerte sismo de magnitud 6,4 sacude las Islas Salomón en la noche de este domingo 8 de noviembre: esto es lo que se sabe",
+        "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQbUp1eDVOaU9sc1Y0OGIzNFkyNTlMTjhaWTU3MXhUMUN1dy1kdzYwXzNGbl91ZUNnSEZXNXpwQTh1bnQ2XzN4UFg1UTU0MzktSFpPVkxtM3VkbVY4bDRIM1lCZVd1M2hoVDdwQkl5dWhXOTVFZG1yMG5CVUZhSkZKbGF5ckg0VTZUR0hkMWt3cTBteFZkaGdoaXhfcE9jc3BzY3BzRXNFN2p1Q0N2eTl1Q2lCWnFzT0VGSTVheGotQm9WbkRCay1aNVJsOE9PZnRIaUpBWndIakVoWWR4SVRKUzV3T2JWV2lfS2ZGd1hLUmgyUGt1QUHSAfsBQVVfeXFMT3BxZlYxY25iNmhBM3prVFZYam9iWWdtbHBOSDdvYWF0V0ZuLUVkeHp5S0wtd3BrRjFWbUhjblhvYU5MZTZKanJZUXVsRWVJRHpCZ0w0ZEt4NWwxRC1wcmlsV2FoUkxqVFcyd0EwMVZxcFFqLVJsUlZ3WDlJb2JwRjlYZ0QtZnp6R2dqOGZndHhJV2ZqUngxSlhnQ19DdnB4NnlXbVdkQUl5cEtoMEdTYzMtb1l3d2daVWpRLUwyenh1VmNVVnNwc3pBSzhKRHF2X1RkZG53MmlMZjJMcHlxU0tHWDhVYXJSaHR3d3JvVEY3RDlHelJDeDhKWm8?oc=5",
+        "medio": "El Tiempo",
+        "fecha": "2026-11-09T05:14:02Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      }
+    ],
+    "usgs:us7000twg9": [
+      {
+        "titulo": "Terremoto moderado mag. 4.6 - Océano Pacífico Norte, 146 km al este de Hitachi, Japón, Wednesday 11 Nov 2026 a las 12:56 (GMT +9)",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOeGtTZFRnR0dhZHJWX09vVTRNQ3hXU19rSnVJNVNMZXA4d0tZYnlRbkxlS2VYaVdaT0JNMFZnV2R4ek1nSG9DQmdVQ0wyZE5GeTlYOHJNek03Z3RfRG00LVBucFcxVVZST1VrdWl1S0MzWVliM2lVeHFTVzA3ZGlVLThRVG9BYUpzTnlIZDUzYzEtRTh2dnZlRk9uQW16WGRiWFFxdWRjTnBNbk9iMnlpQTdDeDBPdmVXc09yNVNxR3FtQQ?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-11-11T08:01:10Z",
+        "imagen": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Terremoto leve mag. 3.3 - Océano Pacífico Norte, 94 km al noreste de Kamisu, Japón, Sunday 8 Nov 2026 a las 21:24 (GMT +9)",
+        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOS3ZYSUhxR3E0Zjl1UzJNYXlQZnIxZDV2NnFPSTVrUmZHSUpYZW1RMnVvbC1xQWVlZVlNSkZHUVR3cDFaVHhhMTlneklqYVRsWkFhU212ZG5USm96UzZtT0czTlEwNnpQVDVfdVQzRWtxRy1YRVloQUhKWFVwSGJFQ1gzQ0NJSjc4djB2eGRPQm53TWdsN05ETW9mekV4YWp0OGp6Y1FuWjlNbFRZeUdhajJxS1MwZ05WQlZ2eg?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-11-08T13:33:40Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Sismo débil mag. 2.1 - Japan: Far E Off Ibaraki Pref, Monday 9 Nov 2026 a las 01:30 (GMT +9)",
+        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOVWFpMi16UXl2SkRkNk9RVTRndTJXbVN6alB1ckhfWFRkeXAyRnU0b29hYU5mbFdBQXNtdV9oVU9pWmljM2JOY2R1QlJSVkd4YjM1VUZGM3lUTWFxdWhJNlRHdVViclhFdG9kNG1nUVJDT1JOTzdVcGg2MVg0RThIMkRPcnBaZ3ZCVTZiXzh6MTc5Tk5xRDlTNXhFY2xNXzFHNGdUcHZ3cDFKY0RqYVFYT3F1eGdWOHRpUWNFaQ?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-11-08T13:00:24Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Informe de terremotos en todo el mundo por sábado, 7 de noviembre de 2026",
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYU9lRW4zMktOMnRiQXFWd3dUcUhFc3Z0WmhkQkc1RDRTeE80alcyVHhyelB6NEhKbS1pRElxMFRTRnI0djZPTmtrdVIxVjZLLWR0dkRrUnNmWUp1RGplLTVpY1o4VmtjcWlzTlpaSlFhS2d1ZEFjN0tXb3VUY3NBQ21ORkx5MFBveUp2clItd29iQnVIR2FheWNfNTZFTktHdnZpTHIzTUs?oc=5",
+        "medio": "Volcano Discovery",
+        "fecha": "2026-11-07T23:24:00Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "¡Fuerte sismo sacude Japón cerca de Tokio! ¿Hay tsunami?",
+        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQNnBOT2FsWF8zTWd2Szl4LWRiUDhKaTNvdzFaMjhvbGxrdHVDU3hhYUtGVV9LLTdRNjVIcmtremdvejVSYmZTSnYzM0R2aW02dW5Fd1BLMlBEcFI2bm12M1NUSkR5UlloZ0RQS0dlTFFva2RBN0loOHBKM1BnX3I2YlBwZ2lNcEcta3Y1UzJxdw?oc=5",
+        "medio": "oncenoticias.hn",
+        "fecha": "2026-11-06T15:16:39Z",
+        "imagen": "",
+        "idioma": "spanish",
+        "es_video": false,
+        "buscador": "google"
+      },
+      {
+        "titulo": "Alerta en Japón: fuerte terremoto sacude la costa y activa protocolos de emergencia",
+        "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOUlhvSkNPNkVZZTVVemkzbkZVaEhkNWxUcHVTQlpIT1duTU9RUkhYelBYRjJELXZ1WEVPei15NFM1d2RlWXVQX0s4b1JiSkQ3Y1VXRkU1akV2dVI1SXQ5Mlk4akt1TUVtenVYeVFiMmlROVJ1THlSaGlZcjBFSTNYWFhQQ1BMRFkyRll0Y0ZNOW9JQkxzRklJTzJ4X0M0WlJTNGtvdl9TV2tKclpTNG9qUWcwUmZ2TkFLVFlUc2xWeGdOZEJ0X2ZJ0gHMAUFVX3lxTE9hOFgyWUtzZExZcGxlSnBRWVg3bzlBNS00T29TbFhkUFdSeWJlSlVVdEJ6a2R5MUJZQ0l6MVNLbGZVd1UxZXdBYUdEa25TMWRXU2xuYnY4M1NTNnVjMEVpcGREdHJtSW1PbmIwc19HRFdLeHF3RWdHWHBHRS1oM2hLQVB6R21Db2IzdXEteHNzdmV1OFBVZnRGc3VJOHhKUDB0VWxuaE5RTkJHTERBN0NtTVM2TWd1V2NvQzJQX2NvaUdBQjNobWhySUtXUw?oc=5",
+        "medio": "Revista Semana",
+        "fecha": "2026-11-06T08:00:00Z",
         "imagen": "",
         "idioma": "spanish",
         "es_video": false,
